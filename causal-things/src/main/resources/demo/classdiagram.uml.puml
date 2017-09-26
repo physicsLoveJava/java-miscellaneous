@@ -1,0 +1,119 @@
+@startuml
+
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+
+Class11 <|.. Class12
+Class13 --> Class14
+Class15 ..> Class16
+Class17 ..|> Class18
+Class19 <--* Class20
+
+Class21 #-- Class22
+Class23 x-- Class24
+Class25 }-- Class26
+Class27 +-- Class28
+Class29 ^-- Class30
+
+newpage
+
+Class01 "1" *-- "many" Class02 : contains
+Class03 o-- Class04 : aggregation
+Class05 --> "1" Class06
+
+newpage
+
+class Car
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+
+newpage
+class Dummy {
+-field1
+#field2
+~method1()
++method2()
+}
+
+newpage
+
+skinparam classAttributeIconSize 0
+class Dummy {
+-field1
+#field2
+~method1()
++method2()
+}
+
+class Dummy {
+{static} String id
+{abstract} void methods()
+}
+
+class User {
+.. Simple Getter ..
++ getName()
++ getAddress()
+.. Some setter ..
++ setName()
+__ private data __
+int age
+-- encrypted --
+String password
+}
+
+class Foo
+note left: On last defined class
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+annotation SuppressWarnings
+
+newpage
+
+package "Classic Collections" #DDDDDD {
+Object <|-- ArrayList
+}
+package net.sourceforge.plantuml {
+Object <|-- Demo1
+Demo1 *- Demo2
+}
+
+newpage
+
+scale 750 width
+package foo1 <<Node>> {
+class Class1
+}
+package foo2 <<Rectangle >> {
+class Class2
+}
+package foo3 <<Folder >> {
+class Class3
+}
+package foo4 <<Frame >> {
+class Class4
+}
+package foo5 <<Cloud >> {
+class Class5
+}
+package foo6 <<Database >> {
+class Class6
+}
+
+newpage
+
+set namespaceSeparator ::
+class X1::X2::foo {
+some info
+}
+
+
+@enduml

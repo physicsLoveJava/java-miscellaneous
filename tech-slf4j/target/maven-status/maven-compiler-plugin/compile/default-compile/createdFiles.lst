@@ -1,0 +1,4 @@
+com\lujian\techs\log4j\Log4jService.class
+com\lujian\techs\log4j\FileMain.class
+com\lujian\techs\slf4j\Slf4jService.class
+com\lujian\techs\log4j\ConsoleMain.class
