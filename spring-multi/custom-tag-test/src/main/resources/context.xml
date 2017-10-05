@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:person="http://www.software.com/schema/person"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.software.com/schema/person
+       http://www.software.com/schema/person/person.xsd
+">
+    <person:person id="abc" name="aa" address="tian" age="100"/>
+</beans>

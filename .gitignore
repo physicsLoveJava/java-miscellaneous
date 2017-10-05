@@ -75,6 +75,7 @@ hs_err_pid*
 
 .idea/
 basic-techs.iml
+*/target/
 #bdd-examples/
 #causal-things/
 #maven-plugins/
