@@ -1,0 +1,30 @@
+@startuml
+start
+if (default namespace) then (yes)
+partition parseDefaultElement {
+    if (import element) then (yes)
+    : importBeanDefinitionResource;
+    elseif (alias element) then (yes)
+    : processAliasRegistration;
+    elseif (bean element) then (yes)
+    : processBeanDefinition
+    elseif (nested beans element) then (yes)
+    : registerBeanDefinition(__recursion__);
+    endif
+}
+else (no)
+partition parseCustomElement {
+    partition getNamespaceHandler {
+        partition getHandlerMappings {
+            : loadAllProperties;
+            : mergeProperties;
+        }
+        : getHandlerOrClassName;
+        : loadClass;
+        : handlerInit;
+    }
+    : parse;
+}
+endif
+stop
+@enduml

@@ -5,7 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.software.com/schema/person
-       http://www.software.com/schema/person/person.xsd
-">
+       http://www.software.com/schema/person/person.xsd">
     <person:person id="abc" name="aa" address="tian" age="100"/>
 </beans>
