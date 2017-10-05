@@ -12,7 +12,7 @@
         <module>tech-concurrent</module>
         <module>bdd-examples</module>
         <module>tech-slf4j</module>
-        <module>causal-things</module>
+        <module>casual-things</module>
         <module>tech-unit-testing</module>
         <module>maven-plugins</module>
         <module>dubbo-demo</module>
