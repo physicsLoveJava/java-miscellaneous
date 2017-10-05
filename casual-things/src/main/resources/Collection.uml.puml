@@ -1,0 +1,372 @@
+@startuml
+
+title Collection Class Diagram
+
+interface Iterable<T> {
+    Iterator<T> iterator();
+}
+
+interface Collection<E>{
+    int size();
+
+    boolean isEmpty();
+
+    boolean contains(Object o);
+
+    Iterator<E> iterator();
+
+    Object[] toArray();
+
+    <T> T[] toArray(T[] a);
+
+    boolean add(E e);
+
+    boolean remove(Object o);
+
+    boolean containsAll(Collection<?> c);
+
+    boolean addAll(Collection<? extends E> c);
+
+    boolean removeAll(Collection<?> c);
+
+    boolean retainAll(Collection<?> c);
+
+    void clear();
+
+    boolean equals(Object o);
+
+    int hashCode();
+}
+
+abstract class AbstractCollection<E>
+
+interface List<E> {
+
+    E get(int index);
+
+    E set(int index, E element);
+
+    void add(int index, E element);
+
+    E remove(int index);
+
+    int indexOf(Object o);
+
+    int lastIndexOf(Object o);
+
+    ListIterator<E> listIterator();
+
+    ListIterator<E> listIterator(int index);
+
+    List<E> subList(int fromIndex, int toIndex);
+}
+
+abstract class AbstractList<E> {
+    ListIterator<E> listIterator();
+
+    ListIterator<E> listIterator(final int index);
+}
+
+interface RandomAccess
+
+abstract class AbstractSequentialList<E>
+
+class Vector<E> {
+    -Object[] elementData;
+}
+
+class ArrayList<E> {
+    transient Object[] elementData;
+}
+
+class LinkedList<E> {
+    Node<E> first;
+    Node<E> last;
+}
+
+interface Queue<E> {
+    boolean add(E e);
+    boolean offer(E e);
+    E remove();
+    E poll();
+    E element();
+    E peek();
+}
+
+interface Deque<E> {
+    void addFirst(E e);
+    void addLast(E e);
+    boolean offerFirst(E e);
+    boolean offerLast(E e);
+    E removeFirst();
+    E removeLast();
+    E pollFirst();
+    E pollLast();
+    E getFirst();
+    E getLast();
+    E peekFirst();
+    E peekLast();
+    Iterator<E> iterator();
+    Iterator<E> descendingIterator();
+}
+
+interface Set<E>
+
+abstract class AbstractSet<E>
+
+interface SortedSet<E> {
+    Comparator<? super E> comparator();
+    SortedSet<E> subSet(E fromElement, E toElement);
+    SortedSet<E> headSet(E toElement);
+    SortedSet<E> tailSet(E fromElement);
+    E first();
+    E last();
+}
+
+interface Comparator<E> {
+    int compare(T o1, T o2);
+    boolean equals(Object obj);
+}
+
+interface NavigableSet<E> {
+    E lower(E e);
+
+    E floor(E e);
+
+    E ceiling(E e);
+
+    E higher(E e);
+
+    E pollFirst();
+
+    E pollLast();
+
+    Iterator<E> iterator();
+
+    NavigableSet<E> descendingSet();
+
+    Iterator<E> descendingIterator();
+}
+
+class HashSet<E> {
+    -transient HashMap<E, Object> map;
+}
+
+class TreeSet<E> {
+    -transient NavigableMap<E, Object> map;
+}
+
+abstract class Dictionary<K, V> {
+    abstract public int size();
+
+    abstract public boolean isEmpty();
+
+    abstract public Enumeration<K> keys();
+
+    abstract public Enumeration<V> elements();
+
+    abstract public V get(Object key);
+
+    abstract public V put(K key, V value);
+
+    abstract public V remove(Object key);
+}
+
+interface Map<K, V> {
+    int size();
+
+    boolean isEmpty();
+
+    boolean containsKey(Object key);
+
+    boolean containsValue(Object value);
+
+    V get(Object key);
+
+    V put(K key, V value);
+
+    V remove(Object key);
+
+    void putAll(Map<? extends K, ? extends V> m);
+
+    void clear();
+
+    Set<K> keySet();
+
+    Collection<V> values();
+
+    Set<Map.Entry<K, V>> entrySet();
+
+    boolean equals(Object o);
+
+    int hashCode();
+}
+
+interface Entry<K,V> {
+
+     K getKey();
+
+     V getValue();
+
+     V setValue(V value);
+
+     boolean equals(Object o);
+
+     int hashCode();
+ }
+
+interface SortedMap<K, V> {
+    Comparator<? super K> comparator();
+}
+
+class Hashtable<K, V> {
+    -transient Entry<K, V>[] table;
+}
+
+abstract class AbstractMap<K, V>
+
+interface NavigableMap {
+    Map.Entry<K,V> lowerEntry(K key);
+
+    K lowerKey(K key);
+
+    Map.Entry<K,V> floorEntry(K key);
+
+    K floorKey(K key);
+
+    Map.Entry<K,V> ceilingEntry(K key);
+
+    K ceilingKey(K key);
+
+    Map.Entry<K,V> higherEntry(K key);
+
+    K higherKey(K key);
+
+    Map.Entry<K,V> firstEntry();
+
+    Map.Entry<K,V> lastEntry();
+
+    NavigableMap<K,V> descendingMap();
+
+    NavigableSet<K> navigableKeySet();
+
+    NavigableSet<K> descendingKeySet();
+}
+
+class HashMap<K, V> {
+    entry<K, V>[] table;
+}
+
+class TreeMap<K, V> {
+    Entry<K, V> root;
+}
+
+interface Iterator<E> {
+    boolean hasNext();
+    E next();
+    void remove();
+}
+
+interface ListIterator<E> {
+    boolean hasPrevious();
+    E previous();
+    int nextIndex();
+    int previousIndex();
+    void set(E e);
+    void add(E e);
+}
+
+interface Comparable<T> {
+    int compareTo(T o);
+}
+
+class Stack<E> {
+    E push(E item);
+    E pop();
+    E peek();
+    boolean empty();
+    int search(Object o);
+}
+
+abstract class AbstractQueue<E>
+
+class ArrayDeque<E>
+
+interface Enumeration<E> {
+    boolean hasMoreElements();
+    E nextElement();
+}
+
+class EnumMap<K extends Enum<K>, V> {
+        K[] keys;
+        Object[] vals;
+}
+
+abstract class EnumSet<E extends Enum<E>> {
+        K[] keys;
+}
+
+class IdentityHashMap<K,V>
+
+class LinkedHashMap<K,V>
+
+class LinkedHashSet<E>
+
+class PriorityQueue<E>
+
+class Properties
+
+class WeakHashMap<K,V>
+
+Iterable <|-- Collection
+Collection <|-- AbstractCollection
+Collection <|-- List
+Collection <|-- Queue
+Queue <|-- Deque
+AbstractCollection <|-- AbstractList
+List <|-- AbstractList
+AbstractList <|-- AbstractSequentialList
+AbstractList <|-- Vector
+RandomAccess <|-- Vector
+Vector <|-- Stack
+AbstractList <|-- ArrayList
+RandomAccess <|-- ArrayList
+AbstractSequentialList <|-- LinkedList
+Deque <|-- LinkedList
+
+Collection <|-- Set
+AbstractCollection <|-- AbstractSet
+Set <|-- AbstractSet
+Set <|-- SortedSet
+SortedSet <|-- NavigableSet
+AbstractSet <|-- HashSet
+AbstractSet <|-- TreeSet
+NavigableSet <|-- TreeSet
+
+Map *-- Entry
+Map <|-- SortedMap
+Dictionary <|-- Hashtable
+Map <|-- Hashtable
+Map <|-- AbstractMap
+SortedMap <|-- NavigableMap
+AbstractMap <|-- HashMap
+AbstractMap <|-- TreeMap
+NavigableMap <|-- TreeMap
+
+Iterator <|-- ListIterator
+
+Queue <|-- AbstractQueue
+AbstractQueue <|-- ArrayDeque
+Deque <|-- ArrayDeque
+
+AbstractMap <|-- EnumMap
+AbstractSet <|-- EnumSet
+AbstractMap <|-- IdentityHashMap
+HashMap <|-- LinkedHashMap
+HashSet <|-- LinkedHashSet
+AbstractQueue <|-- PriorityQueue
+Hashtable <|-- Properties
+AbstractMap <|-- WeakHashMap
+
+
+@enduml
