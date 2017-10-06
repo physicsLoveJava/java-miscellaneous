@@ -1,0 +1,29 @@
+@startuml
+
+interface OutputStream
+class FileOutputStream
+class ObjectOutputStream
+class SequenceOutputStream
+class PipedOutputStream
+class ByteArrayOutputStream
+class FilterOutputStream
+class StringBufferOutputStream
+
+class BufferedOutputStream
+class DataOutputStream
+
+class BlockDataOutputStream
+
+OutputStream <|-- FileOutputStream
+OutputStream <|-- FileOutputStream
+OutputStream <|-- ObjectOutputStream
+OutputStream <|-- SequenceOutputStream
+OutputStream <|-- PipedOutputStream
+OutputStream <|-- ByteArrayOutputStream
+OutputStream <|-- FilterOutputStream
+OutputStream <|-- StringBufferOutputStream
+FilterOutputStream <|-- BufferedOutputStream
+FilterOutputStream <|-- DataOutputStream
+ObjectOutputStream <|-- BlockDataOutputStream
+
+@enduml

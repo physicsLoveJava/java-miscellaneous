@@ -1,0 +1,16 @@
+@startuml
+
+
+interface OutputStream
+abstract class Writer
+class Charset
+class StreamEncoder
+class OutputStreamWriter
+
+StreamEncoder o-- OutputStream
+StreamEncoder o-- Charset
+Writer <|-- StreamEncoder
+Writer <|-- OutputStreamWriter
+OutputStreamWriter o-- StreamEncoder
+
+@enduml

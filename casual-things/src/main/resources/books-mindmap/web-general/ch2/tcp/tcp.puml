@@ -1,0 +1,36 @@
+@startuml
+
+[*] --> closed
+closed --> listen : 被动打开
+listen --> synRevd : 收到syn,发送syn+ack
+closed --> synSent : 主动打开，发送syn
+synSent --> synRevd : 同时打开，收到syn，发送ack
+synSent --> established : 收到syn+ack，发送ack
+synRevd --> established : 收到ack
+established --> finWait1 : 关闭，发送fin
+established --> closeWait : 收到fin，发送ack
+finWait1 --> finWait2 : 收到对fin的ack
+finWait1 --> closing : 同时关闭，收到fin，发送ack
+closing --> timeWait : 收到对fin的应答
+finWait2 --> timeWait : 收到fin，发送ack
+closeWait --> lastAck : 等待应用程序关闭，发送fin
+lastAck --> closed : 收到对fin的ack
+timeWait --> closed : 定时器过期
+closed -up-> [*]
+
+closed : 起始点，在超时或者连接关闭时
+listen : Server端再等待连接时的状态
+synSent : client端发起连接，发送syn给server
+synRevd : server端接受client端的syn请求
+established : client和server进行三次握手后进入
+finWait1: 主动关闭的一方，发送fin给对方
+finWait2: 主动关闭的一方，接受到对方的fin ack
+finWait2: 不能接受对方的数据，但是能够向对方发送数据
+closeWait: 接受到fin以后，被动关闭的一方
+lastAck: 被动关闭的一方，发送关闭请求
+closing: 两边同时发起关闭请求，由fin-wait-1进入此状态
+timeWait: fin-wait-2转换为此，双方不同时发起fin的情况下，主动关闭的一方在完成自身发起的关闭请求后，接受到被动关闭一方的fin
+timeWait: closing转换为此，双方同时发起关闭，都做了fin，同时接受到fin并做了ack的情况下
+timeWait: fin-wait-1转换为此，同时接受到fin和ack，本身发起的fin回应ack先于对方的fin请求到达
+
+@enduml

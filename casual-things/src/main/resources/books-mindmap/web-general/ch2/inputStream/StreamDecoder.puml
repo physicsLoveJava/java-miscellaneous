@@ -1,0 +1,16 @@
+@startuml
+
+interface InputStream
+abstract class Reader
+class Charset
+class StreamDecoder
+class InputStreamReader
+
+StreamDecoder o-- InputStream
+StreamDecoder o-- Charset
+Reader <|-- StreamDecoder
+Reader <|-- InputStreamReader
+InputStreamReader o-- StreamDecoder
+
+
+@enduml

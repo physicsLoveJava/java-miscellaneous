@@ -1,0 +1,34 @@
+@startuml
+
+abstract class Reader
+
+class CharArrayReader
+class PipedReader
+class StringReader
+class BufferedReader
+class InputStreamReader
+class FilterReader
+class LineReader
+
+class FileReader
+
+class LineNumberReader
+
+class PushbackReader
+
+Reader <|-- CharArrayReader
+Reader <|-- PipedReader
+Reader <|-- StringReader
+Reader <|-- BufferedReader
+Reader <|-- InputStreamReader
+Reader <|-- FilterReader
+Reader <|-- LineReader
+
+InputStreamReader <|-- FileReader
+BufferedReader <|-- LineNumberReader
+FilterReader <|-- PushbackReader
+
+
+
+
+@enduml
