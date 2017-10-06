@@ -17,6 +17,7 @@
         <module>maven-plugins</module>
         <module>dubbo-demo</module>
         <module>spring-multi</module>
+        <module>tech-libs</module>
     </modules>
 
     <properties>
