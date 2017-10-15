@@ -1,0 +1,33 @@
+@startuml
+
+abstract class Buffer
+abstract class ByteBuffer
+abstract class ShortBuffer
+abstract class CharBuffer
+abstract class IntBuffer
+abstract class LongBuffer
+abstract class FloatBuffer
+abstract class DoubleBuffer
+
+class HeapByteBuffer
+class HeapByteBufferR
+class MappedByteBuffer
+class DirectByteBuffer
+class DirectByteBufferR
+
+
+Buffer <|-- ByteBuffer
+Buffer <|-- ShortBuffer
+Buffer <|-- CharBuffer
+Buffer <|-- IntBuffer
+Buffer <|-- LongBuffer
+Buffer <|-- FloatBuffer
+Buffer <|-- DoubleBuffer
+
+ByteBuffer <|-- HeapByteBuffer
+ByteBuffer <|-- MappedByteBuffer
+MappedByteBuffer <|-- DirectByteBuffer
+DirectByteBuffer <|-- DirectByteBufferR
+HeapByteBuffer <|-- HeapByteBufferR
+
+@enduml
