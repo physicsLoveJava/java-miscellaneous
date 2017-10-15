@@ -1,6 +1,6 @@
 @startuml
 
-interface Writer
+abstract class Writer
 
 class PipedWriter
 class FilterWriter

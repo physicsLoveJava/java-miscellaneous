@@ -1,6 +1,6 @@
 @startuml
 
-interface InputStream
+abstract class InputStream
 class FileInputStream
 class ObjectInputStream
 class SequenceInputStream

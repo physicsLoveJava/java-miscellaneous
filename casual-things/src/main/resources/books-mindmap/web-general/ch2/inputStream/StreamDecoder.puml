@@ -1,6 +1,6 @@
 @startuml
 
-interface InputStream
+abstract InputStream
 abstract class Reader
 class Charset
 class StreamDecoder

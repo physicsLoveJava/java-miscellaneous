@@ -1,7 +1,7 @@
 @startuml
 
 
-interface OutputStream
+abstract class OutputStream
 abstract class Writer
 class Charset
 class StreamEncoder
