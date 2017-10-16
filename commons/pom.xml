@@ -9,19 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tech-libs</artifactId>
+    <artifactId>commons</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.lujian</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.3</version>
-        </dependency>
-    </dependencies>
 
 </project>
