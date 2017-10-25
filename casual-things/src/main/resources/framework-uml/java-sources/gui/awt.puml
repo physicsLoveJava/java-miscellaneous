@@ -1,0 +1,51 @@
+@startuml
+
+class EventObject
+abstract class AWTEvent
+interface EventListener
+
+
+interface ActionListener
+class ActionEvent
+class ComponentEvent
+class WindowEvent
+
+interface ComponentListener
+interface WindowFocusListener
+interface WindowListener
+interface WindowStateListener
+interface WindowAdapter
+
+class EventDispatchThread
+class EventQueue
+class EventFilter
+class EventQueueDelegate
+
+EventListener <|-- ActionListener
+ActionListener <|-- WindowFocusListener
+ActionListener <|-- WindowListener
+ActionListener <|-- WindowStateListener
+ActionListener <|-- ComponentListener
+WindowStateListener <|-- WindowAdapter
+WindowListener <|-- WindowAdapter
+WindowFocusListener <|-- WindowAdapter
+
+EventObject <|-- AWTEvent
+AWTEvent <|-- ActionEvent
+AWTEvent <|-- ComponentEvent
+ComponentEvent <|-- WindowEvent
+
+ActionListener .. ActionEvent
+ComponentListener .. ComponentEvent
+WindowStateListener .. WindowEvent
+WindowListener .. WindowEvent
+WindowFocusListener .. WindowEvent
+
+EventDispatchThread *-- EventQueue
+EventQueue *-- EventDispatchThread
+EventDispatchThread *-- EventFilter
+EventFilter .. AWTEvent
+EventDispatchThread .. EventQueueDelegate
+EventQueue *-- AWTEvent
+
+@enduml

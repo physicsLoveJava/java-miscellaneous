@@ -1,0 +1,19 @@
+@startuml
+
+participant Subject
+participant Observer1
+participant Observer2
+
+Subject -> Observer1 : attach
+Subject -> Observer2 : attach
+
+-> Subject : setState
+
+Subject -> Subject : notify
+
+Subject -> Observer1 : update
+Observer1 -> Subject : getState
+Subject -> Observer2 : update
+Observer2 -> Subject : getState
+
+@enduml
