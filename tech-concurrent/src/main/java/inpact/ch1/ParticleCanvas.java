@@ -1,4 +1,4 @@
-package ch1;
+package inpact.ch1;
 
 import java.awt.*;
 
