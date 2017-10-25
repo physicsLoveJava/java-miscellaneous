@@ -1,6 +1,5 @@
-package com.lujian.causal;
+package com.lujian.casual;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
