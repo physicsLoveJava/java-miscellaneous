@@ -83,3 +83,4 @@ basic-techs.iml
 #tech-concurrent/
 #tech-slf4j/
 #tech-unit-testing/
+/tech-concurrent/jcip/
