@@ -1,6 +1,5 @@
 package com.lujian.tech.libs;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -14,7 +13,6 @@ import java.io.InputStreamReader;
 public class HttpClientSamples {
 
     public static void main(String[] args) {
-
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("http://www.baidu.com");
         CloseableHttpResponse response = null;
