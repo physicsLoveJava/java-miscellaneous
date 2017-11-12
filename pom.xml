@@ -20,6 +20,7 @@
         <module>tech-libs</module>
         <module>commons</module>
         <module>tech-design-pattern</module>
+        <module>tech-asm</module>
     </modules>
 
     <properties>

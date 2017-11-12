@@ -1,0 +1,599 @@
+package software.tjspxt.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import software.tjspxt.data.dao.DmbDao;
+import software.tjspxt.data.dao.DsrQtsscyrGxDao;
+import software.tjspxt.service.AjjbxxService;
+import software.tjspxt.service.DmService;
+import software.tjspxt.service.DsrService;
+import software.tjspxt.service.DsrdwxxService;
+import software.tjspxt.service.DsrgrxxService;
+import software.tjspxt.service.DsrjbxxService;
+import software.tjspxt.service.DsrjgxxService;
+import software.tjspxt.service.SqlService;
+import software.tjspxt.service.model.AjjbxxModel;
+import software.tjspxt.service.model.CpwsDsrModel;
+import software.tjspxt.service.model.DsrdwxxModel;
+import software.tjspxt.service.model.DsrgrxxModel;
+import software.tjspxt.service.model.DsrjdxxModel;
+import software.tjspxt.service.model.DsrjgxxModel;
+import software.tjspxt.service.model.dmb.DmbModel;
+import software.tjspxt.util.StringUtil;
+
+public class DsrServiceImpl implements DsrService {
+
+	DsrjbxxService dsrjbxxService;
+	DsrgrxxService dsrgrxxService;
+	DsrdwxxService dsrdwxxService;
+	DsrjgxxService dsrjgxxService;
+	DsrQtsscyrGxDao dsrQtsscyrGxDao;
+	AjjbxxService ajjbxxService;
+	SqlService sqlService;
+	DmService dmService;
+	DmbDao dmbDao;
+
+	public List<String> getDsrByAjxh(long ajxh) {
+		
+		List<DsrjdxxModel> dsrList = dsrjbxxService.getDsrByAjxh((int)ajxh);
+		List<String> result = new ArrayList<String>();
+		for(DsrjdxxModel dsr : dsrList){
+			result.add(dsr.getDsrjc());
+		}
+		return result;
+	}
+
+	public List<String> getDsrssdwByAjxh(long ajxh) {
+
+		List<DsrjdxxModel> dsrList = dsrjbxxService.getDsrByAjxh((int)ajxh);
+		List<String> dsrsswdList = new ArrayList<String>();
+		for (DsrjdxxModel model : dsrList)
+			dsrsswdList.add(model.getDsrssdw());
+		return dsrsswdList;
+	}
+
+	public List<String> getDsrbhByAjxh(long ajxh) {
+		List<DsrjdxxModel> dsrList = dsrjbxxService.getDsrByAjxh((int)ajxh);
+		List<String> dsrsswdList = new ArrayList<String>();
+		for (DsrjdxxModel model : dsrList)
+			dsrsswdList.add(String.valueOf(model.getDsrbh()));
+		return dsrsswdList;
+	}
+
+	public List<String> getDsrByAjxhAndSsdw(long ajxh) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setDsrgrxxService(DsrgrxxService dsrgrxxService) {
+		this.dsrgrxxService = dsrgrxxService;
+	}
+
+	public void setDsrdwxxService(DsrdwxxService dsrdwxxService) {
+		this.dsrdwxxService = dsrdwxxService;
+	}
+
+	public void setDsrjgxxService(DsrjgxxService dsrjgxxService) {
+		this.dsrjgxxService = dsrjgxxService;
+	}
+	
+	public List<DsrjdxxModel> getDsrjcAndDzByAjxh(long ajxh){
+		List<DsrjdxxModel> dsrlist = new ArrayList<DsrjdxxModel>();
+		List<DsrgrxxModel> grList = dsrgrxxService.getDsrgrxxByAjxh(ajxh);
+		List<DsrdwxxModel> dwList = dsrdwxxService.getDsrdwxxByAjxh(ajxh);
+		List<DsrjgxxModel> jgList = dsrjgxxService.getDsrjgxxByAjxh(ajxh);
+		for (DsrgrxxModel model : grList) {
+			DsrjdxxModel dsr = new DsrjdxxModel();
+			dsr.setDsrjc(model.getDsrjc());
+			dsr.setDz(model.getDz());
+			dsr.setDsrlb(model.getDsrlb());
+			dsr.setDsrssdw(model.getDsrssdw());
+			dsrlist.add(dsr);
+		}
+		for (DsrdwxxModel model : dwList) {
+			DsrjdxxModel dsr = new DsrjdxxModel();
+			dsr.setDsrjc(model.getDsrjc());
+			dsr.setDz(model.getDz());
+			dsr.setDsrlb(model.getDsrlb());
+			dsr.setDsrssdw(model.getDsrssdw());
+			dsrlist.add(dsr);
+		}
+		for (DsrjgxxModel model : jgList) {
+			DsrjdxxModel dsr = new DsrjdxxModel();
+			dsr.setDsrjc(model.getDsrjc());
+			dsr.setDz(model.getDz());
+			dsr.setDsrlb(model.getDsrlb());
+			dsr.setDsrssdw(model.getDsrssdw());
+			dsrlist.add(dsr);
+		}
+		
+		return dsrlist;
+	}
+
+	public String getDsrlxByAjxhAndDsrbh(long ajxh, long dsrbh) {
+		
+		List<DsrgrxxModel> grList = dsrgrxxService.getDsrgrxxByAjxh(ajxh);
+		List<DsrdwxxModel> dwList = dsrdwxxService.getDsrdwxxByAjxh(ajxh);
+		List<DsrjgxxModel> jgList = dsrjgxxService.getDsrjgxxByAjxh(ajxh);
+		for (DsrgrxxModel model : grList) {
+			if (model.getDsrbh() == dsrbh)
+				return model.getDsrssdw();
+		}
+		for (DsrdwxxModel model : dwList) {
+			if (model.getDsrbh() == dsrbh)
+				return model.getDsrssdw();
+		}
+		for (DsrjgxxModel model : jgList) {
+			if (model.getDsrbh() == dsrbh)
+				return model.getDsrssdw();
+		}
+		return "";
+	}
+
+	public String getDsrByAjxhAndDsrbh(long ajxh, long dsrbh) {
+		
+		List<DsrjdxxModel> dsrList = dsrjbxxService.getDsrByAjxh((int)ajxh);
+		for (DsrjdxxModel model : dsrList){
+			if(dsrbh==Long.valueOf(model.getDsrbh())){
+				return model.getDsrjc();
+			}
+		}
+		return "";
+			
+//		List<DsrgrxxModel> grList = dsrgrxxService.getDsrgrxxByAjxh(ajxh);
+//		List<DsrdwxxModel> dwList = dsrdwxxService.getDsrdwxxByAjxh(ajxh);
+//		List<DsrjgxxModel> jgList = dsrjgxxService.getDsrjgxxByAjxh(ajxh);
+//		for (DsrgrxxModel model : grList) {
+//			if (model.getDsrbh() == dsrbh)
+//				return model.getXm();
+//		}
+//		for (DsrdwxxModel model : dwList) {
+//			if (model.getDsrbh() == dsrbh)
+//				return model.getDwmc();
+//		}
+//		for (DsrjgxxModel model : jgList) {
+//			if (model.getDsrbh() == dsrbh)
+//				return model.getJgmc();
+//		}
+//		return "";
+	}
+
+	public List<String> getYgBgList(long ajxh) {
+
+		List<String> dsrList = new ArrayList<String>();
+		AjjbxxModel ajjbxxModel = ajjbxxService.getAjjbxxByAjxh(ajxh);
+
+		// 从系统表中取代码类别
+		// 取多被告，如果是上诉人则根据原审诉讼地位确定是否是被告人
+		String ls_bgr = "";
+		String ls_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+				ajjbxxModel.getAjxz(), ajjbxxModel.getSpcx());
+
+		List<DsrjdxxModel> dsrjdxxModels = sqlService.getDsrByAjxhandLbbh(
+				(int) ajjbxxModel.getAjxh(), ls_lbbh, "1");
+		for (DsrjdxxModel dsrjdxxModel : dsrjdxxModels) {
+			if (StringUtil.isEmpty(ls_bgr))
+				ls_bgr = "";
+			String temp_lbbh = "";
+			String temp_ysssdw = "";
+			String temp_bz = "";
+			String temp_esssdw = "";
+			if (!StringUtil.isEmpty(dsrjdxxModel.getDsrjc())) {
+				if (StringUtil.equals(dsrjdxxModel.getDmms(), "上诉人")
+						|| StringUtil.equals(dsrjdxxModel.getDmms(), "被上诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+							ajjbxxModel.getAjxz(), "1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							dsrjdxxModel.getDsrbh());
+					if (temp_ysssdw == null)
+						continue;
+					temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw).getBz();
+					if (StringUtil.equals(temp_bz, "1"))
+						ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+					else if (StringUtil.isEmpty(temp_bz)
+							&& StringUtil.equals(dsrjdxxModel.getDmms(), "上诉人")) {// 根据上诉人或被上诉人的确省性质生成
+						ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+					}
+				} else if (StringUtil.equals(dsrjdxxModel.getDmms(), "申诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+							ajjbxxModel.getAjxz(), "1");
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							dsrjdxxModel.getDsrbh());
+					if (!StringUtil.isEmpty(temp_ysssdw)) {
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "1"))
+							ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+					} else // 取二审诉讼地位
+					{
+						temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+								ajjbxxModel.getAjxz(), "2");
+						temp_esssdw = sqlService.getDsresssdw(
+								(int) ajjbxxModel.getAjxh(),
+								dsrjdxxModel.getDsrbh());
+						if(!StringUtil.isEmpty(temp_esssdw)){
+							temp_bz = "";
+							temp_bz = dmbDao.findById(temp_lbbh, temp_esssdw)
+									.getBz();
+							if (StringUtil.equals(temp_bz, "1"))
+								ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+						}
+					}
+				} else { // 非上诉人或申诉人的被告性质当事人
+					ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+				}
+			}
+		}
+
+		// 去掉最后的冒号
+		if (!StringUtil.isEmpty(ls_bgr))
+			ls_bgr = ls_bgr.substring(0, ls_bgr.length() - 1);
+
+		// 刑事公诉上诉人即使没有原审地位也视为被告处理
+		if (StringUtil.equals(ajjbxxModel.getAjxz(), "1")
+				&& StringUtil.equals(ajjbxxModel.getAjxz(), "Y")) {
+			dsrjdxxModels = sqlService.getSsdsrByAjxhAndLbbh((int) ajxh,
+					ls_lbbh);
+			for (DsrjdxxModel dsrjdxxMode : dsrjdxxModels) {
+				if (StringUtil.isEmpty(dsrjdxxMode.getDsrjc())
+						|| StringUtil.isEmpty(dsrjdxxMode.getDsrbh())) {
+					// do nothing
+				} else {
+					if (ls_bgr.indexOf(dsrjdxxMode.getDsrjc()) >= 0)
+						;// do nothing
+					else if (StringUtil.isEmpty(ls_bgr))
+						ls_bgr = dsrjdxxMode.getDsrjc();
+					else
+						ls_bgr = ls_bgr + "," + dsrjdxxMode.getDsrjc();
+				}
+			}
+		}
+
+		// 这里只能处理上诉人、被上诉人、申诉人。如果是“原审上诉人”等怎么办
+		dsrjdxxModels = sqlService.getDsrByAjxhandLbbh(
+				(int) ajjbxxModel.getAjxh(), ls_lbbh, "0");
+		String ls_ygr = "";
+		for (DsrjdxxModel dsrjdxxModel : dsrjdxxModels) {
+			if (StringUtil.isEmpty(ls_ygr))
+				ls_ygr = "";
+			String temp_lbbh = "";
+			String temp_ysssdw = "";
+			String temp_bz = "";
+			String temp_esssdw = "";
+
+			if (!StringUtil.isEmpty(dsrjdxxModel.getDsrjc())) {
+				if (StringUtil.equals(dsrjdxxModel.getDmms(), "上诉人")
+						|| StringUtil.equals(dsrjdxxModel.getDmms(), "被上诉人")) {// 取原审诉讼地位确定是否是原告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+							ajjbxxModel.getAjxz(), "1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							dsrjdxxModel.getDsrbh());
+					if (temp_ysssdw == null)
+						continue;
+					temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw).getBz();
+					if (StringUtil.equals(temp_bz, "0"))
+						ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+					else if (StringUtil.isEmpty(temp_bz)
+							&& StringUtil.equals(dsrjdxxModel.getDmms(), "上诉人")) {// 根据上诉人或被上诉人的确省性质生成
+						ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+					}
+				} else if (StringUtil.equals(dsrjdxxModel.getDmms(), "申诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+							ajjbxxModel.getAjxz(), "1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							dsrjdxxModel.getDsrbh());
+					if (!StringUtil.isEmpty(temp_ysssdw)) {
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "0"))
+							ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+					} else // 取二审诉讼地位（如果是上诉人或被上诉人怎么办？）
+					{
+						temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW",
+								ajjbxxModel.getAjxz(), "2");
+						temp_esssdw = sqlService.getDsresssdw(
+								(int) ajjbxxModel.getAjxh(),
+								dsrjdxxModel.getDsrbh());
+						if (!StringUtil.isEmpty(temp_esssdw)) {
+							temp_bz = "";
+							temp_bz = dmbDao.findById(temp_lbbh, temp_esssdw)
+								.getBz();
+							if (StringUtil.equals(temp_bz, "1"))
+								ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+						}
+						
+					}
+				} else { // 非上诉人或申诉人的原告性质当事人
+					ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+				}
+			}
+
+		}
+		if (!StringUtil.isEmpty(ls_ygr))
+			ls_ygr = ls_ygr.substring(0, ls_ygr.length() - 1);
+		dsrList.add(ls_ygr);
+		dsrList.add(ls_bgr);
+		return dsrList;
+	}
+	
+	public List<CpwsDsrModel> getYgdsr(long ajxh, String type) {
+		AjjbxxModel ajjbxxModel = ajjbxxService.getAjjbxxByAjxh(ajxh);
+
+		// 从系统表中取代码类别
+//		String ls_lbbh = dmService.getCasecode(casecode, ajjbxxModel.getAjxz(),
+//				ajjbxxModel.getAjly(), ajjbxxModel.getSpcx());
+		String ls_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(), ajjbxxModel.getSpcx());
+
+		List<CpwsDsrModel> ygDsrModels = new ArrayList<CpwsDsrModel>();
+		if (StringUtil.equals(type, "gr")) {
+			ygDsrModels = sqlService.getCpwsDsrByAjxhandLbbh((int)ajxh, ls_lbbh, "0");
+		}else if (StringUtil.equals(type, "dw")) {
+			ygDsrModels = sqlService.getCpwsDsrdwByAjxhandLbbh((int)ajxh, ls_lbbh, "0");
+		}
+		
+		ygDsrModels = getYggrdwdsr(ygDsrModels, ajjbxxModel);
+		return ygDsrModels;
+	}
+	
+	public List<CpwsDsrModel> getBgdsr(long ajxh, String type) {
+		AjjbxxModel ajjbxxModel = ajjbxxService.getAjjbxxByAjxh(ajxh);
+
+		// 从系统表中取代码类别
+		String ls_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(), ajjbxxModel.getSpcx());
+		
+		List<CpwsDsrModel> bgDsrModels = new ArrayList<CpwsDsrModel>();
+		if (StringUtil.equals(type, "gr")) {
+			bgDsrModels = sqlService.getCpwsDsrByAjxhandLbbh((int)ajxh, ls_lbbh, "1");
+		}else if (StringUtil.equals(type, "dw")) {
+			bgDsrModels = sqlService.getCpwsDsrdwByAjxhandLbbh((int)ajxh, ls_lbbh, "1");
+		}
+		bgDsrModels = getBggrdwdsr(bgDsrModels, ajjbxxModel);
+		
+		// 刑事公诉上诉人即使没有原审地位也视为被告处理
+		List<CpwsDsrModel> ssbgDsrModels = new ArrayList<CpwsDsrModel>();
+		if (StringUtil.equals(ajjbxxModel.getAjxz(), "1")
+				&& StringUtil.equals(ajjbxxModel.getAjxz(), "Y")) {
+			if (StringUtil.equals(type, "gr")) {
+				ssbgDsrModels = sqlService.getCpwsSsdsrByAjxhAndLbbh((int)ajxh, ls_lbbh);
+			}else if (StringUtil.equals(type, "dw")) {
+				ssbgDsrModels = sqlService.getCpwsSsdsrdwByAjxhAndLbbh((int)ajxh, ls_lbbh);
+			}
+			for (CpwsDsrModel bgDsrModel : ssbgDsrModels) {
+				if (StringUtil.isEmpty(bgDsrModel.getMc())
+						|| StringUtil.isEmpty(bgDsrModel.getDsrbh() + "")) {
+					// do nothing
+				} else {
+					boolean hasFound = false;
+					for (CpwsDsrModel cpwsDsrModel : bgDsrModels) {
+						if (cpwsDsrModel.getDsrbh().equals(bgDsrModel.getDsrbh())) {
+							hasFound = true;
+							break;
+						}
+					}
+					if (hasFound) {
+						continue;
+					}else {
+						bgDsrModels.add(bgDsrModel);
+					}
+				}
+			}
+		}
+				
+		return bgDsrModels;
+	}
+	
+	public List<CpwsDsrModel> getQtDsr(Integer ajxh, Integer dsrbh) {
+		// TODO Auto-generated method stub
+		List<CpwsDsrModel> cpwsDsrModels = sqlService.getCpwsDsrQtByAjxhandDsrbh(ajxh, dsrbh);
+		return cpwsDsrModels;
+	}
+	
+	public List<CpwsDsrModel> getDsrdsr(long ajxh, String type, String ssdw) {
+		// TODO Auto-generated method stub
+		AjjbxxModel ajjbxxModel = ajjbxxService.getAjjbxxByAjxh(ajxh);
+
+		// 从系统表中取代码类别
+//		String ls_lbbh = dmService.get(casecode, ajjbxxModel.getAjxz(),
+//				ajjbxxModel.getAjly(), ajjbxxModel.getSpcx());
+		String ls_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(), ajjbxxModel.getSpcx());
+		
+		List<CpwsDsrModel> cpwsDsrModels = new ArrayList<CpwsDsrModel>();
+		if (StringUtil.equals(type, "gr")) {
+			cpwsDsrModels = sqlService.getCpwsDsrByAjxhandSsdw((int)ajxh, ls_lbbh, ssdw);
+		}else if (StringUtil.equals(type, "dw")) {
+			cpwsDsrModels = sqlService.getCpwsDsrdwByAjxhandSsdw((int)ajxh, ls_lbbh, ssdw);
+		}
+		return cpwsDsrModels;
+	}
+	
+	private List<CpwsDsrModel> getYggrdwdsr(List<CpwsDsrModel> cpwsDsrModels, AjjbxxModel ajjbxxModel) {
+		List<CpwsDsrModel> ygDsrModels = new ArrayList<CpwsDsrModel>();
+		
+		String ls_ygr = "";
+		for (CpwsDsrModel cpwsDsrModel : cpwsDsrModels) {
+			if (StringUtil.isEmpty(ls_ygr))
+				ls_ygr = "";
+			String temp_lbbh = "";
+			String temp_ysssdw = "";
+			String temp_bz = "";
+			String temp_esssdw = "";
+
+			if (!StringUtil.isEmpty(cpwsDsrModel.getMc())) {
+				if (StringUtil.equals(cpwsDsrModel.getSsdw(), "上诉人")
+						|| StringUtil.equals(cpwsDsrModel.getSsdw(), "被上诉人")) {// 取原审诉讼地位确定是否是原告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(),
+							"1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							cpwsDsrModel.getDsrbh() + "");
+					if (temp_ysssdw == null)
+						continue;
+					temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw).getBz();
+					if (StringUtil.equals(temp_bz, "0"))
+//						ls_ygr = ls_ygr + cpwsDsrModel.getDsrjc() + ",";
+						ygDsrModels.add(cpwsDsrModel);
+					else if (StringUtil.isEmpty(temp_bz)
+							&& StringUtil.equals(cpwsDsrModel.getSsdw(), "上诉人")) {// 根据上诉人或被上诉人的确省性质生成
+//						ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+						ygDsrModels.add(cpwsDsrModel);
+					}
+				} else if (StringUtil.equals(cpwsDsrModel.getSsdw(), "申诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(),
+							"1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							cpwsDsrModel.getDsrbh() + "");
+					if (!StringUtil.isEmpty(temp_ysssdw)) {
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "0"))
+//							ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+							ygDsrModels.add(cpwsDsrModel);
+					} else // 取二审诉讼地位（如果是上诉人或被上诉人怎么办？）
+					{
+						temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", 
+								ajjbxxModel.getAjxz(), "2");
+						temp_esssdw = sqlService.getDsresssdw(
+								(int) ajjbxxModel.getAjxh(),
+								cpwsDsrModel.getDsrbh() + "");
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_esssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "1"))
+//							ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+							ygDsrModels.add(cpwsDsrModel);
+					}
+				} else { // 非上诉人或申诉人的原告性质当事人
+//					ls_ygr = ls_ygr + dsrjdxxModel.getDsrjc() + ",";
+					ygDsrModels.add(cpwsDsrModel);
+				}
+			}
+		}
+		
+		return ygDsrModels;
+	}
+	
+	private List<CpwsDsrModel> getBggrdwdsr(List<CpwsDsrModel> cpwsDsrModels, AjjbxxModel ajjbxxModel) {
+		List<CpwsDsrModel> bgDsrModels = new ArrayList<CpwsDsrModel>();
+		String ls_bgr = "";
+		for (CpwsDsrModel cpwsDsrModel : cpwsDsrModels) {
+			if (StringUtil.isEmpty(ls_bgr))
+				ls_bgr = "";
+			String temp_lbbh = "";
+			String temp_ysssdw = "";
+			String temp_bz = "";
+			String temp_esssdw = "";
+			if (!StringUtil.isEmpty(cpwsDsrModel.getMc())) {
+				if (StringUtil.equals(cpwsDsrModel.getSsdw(), "上诉人")
+						|| StringUtil.equals(cpwsDsrModel.getSsdw(), "被上诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(),
+							"1"); // 取一审程序当事人诉讼地位类别编号
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							cpwsDsrModel.getDsrbh() + "");
+					if (temp_ysssdw == null)
+						continue;
+					temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw).getBz();
+					if (StringUtil.equals(temp_bz, "1"))
+//						ls_bgr = ls_bgr + cpwsDsrModel.getMc() + ",";
+						bgDsrModels.add(cpwsDsrModel);
+					else if (StringUtil.isEmpty(temp_bz)
+							&& StringUtil.equals(cpwsDsrModel.getSsdw(), "上诉人")) {// 根据上诉人或被上诉人的确省性质生成
+//						ls_bgr = ls_bgr + cpwsDsrModel.getXm() + ",";
+						bgDsrModels.add(cpwsDsrModel);
+					}
+				} else if (StringUtil.equals(cpwsDsrModel.getSsdw(), "申诉人")) {// 取原审诉讼地位确定是否是被告人
+					temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajjbxxModel.getAjxz(),
+							"1");
+					temp_ysssdw = sqlService.getDsrysssdw(
+							(int) ajjbxxModel.getAjxh(),
+							cpwsDsrModel.getDsrbh() + "");
+					if (!StringUtil.isEmpty(temp_ysssdw)) {
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_ysssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "1"))
+//							ls_bgr = ls_bgr + cpwsDsrModel.getXm() + ",";
+							bgDsrModels.add(cpwsDsrModel);
+					} else // 取二审诉讼地位
+					{
+						temp_lbbh = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", 
+								ajjbxxModel.getAjxz(), "2");
+						temp_esssdw = sqlService.getDsresssdw(
+								(int) ajjbxxModel.getAjxh(),
+								cpwsDsrModel.getDsrbh() + "");
+						temp_bz = "";
+						temp_bz = dmbDao.findById(temp_lbbh, temp_esssdw)
+								.getBz();
+						if (StringUtil.equals(temp_bz, "1"))
+//							ls_bgr = ls_bgr + cpwsDsrModel.getXm() + ",";
+							bgDsrModels.add(cpwsDsrModel);
+					}
+				} else { // 非上诉人或申诉人的被告性质当事人
+//					ls_bgr = ls_bgr + dsrjdxxModel.getDsrjc() + ",";
+					bgDsrModels.add(cpwsDsrModel);
+				}
+			}
+		}
+		return bgDsrModels;
+	}
+
+	public void setAjjbxxService(AjjbxxService ajjbxxService) {
+		this.ajjbxxService = ajjbxxService;
+	}
+
+	public void setSqlService(SqlService sqlService) {
+		this.sqlService = sqlService;
+	}
+
+	public void setDmService(DmService dmService) {
+		this.dmService = dmService;
+	}
+
+	public void setDmbDao(DmbDao dmbDao) {
+		this.dmbDao = dmbDao;
+	}
+
+	public void setDsrQtsscyrGxDao(DsrQtsscyrGxDao dsrQtsscyrGxDao) {
+		this.dsrQtsscyrGxDao = dsrQtsscyrGxDao;
+	}
+
+	public void setDsrjbxxService(DsrjbxxService dsrjbxxService) {
+		this.dsrjbxxService = dsrjbxxService;
+	}
+
+	public List<DsrjdxxModel> getAlldsr(int ajxh,String ajxz,String spcx) {
+		// TODO Auto-generated method stub
+		List<DsrjdxxModel> result = dsrjbxxService.getDsrByAjxh(ajxh);
+		String dsrssdw_lbbhs = dmService.getLbbhByColumn("DSR_JB", "DSRSSDW", ajxz, spcx);//获得这个类型案件的诉讼地位代码
+		for(DsrjdxxModel dsr:result){
+			DmbModel dmmodel = dmService.getDmByLbbhAndDmbh(dsrssdw_lbbhs, dsr.getDsrssdw());
+			dsr.setDsrssdw(dmmodel.getDmms());
+		}
+		return result;
+	}
+
+	public String getAlldsrToString(int ajxh, String ajxz, String spcx) {
+		// TODO Auto-generated method stub
+		String result="";
+		List<DsrjdxxModel> models = getAlldsr(ajxh, ajxz, spcx);
+		for(DsrjdxxModel dsr:models){
+			//result+=dsr.getDsrssdw()+":"+dsr.getDsrjc()+";";
+			result+=dsr.getDsrjc()+"("+dsr.getDsrssdw()+");";
+		}
+		result=result.substring(0, result.length()-1);
+		return result;
+	}
+
+	
+	
+	
+}
