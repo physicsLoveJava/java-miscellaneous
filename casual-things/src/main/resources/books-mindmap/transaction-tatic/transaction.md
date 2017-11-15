@@ -22,6 +22,24 @@ jdbc -- mysql jdbc driver
 ### 声明式事务模型
 通过框架管理事务
 
+#### 事务隔离级别
+* ReadUncommitted
+* ReadCommitted
+* RepeatableRead
+* Serializable
+
+**ReadUncommitted**
+允许事务读取其他事务未提交的对数据库的更改
+
+**ReadCommitted**
+允许多个事务对同一份数据进行访问，但是在未提交前对自己的更改进行隐藏，直到提交。
+
+**RepeatableRead**
+事务在开始读取都某个数据的值后，在后续的对该数据的查询过程中，都是该值，除非本事务对其进行修改。
+
+**Serializable**
+同一个时间点，仅存在单个事务进行访问数据的操作
+
 #### 事务属性
 * Required(需要)
 * Mandatory(强制必须的)
