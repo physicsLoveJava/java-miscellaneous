@@ -22,6 +22,7 @@
         <module>tech-design-pattern</module>
         <module>tech-asm</module>
         <module>netflix</module>
+        <module>tech-apache</module>
     </modules>
 
     <properties>
