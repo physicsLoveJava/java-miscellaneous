@@ -1,0 +1,22 @@
+@startuml
+
+interface Comparator
+class BooleanComparator
+class ComparableComparator
+class ComparatorChain
+class FixedOrderComparator
+class NullComparator
+class ReverseComparator
+class TransformingComparator
+
+Comparator <|-- BooleanComparator
+Comparator <|-- ComparableComparator
+Comparator <|-- ComparatorChain
+Comparator <|-- FixedOrderComparator
+Comparator <|-- NullComparator
+Comparator <|-- ReverseComparator
+Comparator <|-- TransformingComparator
+
+ComparatorChain "1" *-- "0..*" Comparator
+
+@enduml
