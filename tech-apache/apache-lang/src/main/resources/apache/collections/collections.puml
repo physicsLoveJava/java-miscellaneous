@@ -1,0 +1,22 @@
+@startuml
+
+abstract class AbstractCollectionDecorator
+interface Collection
+class CompositeCollection
+class indexedCollection
+class PredicatedCollection
+class SynchronizedCollection
+class TransformedCollection
+class UnmodifiableBoundedCollection
+class UnmodifiableCollection
+
+Collection <|-- AbstractCollectionDecorator
+Collection <|-- CompositeCollection
+AbstractCollectionDecorator <|-- indexedCollection
+AbstractCollectionDecorator <|-- PredicatedCollection
+AbstractCollectionDecorator <|-- SynchronizedCollection
+AbstractCollectionDecorator <|-- TransformedCollection
+AbstractCollectionDecorator <|-- UnmodifiableBoundedCollection
+AbstractCollectionDecorator <|-- UnmodifiableCollection
+
+@enduml
