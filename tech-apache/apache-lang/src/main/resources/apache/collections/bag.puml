@@ -1,0 +1,37 @@
+@startuml
+
+interface Collection
+interface Bag
+interface Unmodifiable
+abstract class AbstractBag
+abstract class AbstractCollectionDecorator
+abstract class AbstractBagDecorator
+
+Collection <|-- Bag
+Bag <|-- AbstractBag
+
+Collection <|-- AbstractCollectionDecorator
+AbstractCollectionDecorator <|-- AbstractBagDecorator
+
+Collection <|-- SynchronizationCollection
+SynchronizationCollection <|-- SynchronizationBagCollection
+Bag <|-- SynchronizationBagCollection
+
+AbstractCollectionDecorator <|-- TransformCollection
+TransformCollection <|-- TransformedBag
+Bag <|-- TransformedBag
+
+AbstractCollectionDecorator <|-- PredicateCollection
+PredicateCollection <|-- PredicatedBag
+Bag <|-- PredicatedBag
+
+AbstractBagDecorator <|-- UnmodifiableBag
+Unmodifiable <|-- UnmodifiableBag
+Bag <|-- UnmodifiableBag
+
+AbstractBag <|-- HashBag
+AbstractBag <|-- TreeBag
+
+
+
+@enduml
