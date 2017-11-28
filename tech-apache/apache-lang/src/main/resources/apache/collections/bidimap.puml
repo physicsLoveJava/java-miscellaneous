@@ -1,0 +1,37 @@
+@startuml
+
+interface Put
+interface Get
+interface IterableGet
+interface Map
+interface IterableMap
+interface BidiMap
+abstract class AbstractDualBidiMap
+
+interface SortedBidiMap
+interface SortedMap
+interface OrderedBidiMap
+interface OrderedMap
+
+
+Put <|-- IterableMap
+IterableGet <|-- IterableMap
+Get <|-- IterableGet
+Map <|-- BidiMap
+IterableMap <|-- BidiMap
+BidiMap <|-- AbstractDualBidiMap
+AbstractDualBidiMap <|-- DualHashBidiMap
+AbstractDualBidiMap <|-- DualLinkedHashBidiMap
+AbstractDualBidiMap <|-- DualTreeBidiMap
+SortedBidiMap <|-- DualTreeBidiMap
+SortedMap <|-- SortedBidiMap
+BidiMap <|-- OrderedBidiMap
+OrderedBidiMap <|-- SortedBidiMap
+OrderedMap <|-- OrderedBidiMap
+IterableMap <|-- OrderedMap
+Map <|-- SortedMap
+
+
+
+
+@enduml
