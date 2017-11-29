@@ -1,0 +1,30 @@
+@startuml
+
+interface MultiValuedMap
+abstract class AbstractMultiValuedMap
+abstract class AbstractListValuedMap
+interface MultiListValuedMap
+abstract class AbstractMultiValuedMapDecorator
+interface SetValuedMap
+
+MultiValuedMap <|-- AbstractMultiValuedMap
+MultiListValuedMap <|-- AbstractListValuedMap
+AbstractMultiValuedMap <-- AbstractListValuedMap
+MultiValuedMap <|-- MultiListValuedMap
+
+MultiValuedMap <|-- AbstractMultiValuedMapDecorator
+MultiValuedMap <|-- SetValuedMap
+
+SetValuedMap <|-- AbstractSetValuedMap
+AbstractMultiValuedMap <|-- AbstractSetValuedMap
+
+AbstractMultiValuedMap <|-- ArrayListValuedHashMap
+AbstractMultiValuedMap <|-- HashSetValuedHashMap
+
+AbstractMultiValuedMapDecorator <|-- TransformedMultiValuedMap
+
+AbstractMultiValuedMapDecorator <|-- UnmodifiableMultiValuedMap
+Unmodifiable <|-- UnmodifiableMultiValuedMap
+
+
+@enduml
