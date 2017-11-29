@@ -1,0 +1,59 @@
+@startuml
+
+abstract class AbstractLinkedList
+abstract class AbstractListDecorator
+abstract class AbstractSerializableListDecorator
+class CursorableLinkedList
+class FixedSizeList
+class GrowthList
+class LazyList
+class NodeCachingLinkedList
+class PredicatedList
+class SetUniqueList
+class TransformedList
+class TreeList
+class UnmodifiableList
+interface List
+interface BoundedCollection
+interface Collection
+
+List <|-- AbstractLinkedList
+List <|-- AbstractCollectionDecorator
+AbstractCollection <|-- AbstractCollectionDecorator
+
+AbstractListDecorator <|-- AbstractSerializableListDecorator
+AbstractLinkedList <|-- CursorableLinkedList
+
+AbstractSerializableListDecorator <|-- FixedSizeList
+BoundedCollection <|-- FixedSizeList
+Collection <|-- BoundedCollection
+
+AbstractSerializableListDecorator <|-- GrowthList
+AbstractSerializableListDecorator <|-- LazyList
+
+AbstractLinkedList <|-- NodeCachingLinkedList
+
+PredicatedCollection <|-- PredicatedList
+List <|-- PredicatedList
+
+AbstractSerializableListDecorator <|-- SetUniqueList
+
+TransformedCollection <|-- TransformedList
+List <|-- TransformedList
+
+AbstractList <|-- TreeList
+
+AbstractSerializableListDecorator <|-- UnmodifiableList
+Unmodifiable <|-- UnmodifiableList
+
+AbstractCollectionDecorator <|-- TransformedCollection
+AbstractCollectionDecorator <|-- PredicatedCollection
+AbstractCollectionDecorator <|-- AbstractListDecorator
+List <|-- AbstractListDecorator
+AbstractCollection <|-- AbstractList
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+
+
+@enduml
