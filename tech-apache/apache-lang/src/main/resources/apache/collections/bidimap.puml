@@ -15,6 +15,7 @@ interface OrderedMap
 
 
 Put <|-- IterableMap
+Map <|-- IterableMap
 IterableGet <|-- IterableMap
 Get <|-- IterableGet
 Map <|-- BidiMap

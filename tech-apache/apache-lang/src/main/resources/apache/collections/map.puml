@@ -1,0 +1,123 @@
+@startuml
+
+interface Get
+interface IterableGet
+interface Map
+interface IterableMap
+abstract class AbstractMapDecorator
+abstract class AbstractOrderedMapDecorator
+abstract class AbstractMap
+abstract class AbstractInputCheckedMapDecorator
+abstract class AbstractReferenceMap
+abstract class AbstractLinkedMap
+abstract class AbstractHashedMap
+abstract class AbstractSortedMap
+abstract class AbstractIterableMap
+
+interface SortedMap
+interface OrderedMap
+interface BoundedMap
+
+
+
+Put <|-- IterableMap
+IterableGet <|-- IterableMap
+Get <|-- IterableGet
+Map <|-- IterableMap
+
+Map <|-- AbstractMap
+AbstractMap <|-- AbstractHashedMap
+IterableMap <|-- AbstractHashedMap
+
+IterableMap <|-- AbstractIterableMap
+
+AbstractIterableMap <|-- AbstractMapDecorator
+AbstractMapDecorator <|-- AbstractInputCheckedMapDecorator
+AbstractMapDecorator <|-- AbstractOrderedMapDecorator
+OrderedMap <|-- AbstractOrderedMapDecorator
+
+AbstractMapDecorator <|-- AbstractSortedMapDecorator
+SortedMap <|-- IterableSortedMap
+OrderedMap <|-- IterableSortedMap
+
+IterableSortedMap <|-- AbstractSortedMapDecorator
+
+IterableMap <|-- OrderedMap
+AbstractHashedMap <|-- AbstractLinkedMap
+
+AbstractHashedMap <|-- AbstractReferenceMap
+
+AbstractMapDecorator <|-- AbstractSortedMapDecorator
+IterableSortedMap <|-- AbstractSortedMapDecorator
+
+AbstractHashedMap <|-- CaseInsensitiveMap
+
+IterableMap <|-- CompositeMap
+
+AbstractMapDecorator <|-- DefaultedMap
+
+AbstractMapDecorator <|-- FixedSizeMap
+BoundedMap <|-- FixedSizeMap
+
+AbstractSortedMapDecorator <|-- FixedSizeSortedMap
+BoundedMap <|-- FixedSizeSortedMap
+
+IterableMap <|-- Flat3Map
+
+AbstractHashedMap <|-- HashedMap
+
+AbstractMapDecorator <|-- LazyMap
+
+LazyMap <|-- LazySortedMap
+SortedMap <|-- LazySortedMap
+
+AbstractLinkedMap <|-- LinkedMap
+
+AbstractMapDecorator <|-- ListOrderedMap
+OrderedMap <|-- ListOrderedMap
+
+AbstractLinkedMap <|-- LRUMap
+BoundedMap <|-- LRUMap
+
+AbstractMapDecorator <|-- MultiKeyMap
+
+AbstractMapDecorator <|-- PassiveExpiringMap
+
+AbstractInputCheckedMapDecorator <|-- PredicatedMap
+
+PredicatedMap <|-- PredicatedSortedMap
+SortedMap <|-- PredicatedSortedMap
+
+AbstractReferenceMap <|-- ReferenceIdentityMap
+
+AbstractReferenceMap <|-- ReferenceMap
+
+OrderedMap <|-- SingletonMap
+BoundedMap <|-- SingletonMap
+KeyValue <|-- SingletonMap
+
+AbstractIterableMap <|-- StaticBucketMap
+
+AbstractInputCheckedMapDecorator <|-- TransformedMap
+TransformedMap <|-- TransformedSortedMap
+SortedMap <|-- TransformedSortedMap
+
+AbstractSetDecorator <|-- UnmodifiableEntrySet
+Unmodifiable <|-- UnmodifiableEntrySet
+
+AbstractMapDecorator <|-- UnmodifiableMap
+Unmodifiable <|-- UnmodifiableMap
+
+AbstractOrderedMapDecorator <|-- UnmodifiableOrderedMap
+Unmodifiable <|-- UnmodifiableOrderedMap
+
+AbstractSortedMapDecorator <|-- UnmodifiableSortedMap
+Unmodifiable <|-- UnmodifiableSortedMap
+
+
+
+
+
+
+
+@enduml
