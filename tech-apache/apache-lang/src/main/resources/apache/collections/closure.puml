@@ -1,0 +1,26 @@
+@startuml
+
+interface Closure
+class InvokerClosure
+class ForClosure
+class WhileClosure
+class ChainedClosure
+class IfClosure
+class SwitchClosure
+class SwitchMapClosure
+class TransformerClosure
+class NOPClosure
+class ExceptionClosure
+
+Closure <|-- InvokerClosure
+Closure <|-- ForClosure
+Closure <|-- WhileClosure
+Closure <|-- ChainedClosure
+Closure <|-- IfClosure
+Closure <|-- SwitchClosure
+Closure <|-- SwitchMapClosure
+Closure <|-- TransformerClosure
+Closure <|-- NOPClosure
+Closure <|-- ExceptionClosure
+
+@enduml
