@@ -1,0 +1,38 @@
+@startuml
+
+interface MultiSet
+interface Collection
+abstract class AbstractCollection
+abstract class AbstractMultiSet
+abstract class AbstractCollectionDecorator
+abstract class AbstractMultiSetDecorator
+abstract class AbstractMapMultiSet
+
+
+Collection <|-- MultiSet
+AbstractCollection  <|-- AbstractMultiSet
+MultiSet <|-- AbstractMultiSet
+
+AbstractCollectionDecorator <|-- AbstractMultiSetDecorator
+MultiSet <|-- AbstractMultiSetDecorator
+
+AbstractMultiSet <|-- AbstractMapMultiSet
+
+AbstractPredicatedCollection <|-- PredicatedMultiSet
+MultiSet <|-- PredicatedMultiSet
+
+SynchronizedCollection <|-- SynchronizedMultiSet
+MultiSet <|-- SynchronizedMultiSet
+
+AbstractMultiSetDecorator <|-- UnmodifiableMultiSet
+Unmodifiable <|-- UnmodifiableMultiSet
+
+Collection <|-- AbstractCollectionDecorator
+
+AbstractCollectionDecorator <|-- AbstractPredicatedCollection
+
+Collection <|-- SynchronizedCollection
+
+Collection <|-- AbstractCollection
+
+@enduml
