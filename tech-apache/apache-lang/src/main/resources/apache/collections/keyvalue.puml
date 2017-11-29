@@ -1,0 +1,31 @@
+@startuml
+
+interface KeyValue
+interface Unmodifiable
+class AbstractKeyValue
+interface "Map.Entry"
+class DefaultKeyValue
+class DefaultMapEntry
+class MultiKey
+class TiedMapEntry
+class UnmodifiableMapEntry
+abstract class AbstractMapEntryDecorator
+
+KeyValue <|-- AbstractKeyValue
+AbstractKeyValue <|-- AbstractMapEntry
+"Map.Entry" <|-- AbstractMapEntry
+KeyValue <|-- AbstractMapEntryDecorator
+"Map.Entry" <|-- AbstractMapEntryDecorator
+AbstractKeyValue <|-- DefaultKeyValue
+AbstractMapEntry <|-- DefaultMapEntry
+"Map.Entry" <|-- TiedMapEntry
+KeyValue <|-- TiedMapEntry
+AbstractMapEntry <|-- UnmodifiableMapEntry
+Unmodifiable <|-- UnmodifiableMapEntry
+
+
+
+
+
+
+@enduml
