@@ -1,0 +1,30 @@
+@startuml
+
+interface Collection
+interface Queue
+
+Collection  <|-- Queue
+AbstractCollection  <|-- AbstractCollectionDecorator
+AbstractCollectionDecorator <|-- AbstractQueueDecorator
+Queue <|-- AbstractQueueDecorator
+
+Collection <|-- AbstractCollection
+AbstractCollection <|-- CircularFifoQueue
+Queue <|-- CircularFifoQueue
+BoundedCollection <|-- CircularFifoQueue
+Collection <|-- BoundedCollection
+
+Queue <|-- PredicatedQueue
+AbstractPredicateCollection <|-- PredicatedQueue
+AbstractCollectionDecorator <|-- AbstractPredicateCollection
+
+Queue <|-- TransformedQueue
+TransformedCollection <|-- TransformedQueue
+AbstractCollectionDecorator <|-- TransformedCollection
+
+AbstractQueueDecorator <|-- UnmodifiableQueue
+Unmodifiable <|-- UnmodifiableQueue
+
+
+
+@enduml
