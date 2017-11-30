@@ -1,0 +1,25 @@
+@startuml
+
+interface CommandVisitor
+abstract class EditCommand
+class DeleteCommand
+class KeepCommand
+class InsertCommand
+class EditScript
+
+class ReplacementsFinder
+interface ReplacementsHandler
+class SequencesComparator
+
+EditCommand <|-- InsertCommand
+EditCommand <|-- KeepCommand
+EditCommand <|-- DeleteCommand
+
+CommandVisitor <|-- ReplacementsFinder
+
+ReplacementsFinder *-- ReplacementsHandler
+SequencesComparator *-- EditScript
+EditScript *-- EditCommand
+
+
+@enduml
