@@ -1,0 +1,22 @@
+@startuml
+
+interface Comparator
+interface Trie
+abstract class KeyAnalyzer
+abstract class AbstractBitwiseTrie
+abstract class AbstractMap
+abstract class AbstractPatriciaTrie
+
+Comparator <|-- KeyAnalyzer
+KeyAnalyzer <|-- StringKeyAnalyzer
+Trie <|-- AbstractBitwiseTrie
+AbstractMap <|-- AbstractBitwiseTrie
+
+AbstractBitwiseTrie <|-- AbstractPatriciaTrie
+AbstractPatriciaTrie <|-- PatriciaTrie
+
+Trie <|-- UnmodifiableTrie
+Unmodifiable <|-- UnmodifiableTrie
+
+
+@enduml
