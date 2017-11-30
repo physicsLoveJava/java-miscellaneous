@@ -1,0 +1,47 @@
+@startuml
+
+interface Set
+interface SortedSet
+interface NavigableSet
+interface Collection
+abstract class AbstractCollectionDecorator
+abstract class AbstractSetDecorator
+abstract class AbstractSortedSetDecorator
+abstract class AbstractNavigableSetDecorator
+abstract class AbstractSerializableSetDecorator
+
+Collection <|-- Set
+Set <|-- SortedSet
+SortedSet <|-- NavigableSet
+
+Collection <|-- AbstractCollectionDecorator
+Set <|-- AbstractSetDecorator
+AbstractCollectionDecorator <|-- AbstractSetDecorator
+SortedSet <|-- AbstractSortedSetDecorator
+AbstractSortedSetDecorator <|-- AbstractNavigableSetDecorator
+AbstractSetDecorator <|-- AbstractSerializableSetDecorator
+NavigableSet <|-- AbstractNavigableSetDecorator
+
+Set <|-- CompositeSet
+AbstractSerializableSetDecorator <|-- ListOrderedSet
+Set <|-- MapBackedSet
+
+Set <|-- PredicatedSet
+SortedSet <|-- PredicatedSortedSet
+NavigableSet <|-- PredicatedNavigableSet
+PredicatedSet <|-- PredicatedSortedSet
+PredicatedSortedSet <|-- PredicatedNavigableSet
+
+Set <|-- TransformedSet
+SortedSet <|-- TransformedSortedSet
+NavigableSet <|-- TransformedNavigableSet
+TransformedSet <|-- TransformedSortedSet
+TransformedSortedSet <|-- TransformedNavigableSet
+
+Set <|-- UnmodifiableSet
+SortedSet <|-- UnmodifiableSortedSet
+NavigableSet <|-- UnmodifiableNavigableSet
+UnmodifiableSet <|-- UnmodifiableSortedSet
+UnmodifiableSortedSet <|-- UnmodifiableNavigableSet
+
+@enduml
