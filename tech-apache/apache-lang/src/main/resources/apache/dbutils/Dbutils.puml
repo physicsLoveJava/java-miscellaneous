@@ -1,0 +1,93 @@
+@startuml
+
+interface ResultSetHandler
+abstract BaseResultSetHandler
+class ArrayHandler
+class AbstractKeyedHandler
+class ScalarHandler
+class BeanListHandler
+class AbstractListHandler
+class BeanHandler
+class MapHandler
+class KeyedHandler
+class BeanMapHandler
+class ArrayListHandler
+class MapListHandler
+class ColumnListHandler
+
+ResultSetHandler <|-- BaseResultSetHandler
+ResultSetHandler <|-- ArrayHandler
+ResultSetHandler <|-- AbstractKeyedHandler
+ResultSetHandler <|-- ScalarHandler
+ResultSetHandler <|-- BeanListHandler
+ResultSetHandler <|-- AbstractListHandler
+ResultSetHandler <|-- BeanHandler
+ResultSetHandler <|-- MapHandler
+AbstractKeyedHandler <|-- KeyedHandler
+AbstractKeyedHandler <|-- BeanMapHandler
+AbstractListHandler <|-- ArrayListHandler
+AbstractListHandler <|-- MapListHandler
+AbstractListHandler <|-- ColumnListHandler
+
+interface ColumnHandler
+
+class SQLXMLColumnHandler
+class DoubleColumnHandler
+class BooleanColumnHandler
+class ShortColumnHandler
+class IntegerColumnHandler
+class StringColumnHandler
+class LongColumnHandler
+class FloatColumnHandler
+class ByteColumnHandler
+class TimestampColumnHandler
+
+ColumnHandler <|-- SQLXMLColumnHandler
+ColumnHandler <|-- DoubleColumnHandler
+ColumnHandler <|-- BooleanColumnHandler
+ColumnHandler <|-- ShortColumnHandler
+ColumnHandler <|-- IntegerColumnHandler
+ColumnHandler <|-- StringColumnHandler
+ColumnHandler <|-- LongColumnHandler
+ColumnHandler <|-- FloatColumnHandler
+ColumnHandler <|-- ByteColumnHandler
+ColumnHandler <|-- TimestampColumnHandler
+
+interface PropertyHandler
+
+class StringEnumPropertyHandler
+class DatePropertyHandler
+
+PropertyHandler <|-- StringEnumPropertyHandler
+PropertyHandler <|-- DatePropertyHandler
+
+abstract class AbstractQueryRunner
+class AsyncQueryRunner
+class QueryRunner
+
+AbstractQueryRunner <|-- AsyncQueryRunner
+AbstractQueryRunner <|-- QueryRunner
+
+BeanProcessor <|-- GenerousBeanProcessor
+
+RowProcessor <|-- BasicRowProcessor
+
+interface InvocationHandler
+
+class SqlNullCheckedResultSet
+class StringTrimmedResultSet
+class StatementConfiguration
+class ResultSetIterator
+class OutParameter
+class ProxyFactory
+class QueryLoader
+class DbUtils
+
+BeanProcessor *-- ColumnHandler
+
+InvocationHandler <|-- SqlNullCheckedResultSet
+InvocationHandler <|-- StringTrimmedResultSet
+
+
+
+@enduml
