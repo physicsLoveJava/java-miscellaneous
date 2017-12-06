@@ -23,6 +23,7 @@
         <module>tech-asm</module>
         <module>netflix</module>
         <module>tech-apache</module>
+        <module>tech-java-source</module>
     </modules>
 
     <properties>
