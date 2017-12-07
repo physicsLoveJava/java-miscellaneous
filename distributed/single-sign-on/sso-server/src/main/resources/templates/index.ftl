@@ -7,7 +7,7 @@
 <body>
     <h1>you have login!</h1>
     <form action="logout.do" method="post">
-        <button>登出</button>
+        <button>logout</button>
     </form>
     <#include "stamp.ftl"/>
 </body>

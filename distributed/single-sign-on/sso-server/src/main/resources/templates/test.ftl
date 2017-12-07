@@ -7,7 +7,7 @@
 <body>
     <h1>test html</h1>
     <form action="login.do" method="post">
-        <button>登录</button>
+        <button>login</button>
     </form>
     <#include "stamp.ftl"/>
 </body>
