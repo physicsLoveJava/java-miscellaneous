@@ -24,6 +24,7 @@
         <module>netflix</module>
         <module>tech-apache</module>
         <module>tech-java-source</module>
+        <module>distributed</module>
     </modules>
 
     <properties>
