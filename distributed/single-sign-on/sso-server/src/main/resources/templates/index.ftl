@@ -9,5 +9,6 @@
     <form action="logout.do" method="post">
         <button>登出</button>
     </form>
+    <#include "stamp.ftl"/>
 </body>
 </html>
