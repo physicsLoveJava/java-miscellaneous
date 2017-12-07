@@ -20,7 +20,7 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public boolean hasLogin(String id) {
         String val = template.opsForValue().get(id);
-        return val != null;
+        return val != null && !val.equals("");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void logout(String id) {
-        template.opsForValue().set(id, null);
+        template.opsForValue().set(id, "");
     }
 
 }

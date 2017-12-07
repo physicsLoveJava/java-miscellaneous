@@ -9,5 +9,6 @@
     <form action="login.do" method="post">
         <button>登录</button>
     </form>
+    <#include "stamp.ftl"/>
 </body>
 </html>
