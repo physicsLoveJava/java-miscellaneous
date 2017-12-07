@@ -84,3 +84,4 @@ basic-techs.iml
 #tech-slf4j/
 #tech-unit-testing/
 /tech-concurrent/jcip/
+/distributed/single-sign-on/sso-server/.mvn/
