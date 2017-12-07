@@ -11,5 +11,9 @@
 
     <artifactId>single-sign-on</artifactId>
 
+    <modules>
+        <module>sso-server</module>
+        <module>sso-server-2</module>
+    </modules>
 
 </project>
