@@ -11,7 +11,7 @@ public class HystrixController {
     @Resource
     TestService testService;
 
-    @GetMapping("/hystrix")
+    @GetMapping("/test.do")
     public String hystrix() {
         return testService.demoService();
     }
