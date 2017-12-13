@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    @Value("${dev}")
+    @Value("${s}")
     private String dev;
 
     @GetMapping("/dev")
