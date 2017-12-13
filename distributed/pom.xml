@@ -16,6 +16,7 @@
         <module>eureka</module>
         <module>feign</module>
         <module>zuul</module>
+        <module>config</module>
     </modules>
 
 

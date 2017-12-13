@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.lujian.distributed</groupId>
-	<artifactId>eureka-client</artifactId>
+	<artifactId>feign-eureka-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka-client</name>
+	<name>feign-eureka-client</name>
 	<description>eureka-client demo</description>
 
 	<parent>

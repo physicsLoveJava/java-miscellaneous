@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.lujian.distributed</groupId>
-	<artifactId>eureka-client</artifactId>
+	<artifactId>zuul-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka-client</name>
-	<description>eureka-client demo</description>
+	<name>zuul-eureka-server</name>
+	<description>eureka server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,7 +28,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>

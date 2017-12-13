@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.lujian.distributed</groupId>
-	<artifactId>feign-eureka</artifactId>
+	<artifactId>config</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>feign-eureka</name>
-	<description>eureka server</description>
+	<name>config</name>
+	<description>config demo</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,7 +28,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
 		<dependency>
