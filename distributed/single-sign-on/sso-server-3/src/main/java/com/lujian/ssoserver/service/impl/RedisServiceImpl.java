@@ -7,7 +7,6 @@ import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 
 @Service
 public class RedisServiceImpl implements RedisService {
@@ -15,25 +14,35 @@ public class RedisServiceImpl implements RedisService {
     @Resource
     StringRedisTemplate template;
 
+    @Resource
+    SessionRepository sessionRepository;
+
     @Override
-    public void ping() {
-        template.opsForList().leftPush("test", System.currentTimeMillis() + "");
+    public void ping(String id) {
+        Session session = sessionRepository.getSession(id);
+        if(session == null) {
+            System.out.println("session is null");
+        }else {
+            System.out.println(session.getAttribute("loginBy"));
+        }
     }
 
     @Override
     public boolean hasLogin(String id) {
-        String val = template.opsForValue().get(id);
-        return val != null && !val.equals("");
+        Session session = sessionRepository.getSession(id);
+        return session != null;
     }
 
     @Override
     public void login(String id) {
-        template.opsForValue().set(id, id);
+        Session session = sessionRepository.getSession(id);
+        session.setAttribute("loginBy", "8082");
+        sessionRepository.save(session);
     }
 
     @Override
     public void logout(String id) {
-        template.opsForValue().set(id, "");
+        sessionRepository.delete(id);
     }
 
 }

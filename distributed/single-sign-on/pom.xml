@@ -15,6 +15,8 @@
     <modules>
         <module>sso-server</module>
         <module>sso-server-2</module>
+        <module>sso-server-3</module>
+        <module>sso-server-4</module>
         <module>sso-haproxy-config</module>
     </modules>
 
