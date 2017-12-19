@@ -12,10 +12,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/hystrix-server/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/hystrix-server/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/hystrix-server/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/hystrix-server/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.7 (1)" jdkType="JavaSDK" />

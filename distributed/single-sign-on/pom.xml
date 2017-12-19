@@ -17,6 +17,7 @@
         <module>sso-server-2</module>
         <module>sso-server-3</module>
         <module>sso-server-4</module>
+        <module>ssm-maven</module>
         <module>sso-haproxy-config</module>
     </modules>
 

@@ -1,0 +1,7 @@
+
+CREATE TABLE user(
+id INTEGER NOT NULL,
+name varchar(50) NOT NULL,
+age INTEGER NOT NULL,
+PRIMARY KEY (id)
+);
