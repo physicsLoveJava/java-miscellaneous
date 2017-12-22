@@ -89,4 +89,70 @@ static int lastIndexOf(char[] source, int sourceOffset, int sourceCount,
         return start - sourceOffset + 1;
     }
 }
+
+//regionMatches
+public boolean regionMatches(boolean ignoreCase, int toffset,
+        String other, int ooffset, int len) {
+    char ta[] = value;
+    int to = toffset;
+    char pa[] = other.value;
+    int po = ooffset;
+    // Note: toffset, ooffset, or len might be near -1>>>1.
+    if ((ooffset < 0) || (toffset < 0)
+            || (toffset > (long)value.length - len)
+            || (ooffset > (long)other.value.length - len)) {
+        return false;
+    }
+    while (len-- > 0) {
+        char c1 = ta[to++];
+        char c2 = pa[po++];
+        if (c1 == c2) {
+            continue;
+        }
+        if (ignoreCase) {
+            // If characters don't match but case may be ignored,
+            // try converting both characters to uppercase.
+            // If the results match, then the comparison scan should
+            // continue.
+            char u1 = Character.toUpperCase(c1);
+            char u2 = Character.toUpperCase(c2);
+            if (u1 == u2) {
+                continue;
+            }
+            // Unfortunately, conversion to uppercase does not work properly
+            // for the Georgian alphabet, which has strange rules about case
+            // conversion.  So we need to make one last check before
+            // exiting.
+            if (Character.toLowerCase(u1) == Character.toLowerCase(u2)) {
+                continue;
+            }
+        }
+        return false;
+    }
+    return true;
+}
+
+//toString
+public boolean equals(Object anObject) {
+    if (this == anObject) {
+        return true;
+    }
+    if (anObject instanceof String) {
+        String anotherString = (String) anObject;
+        int n = value.length;
+        if (n == anotherString.value.length) {
+            char v1[] = value;
+            char v2[] = anotherString.value;
+            int i = 0;
+            while (n-- != 0) {
+                if (v1[i] != v2[i])
+                        return false;
+                i++;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
 ```
