@@ -1,0 +1,22 @@
+@startuml
+
+abstract class Number
+class Byte
+class Short
+class Integer
+class Long
+class Float
+class Double
+class BigInteger
+class BigDecimal
+
+Number <|-- Byte
+Number <|-- Short
+Number <|-- Integer
+Number <|-- Long
+Number <|-- Float
+Number <|-- Double
+Number <|-- BigInteger
+Number <|-- BigDecimal
+
+@enduml
