@@ -1,0 +1,58 @@
+@startuml
+
+
+interface Servlet {
+    public void init(ServletConfig config) throws ServletException;
+
+    public ServletConfig getServletConfig();
+
+    public void service(ServletRequest req, ServletResponse res)
+    throws ServletException, IOException;
+
+    public String getServletInfo();
+
+    public void destroy();
+}
+
+interface ServletConfig
+
+abstract class GenericServlet
+
+abstract class HttpServlet {
+    protected void service(ServletRequest, ServletResponse)
+    throws ServletException, IOException;
+
+    protected void service(HttpServletRequest, HttpServletResponse)
+    throws ServletException, IOException;
+}
+
+interface ServletContext {
+
+    public String getContextPath();
+
+    public RequestDispatcher getRequestDispatcher(String path);
+
+    public Object getAttribute(String name);
+
+    public void setAttribute(String name, Object object);
+
+    public void removeAttribute(String name);
+}
+
+interface RequestDispatcher {
+    public void forward(ServletRequest request, ServletResponse response)
+    	throws ServletException, IOException;
+
+    public void include(ServletRequest request, ServletResponse response)
+    	throws ServletException, IOException;
+}
+
+
+Servlet <|-- GenericServlet
+ServletConfig <|-- GenericServlet
+GenericServlet <|-- HttpServlet
+ServletConfig .--> ServletContext
+ServletContext .--> RequestDispatcher
+
+
+@enduml
