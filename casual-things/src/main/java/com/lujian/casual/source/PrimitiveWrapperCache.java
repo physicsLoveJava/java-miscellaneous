@@ -19,6 +19,17 @@ public class PrimitiveWrapperCache {
         Character a6 = new Character('a');
 
         System.out.println(a5 == a6);
+
+        //自动装箱 autobox int --> Integer
+        Integer i1 = 4;
+        Integer i2 = 4;
+
+        System.out.println(i1 == i2);
+
+        Integer i3 = 128;
+        Integer i4 = 128;
+
+        System.out.println(i3 == i4);
     }
 
 }
