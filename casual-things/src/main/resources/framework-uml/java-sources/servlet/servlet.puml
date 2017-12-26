@@ -47,12 +47,24 @@ interface RequestDispatcher {
     	throws ServletException, IOException;
 }
 
+interface ServletRequest;
+interface ServletResponse;
+interface HttpServletRequest;
+interface HttpServletResponse;
 
 Servlet <|-- GenericServlet
 ServletConfig <|-- GenericServlet
 GenericServlet <|-- HttpServlet
 ServletConfig .--> ServletContext
 ServletContext .--> RequestDispatcher
+ServletRequest <|-- HttpServletRequest
+ServletResponse <|-- HttpServletResponse
+Servlet .--> ServletRequest
+Servlet .--> ServletResponse
+HttpServlet .--> HttpServletRequest
+HttpServlet .--> HttpServletResponse
+HttpServletResponse .--> Cookie
+
 
 
 @enduml
