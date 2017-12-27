@@ -47,10 +47,22 @@ interface RequestDispatcher {
     	throws ServletException, IOException;
 }
 
-interface ServletRequest;
-interface ServletResponse;
-interface HttpServletRequest;
-interface HttpServletResponse;
+interface ServletRequest
+interface ServletResponse
+interface HttpServletRequest
+interface HttpServletResponse
+
+interface Filter {
+    void init(FilterConfig);
+    void doFilter(ServletRequest, ServletResponse);
+    void destroy();
+}
+
+interface FilterChain {
+    void doFilter(ServletRequest, ServletResponse);
+}
+
+interface FilterConfig
 
 Servlet <|-- GenericServlet
 ServletConfig <|-- GenericServlet
@@ -65,6 +77,9 @@ HttpServlet .--> HttpServletRequest
 HttpServlet .--> HttpServletResponse
 HttpServletResponse .--> Cookie
 
-
+Filter .--> ServletRequest
+Filter .--> ServletResponse
+Filter .--> FilterChain
+Filter .--> FilterConfig
 
 @enduml
