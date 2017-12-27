@@ -64,6 +64,11 @@ interface FilterChain {
 
 interface FilterConfig
 
+interface HttpSession {
+    void setMaxActiveInterval();
+    void invalidate();
+}
+
 Servlet <|-- GenericServlet
 ServletConfig <|-- GenericServlet
 GenericServlet <|-- HttpServlet
@@ -81,5 +86,8 @@ Filter .--> ServletRequest
 Filter .--> ServletResponse
 Filter .--> FilterChain
 Filter .--> FilterConfig
+HttpServletRequest .--> HttpSession
+
+
 
 @enduml
