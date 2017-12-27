@@ -69,6 +69,64 @@ interface HttpSession {
     void invalidate();
 }
 
+interface EventListener
+
+interface ServletContextListener {
+    public void contextInitialized ( ServletContextEvent sce );
+    public void contextDestroyed ( ServletContextEvent sce );
+}
+
+interface ServletContextAttributeListener {
+    public void attributeAdded(ServletContextAttributeEvent scab);
+    public void attributeRemoved(ServletContextAttributeEvent scab);
+    public void attributeReplaced(ServletContextAttributeEvent scab);
+}
+
+class EventObject
+class ServletContextEvent
+class ServletContextAttributeEvent
+
+interface HttpSessionListener{
+    public void sessionCreated ( HttpSessionEvent se );
+    public void sessionDestroyed ( HttpSessionEvent se );
+}
+
+interface HttpSessionAttributeListener {
+    public void attributeAdded(HttpSessionAttributeEvent scab);
+    public void attributeRemoved(HttpSessionAttributeEvent scab);
+    public void attributeReplaced(HttpSessionAttributeEvent scab);
+}
+
+interface HttpSessionActivationListener {
+    public void sessionWillPassivate(HttpSessionEvent se);
+    public void sessionDidActivate(HttpSessionEvent se);
+}
+
+interface HttpSessionBindingListener {
+    public void valueBound(HttpSessionBindingEvent event);
+    public void valueUnbound(HttpSessionBindingEvent event);
+}
+
+class HttpSessionEvent
+class HttpSessionAttributeEvent
+class HttpSessionBindingEvent
+
+interface ServletRequestListener extends EventListener {
+    public void requestDestroyed ( ServletRequestEvent sre );
+    public void requestInitialized ( ServletRequestEvent sre );
+}
+
+interface ServletRequestAttributeListener extends EventListener {
+    public void attributeAdded(ServletRequestAttributeEvent srae);
+
+    public void attributeRemoved(ServletRequestAttributeEvent srae);
+
+    public void attributeReplaced(ServletRequestAttributeEvent srae);
+}
+
+class ServletRequestEvent
+class ServletRequestAttributeEvent
+
 Servlet <|-- GenericServlet
 ServletConfig <|-- GenericServlet
 GenericServlet <|-- HttpServlet
@@ -88,6 +146,34 @@ Filter .--> FilterChain
 Filter .--> FilterConfig
 HttpServletRequest .--> HttpSession
 
+EventObject <|-- ServletContextEvent
+EventObject <|-- HttpSessionEvent
+EventObject <|-- ServletRequestEvent
+ServletRequestEvent <|-- ServletRequestAttributeEvent
+ServletRequestEvent <|-- ServletRequestAttributeEvent
+HttpSessionEvent <|-- HttpSessionAttributeEvent
+HttpSessionEvent <|-- HttpSessionBindingEvent
+ServletContextEvent <|-- ServletContextAttributeEvent
+EventListener <|-- ServletContextAttributeListener
+EventListener <|-- ServletContextListener
+EventListener <|-- HttpSessionListener
+EventListener <|-- HttpSessionAttributeListener
+EventListener <|-- HttpSessionActivationListener
+EventListener <|-- HttpSessionBindingListener
+EventListener <|-- ServletRequestListener
+EventListener <|-- ServletRequestAttributeListener
+
+ServletContextListener .--> ServletContextEvent
+ServletContextAttributeListener .--> ServletContextAttributeEvent
+
+HttpSessionListener .--> HttpSessionEvent
+HttpSessionAttributeListener .--> HttpSessionAttributeEvent
+HttpSessionActivationListener .--> HttpSessionEvent
+HttpSessionBindingListener .--> HttpSessionBindingEvent
+
+ServletRequestListener .--> ServletRequestEvent
+ServletRequestEvent .--> ServletRequest
+ServletRequestAttributeListener .--> ServletRequestAttributeEvent
 
 
 @enduml
