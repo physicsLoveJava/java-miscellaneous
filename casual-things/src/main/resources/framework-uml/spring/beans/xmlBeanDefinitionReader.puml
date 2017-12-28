@@ -1,0 +1,20 @@
+@startuml
+
+interface BeanDefinitionReader
+
+interface ResourceLoader
+
+interface PropertyResolver
+
+interface EnvironmentCapable extends PropertyResolver
+
+abstract class AbstractBeanDefinitionReader implements EnvironmentCapable, BeanDefinitionReader
+
+class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader
+
+interface BeanNameGenerator
+
+interface BeanDefinitionDocumentReader
+
+class BeanDefinitionParserDelegate
+@enduml
