@@ -23,4 +23,7 @@ class PathResource extends AbstractResource implements WritableResource
 class ServletContextResource extends AbstractFileResolvingResource implements ContextResource
 
 class VfsResource extends AbstractResource
+
+class ClassPathResource extends AbstractFileResolvingResource
+
 @enduml

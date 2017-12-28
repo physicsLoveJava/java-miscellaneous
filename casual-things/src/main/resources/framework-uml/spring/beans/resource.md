@@ -44,3 +44,6 @@ servletContext做源
 
 class VfsResource extends AbstractResource 
 虚拟文件系统forJBoss
+
+class ClassPathResource extends AbstractFileResolvingResource
+使用classpath进行定位
