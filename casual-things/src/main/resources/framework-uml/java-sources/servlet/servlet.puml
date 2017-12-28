@@ -127,6 +127,15 @@ interface ServletRequestAttributeListener extends EventListener {
 class ServletRequestEvent
 class ServletRequestAttributeEvent
 
+class ServletRequestWrapper
+class ServletResponseWrapper
+
+abstract class ServletInputStream
+abstract class ServletOutputStream
+
+class HttpServletRequestWrapper
+class HttpServletResponseWrapper
+
 Servlet <|-- GenericServlet
 ServletConfig <|-- GenericServlet
 GenericServlet <|-- HttpServlet
@@ -175,5 +184,18 @@ ServletRequestListener .--> ServletRequestEvent
 ServletRequestEvent .--> ServletRequest
 ServletRequestAttributeListener .--> ServletRequestAttributeEvent
 
+ServletRequest <|-- ServletRequestWrapper
+ServletResponse <|-- ServletResponseWrapper
+ServletRequestWrapper *--> ServletRequest
+ServletResponseWrapper *--> ServletResponse
+
+InputStream <|-- ServletInputStream
+OutputStream <|-- ServletOutputStream
+
+ServletRequestWrapper <|-- HttpServletRequestWrapper
+ServletResponseWrapper <|-- HttpServletResponseWrapper
+
+HttpServletRequest <|-- HttpServletRequestWrapper
+HttpServletResponse <|-- HttpServletResponseWrapper
 
 @enduml
