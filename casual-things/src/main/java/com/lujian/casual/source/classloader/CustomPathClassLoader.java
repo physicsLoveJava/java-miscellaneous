@@ -31,7 +31,6 @@ public class CustomPathClassLoader extends URLClassLoader {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         File file = new File("ClassLoaderDeep.class");
-        String path = file.getCanonicalPath();
         new CustomPathClassLoader(new URL[]{ParseUtil.fileToEncodedURL(file)},
                 getSystemClassLoader());
     }
