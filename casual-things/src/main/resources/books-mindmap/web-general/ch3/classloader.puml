@@ -1,0 +1,14 @@
+@startuml
+
+class Launcher
+abstract class ClassLoader
+class URLClassLoader extends SecureClassLoader implements Closeable
+class ExtClassLoader extends URLClassLoader
+class AppClassLoader extends URLClassLoader
+class SecureClassLoader extends ClassLoader
+
+Launcher *--> ExtClassLoader
+Launcher *--> AppClassLoader
+Launcher .--> ClassLoader
+
+@enduml
