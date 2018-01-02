@@ -89,7 +89,7 @@ public class BenchMarkSyncIteration {
                     .measurementIterations(20)
                     .threads(Runtime.getRuntime().availableProcessors()*16)
                     .forks(1)
-                    .syncIterations(true) // try to switch to "false"
+                    .syncIterations(false) // try to switch to "false"
                     .build();
 
             new Runner(opt).run();
