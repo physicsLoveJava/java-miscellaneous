@@ -27,7 +27,7 @@ public class BenchMarkBlackholeHelpers {
          * This applies to both @Setup and @TearDown methods, and also to other
          * JMH infrastructure objects, like Control.
          *
-         * Below is the variant of {@link org.openjdk.jmh.samples.JMHSample_08_DeadCode}
+         * Below is the variant of dead code
          * test, but wrapped in the anonymous classes.
          */
 
