@@ -2,7 +2,7 @@ package com.lujian.casual.benchmark;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.profile.ClassloaderProfiler;
+import org.openjdk.jmh.profile.CompilerProfiler;
 import org.openjdk.jmh.profile.GCProfiler;
 import org.openjdk.jmh.profile.LinuxPerfProfiler;
 import org.openjdk.jmh.runner.Runner;
@@ -246,8 +246,8 @@ public class BenchMarkProfilers {
             public static void main(String[] args) throws RunnerException {
                 Options opt = new OptionsBuilder()
                         .include(BenchMarkProfilers.Classy.class.getSimpleName())
-                        .addProfiler(ClassloaderProfiler.class)
-//                    .addProfiler(CompilerProfiler.class)
+//                        .addProfiler(ClassloaderProfiler.class)
+                        .addProfiler(CompilerProfiler.class)
                         .build();
 
                 new Runner(opt).run();
