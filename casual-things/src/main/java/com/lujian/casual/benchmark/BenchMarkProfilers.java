@@ -4,7 +4,7 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.profile.ClassloaderProfiler;
 import org.openjdk.jmh.profile.GCProfiler;
-import org.openjdk.jmh.profile.LinuxPerfProfiler;
+import org.openjdk.jmh.profile.WinPerfAsmProfiler;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -331,10 +331,10 @@ public class BenchMarkProfilers {
             public static void main(String[] args) throws RunnerException {
                 Options opt = new OptionsBuilder()
                         .include(BenchMarkProfilers.Atomic.class.getSimpleName())
-                        .addProfiler(LinuxPerfProfiler.class)
+//                        .addProfiler(LinuxPerfProfiler.class)
 //                    .addProfiler(LinuxPerfNormProfiler.class)
 //                    .addProfiler(LinuxPerfAsmProfiler.class)
-//                    .addProfiler(WinPerfAsmProfiler.class)
+                    .addProfiler(WinPerfAsmProfiler.class)
                         .build();
 
                 new Runner(opt).run();
