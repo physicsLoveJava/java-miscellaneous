@@ -1,0 +1,17 @@
+@startuml
+
+abstract class FunctionMapper
+
+interface VariableResolver
+
+abstract class Expression
+
+abstract class ExpressionEvaluator
+
+abstract class ELResolver
+
+class ImplicitObjectELResolver extends ELResolver
+
+class ScopedAttributeELResolver extends ELResolver
+
+@enduml
