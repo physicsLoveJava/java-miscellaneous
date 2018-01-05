@@ -1,0 +1,59 @@
+@startuml
+
+interface Tag extends JspTag
+
+interface IterationTag extends Tag
+
+class TagSupport implements IterationTag, Serializable
+
+Tag .--> Tag
+
+interface BodyTag extends IterationTag
+
+class BodyTagSupport extends TagSupport implements BodyTag
+
+interface DynamicAttributes
+
+interface JspIdConsumer
+
+interface SimpleTag extends JspTag
+
+interface TryCatchFinally
+
+abstract class BodyContent extends JspWriter
+
+class FunctionInfo
+
+abstract class JspFragment
+
+abstract class PageData
+
+class SimpleTagSupport implements SimpleTag
+
+class TagAdapter implements Tag
+
+TagAdapter *--> SimpleTag
+
+class TagAttributeInfo
+
+class TagData implements Cloneable
+
+TagData *--> Hashtable
+
+abstract class TagExtraInfo
+
+class TagFileInfo
+
+class TagInfo
+
+abstract class TagLibraryInfo
+
+abstract class TagLibraryValidator
+
+class TagVariableInfo
+
+class ValidationMessage
+
+class VariableInfo
+
+@enduml
