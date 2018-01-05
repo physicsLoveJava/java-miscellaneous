@@ -1,0 +1,30 @@
+@startuml
+
+interface Servlet
+interface JspPage extends Servlet
+interface HttpJspPage extends JspPage {
+    public void _jspService(HttpServletRequest request,
+                                HttpServletResponse response)
+           throws ServletException, IOException;
+}
+
+abstract class JspFactory
+
+abstract class JspContext
+
+class PageContext extends JspContext
+
+JspFactory .--> JspContext
+JspFactory .--> JspEngineInfo
+JspFactory .--> JspApplicationContext
+
+PageContext .--> ErrorData
+
+abstract class JspWriter extends java.io.Writer
+
+class JspException extends Exception
+class JspTagException extends JspException
+class SkipPageException extends JspException
+
+
+@enduml
