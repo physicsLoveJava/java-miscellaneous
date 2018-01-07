@@ -14,6 +14,8 @@ public class AllocationBigObject {
         Thread.sleep(5000);
         byte[] alloc = new byte[4 * _1mb];
         Thread.sleep(2000);
+        alloc = new byte[9 * _1mb];
+        Thread.sleep(5000);
     }
 
 }
