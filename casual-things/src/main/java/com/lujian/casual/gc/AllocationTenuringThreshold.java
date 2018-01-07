@@ -6,7 +6,7 @@ public class AllocationTenuringThreshold {
 
     /**
      * -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails
-        -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold*l
+        -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=15
      -XX:+PrintTenuringDistribution
      * @param args
      * @throws InterruptedException
@@ -14,13 +14,9 @@ public class AllocationTenuringThreshold {
     public static void main(String[] args) throws InterruptedException {
         byte[] alloc1, alloc2, alloc3;
         alloc1 = new byte[_1mb / 4];
-        Thread.sleep(5000);
         alloc2 = new byte[_1mb * 4];
-        Thread.sleep(5000);
         alloc3 = new byte[_1mb * 4];
-        Thread.sleep(5000);
         alloc3 = null;
-        Thread.sleep(5000);
         alloc3 = new byte[_1mb * 4];
         Thread.sleep(5000);
     }
