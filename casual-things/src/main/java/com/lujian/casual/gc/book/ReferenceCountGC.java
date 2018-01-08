@@ -1,4 +1,4 @@
-package com.lujian.casual.gc;
+package com.lujian.casual.gc.book;
 
 public class ReferenceCountGC {
 
