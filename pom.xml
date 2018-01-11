@@ -25,6 +25,7 @@
         <module>tech-apache</module>
         <module>tech-java-source</module>
         <module>distributed</module>
+        <module>tech-functional-programming</module>
     </modules>
 
     <properties>
