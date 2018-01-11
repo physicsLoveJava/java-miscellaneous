@@ -21,24 +21,26 @@ public class ReentrantLockInterruptable {
         public void run() {
             try {
                 first.lockInterruptibly();
-                System.out.println("get lock:" + first);
+                Thread.sleep(1000);
+                System.out.println(Thread.currentThread().getName() + " get lock:" + first);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 try {
                     second.lockInterruptibly();
-                    System.out.println("get lock:" + second);
+                    Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName() + " get lock:" + second);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     if(second.isHeldByCurrentThread()) {
                         second.unlock();
-                        System.out.println("release lock:" + second);
+                        System.out.println(Thread.currentThread().getName() + " release lock:" + second);
                     }
                 }
                 if(first.isHeldByCurrentThread()) {
                     first.unlock();
-                    System.out.println("release lock:" + first);
+                    System.out.println(Thread.currentThread().getName() + " release lock:" + first);
                 }
             }
         }
