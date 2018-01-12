@@ -95,7 +95,7 @@ public class BenchMarkHttpClients {
 
     @Benchmark
     public void httpClientWithoutClose() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             int val = i % 3;
             switch (val) {
                 case 0:
@@ -113,7 +113,7 @@ public class BenchMarkHttpClients {
 
     @Benchmark
     public void httpClientClose() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             int val = i % 3;
             switch (val) {
                 case 0:
@@ -132,8 +132,9 @@ public class BenchMarkHttpClients {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(BenchMarkHttpClients.class.getSimpleName())
-                .warmupIterations(10)
-                .measurementIterations(10)
+                .warmupIterations(1)
+                .measurementIterations(1)
+                .threads(3)
                 .forks(1)
                 .build();
 
