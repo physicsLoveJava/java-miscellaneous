@@ -1,0 +1,37 @@
+class FileResourceManager implements ResourceManager, ResourceManagerErrorCodes
+class FileSequence
+class NoOpTransactionIdToPathMapper implements TransactionIdToPathMapper
+interface ResourceIdToPathMapper
+interface ResourceManager extends Status
+interface ResourceManagerErrorCodes
+class ResourceManagerException extends Exception implements ResourceManagerErrorCodes
+class ResourceManagerSystemException extends ResourceManagerException
+interface TransactionIdToPathMapper
+class URLEncodeIdMapper implements ResourceIdToPathMapper
+class GenericLock implements MultiLevelLock2
+class GenericLockManager implements LockManager, LockManager2
+class LockException extends RuntimeException
+interface LockManager
+interface LockManager2
+interface MultiLevelLock
+interface MultiLevelLock2 extends MultiLevelLock
+class ReadWriteLock extends GenericLock
+class ReadWriteLockManager extends GenericLockManager
+class ReadWriteUpgradeLock extends GenericLock
+class ReadWriteUpgradeLockManager extends ReadWriteLockManager
+class ConflictException extends RuntimeException /* FIXME Exception*/
+class HashMapFactory implements MapFactory
+class HashSetFactory implements SetFactory
+class LockException extends RuntimeException /* FIXME Exception */{
+interface MapFactory
+class OptimisticMapWrapper extends TransactionalMapWrapper
+class PessimisticMapWrapper extends TransactionalMapWrapper
+interface SetFactory
+class TransactionalMapWrapper implements Map, Status
+class CommonsLoggingLogger implements LoggerFacade
+ class FileHelper
+class Log4jLogger implements LoggerFacade
+interface LoggerFacade
+class PrintWriterLogger implements LoggerFacade
+class RendezvousBarrier
+class TurnBarrier
