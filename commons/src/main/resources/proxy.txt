@@ -1,0 +1,43 @@
+class InvokerException extends RuntimeException
+class ObjectProviderException extends RuntimeException
+class ProxyFactoryException extends RuntimeException
+class CglibProxyFactory extends AbstractSubclassingProxyFactory
+abstract class JavassistInvocation implements Invocation
+class JavassistProxyFactory extends AbstractSubclassingProxyFactory
+class JavassistUtils
+abstract class AbstractProxyClassGenerator implements ProxyClassGenerator
+abstract class AbstractSubclassingProxyFactory extends ProxyFactory
+class MethodSignature
+class ProxyClassCache
+interface ProxyClassGenerator
+class ExecutorInterceptor implements Interceptor
+class PatternFilter implements MethodFilter
+class ReturnTypeFilter implements MethodFilter
+class SimpleFilter implements MethodFilter
+class FilteredInterceptor implements Interceptor
+class InterceptorChain
+class LoggingInterceptor implements Interceptor
+interface MethodFilter
+class MethodInterceptorAdapter implements Interceptor
+class SerializingInterceptor implements Interceptor
+interface Interceptor
+interface Invocation
+class DuckTypingInvoker implements Invoker
+class InvocationHandlerAdapter implements Invoker
+class NullInvoker implements Invoker
+class XmlRpcInvoker implements Invoker
+interface Invoker
+interface ObjectProvider
+class BeanProvider implements ObjectProvider
+class CloningProvider implements ObjectProvider
+class ConstantProvider implements ObjectProvider
+class NullProvider extends ConstantProvider
+class ProviderDecorator implements ObjectProvider
+class BurlapProvider implements ObjectProvider
+class HessianProvider implements ObjectProvider
+class JaxRpcProvider implements ObjectProvider
+class RmiProvider implements ObjectProvider
+class SessionBeanProvider implements ObjectProvider
+class SingletonProvider extends ProviderDecorator
+class ProxyFactory
+class ProxyUtils
