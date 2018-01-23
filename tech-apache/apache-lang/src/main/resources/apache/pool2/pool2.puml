@@ -1,3 +1,97 @@
 @startuml
 
+abstract class BaseKeyedPooledObjectFactory extends BaseObject implements KeyedPooledObjectFactory
+
+abstract class BaseObject
+
+abstract class BaseObjectPool extends BaseObject implements ObjectPool
+
+abstract class BasePooledObjectFactory extends BaseObject implements PooledObjectFactory
+
+interface KeyedObjectPool<K,V>
+
+interface KeyedPooledObjectFactory<K,V>
+
+interface ObjectPool<T>
+
+interface PooledObject extends Comparable
+
+interface PooledObjectFactory<T>
+
+enum PooledObjectState
+
+interface TrackedUse
+
+interface UsageTracking<T>
+
+
+class BaseProxyHandler
+
+class CglibProxyHandler extends BaseProxyHandler implements MethodInterceptor
+
+class CglibProxySource implements ProxySource
+
+class JdkProxyHandler extends BaseProxyHandler implements InvocationHandler
+
+class JdkProxySource<T> implements ProxySource
+
+class ProxiedKeyedObjectPool<K,V> implements KeyedObjectPool
+
+class ProxiedObjectPool<T> implements ObjectPool
+
+interface ProxySource<T>
+
+
+
+class AbandonedConfig
+
+abstract class BaseGenericObjectPool<T> extends BaseObject
+
+abstract class BaseObjectPoolConfig extends BaseObject implements Cloneable
+
+interface CallStack
+
+class CallStackUtils
+
+class DefaultEvictionPolicy<T> implements EvictionPolicy
+
+class DefaultPooledObject<T> implements PooledObject
+
+class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean
+
+interface DefaultPooledObjectInfoMBean
+
+class EvictionConfig
+
+interface EvictionPolicy<T>
+
+class EvictionTimer
+
+class GenericKeyedObjectPool<K,T> extends BaseGenericObjectPool implements KeyedObjectPool, GenericKeyedObjectPoolMXBean
+
+class GenericKeyedObjectPoolConfig extends BaseObjectPoolConfig
+
+interface GenericKeyedObjectPoolMXBean<K>
+
+class GenericObjectPool<T> extends BaseGenericObjectPool implements ObjectPool, GenericObjectPoolMXBean, UsageTracking
+
+class GenericObjectPoolConfig extends BaseObjectPoolConfig
+
+interface GenericObjectPoolMXBean
+
+class InterruptibleReentrantLock extends ReentrantLock
+
+class LinkedBlockingDeque<E> extends AbstractQueue implements Deque, Serializable
+
+class PooledSoftReference<T> extends DefaultPooledObject
+
+class PoolImplUtils
+
+class SecurityManagerCallStack implements CallStack
+
+class SoftReferenceObjectPool<T> extends BaseObjectPool
+
+class ThrowableCallStack implements CallStack
+
+
 @enduml
