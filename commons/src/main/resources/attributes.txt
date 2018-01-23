@@ -1,0 +1,21 @@
+class AttributeIndex
+interface AttributeRepositoryClass
+class Attributes
+class AttributeUtil
+interface CachedRepository
+class CircularDependencyError extends RepositoryError
+class DefaultCachedRepository implements CachedRepository
+class DefaultSealable implements Sealable
+class EmptyAttributeRepositoryClass implements AttributeRepositoryClass
+class EmptyCachedRepository implements CachedRepository
+class Indexed
+class Inheritable
+class InvalidAttributeTargetError extends Error
+class MultipleAttributesError extends Error
+class ParameterIndexOutOfBoundsException extends IndexOutOfBoundsException
+class RepositoryError extends Error
+class RuntimeAttributeRepository implements AttributeRepositoryClass
+interface Sealable
+class SealedAttributeException extends IllegalStateException
+class Target
+class Util
