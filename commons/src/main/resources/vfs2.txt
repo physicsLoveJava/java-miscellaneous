@@ -1,0 +1,246 @@
+class AllFileSelector implements FileSelector
+class StaticUserAuthenticator implements UserAuthenticator, Comparable
+abstract class AbstractFilesCache extends AbstractVfsComponent implements FilesCache
+class DefaultFilesCache extends AbstractFilesCache
+class FileSystemAndNameKey implements Comparable
+class LRUFilesCache extends AbstractFilesCache
+class NullFilesCache extends AbstractFilesCache
+class OnCallRefreshFileObject extends DecoratedFileObject
+class SoftRefFilesCache extends AbstractFilesCache
+class WeakRefFilesCache extends SoftRefFilesCache
+enum CacheStrategy
+enum Capability
+abstract class AbstractFileChangeEvent extends FileChangeEvent
+class ChangedEvent extends AbstractFileChangeEvent
+class CreateEvent extends AbstractFileChangeEvent
+class DeleteEvent extends AbstractFileChangeEvent
+class FileChangeEvent
+interface FileContent extends Closeable
+interface FileContentInfo
+interface FileContentInfoFactory
+class FileDepthSelector implements FileSelector
+class FileExtensionSelector implements FileSelector
+interface FileFilter
+class FileFilterSelector extends FileDepthSelector
+interface FileListener
+interface FileMonitor
+interface FileName extends Comparable
+class FileNotFolderException extends FileSystemException
+class FileNotFoundException extends FileSystemException
+interface FileObject extends Comparable, Iterable, Closeable
+interface FilesCache
+interface FileSelectInfo
+interface FileSelector
+interface FileSystem
+abstract class FileSystemConfigBuilder
+class FileSystemException extends IOException
+interface FileSystemManager
+ class FileSystemOptions implements Cloneable
+enum FileType
+class FileTypeHasNoContentException extends FileSystemException
+class FileTypeSelector implements FileSelector
+ class FileUtil
+class DecoratedFileObject implements FileObject
+class DefaultFileContentInfo implements FileContentInfo
+class DefaultFileMonitor implements Runnable, FileMonitor
+class DefaultFileReplicator extends AbstractVfsComponent implements FileReplicator, TemporaryFileStore
+class DefaultFileSystemConfigBuilder extends FileSystemConfigBuilder
+class DefaultFileSystemManager implements FileSystemManager
+class DefaultProviderConfiguration extends ProviderConfiguration
+
+class FileContentInfoFilenameFactory implements FileContentInfoFactory
+class FileTypeMap
+class PrivilegedFileReplicator implements FileReplicator, VfsComponent
+class ProviderConfiguration
+class Resource
+class StandardFileSystemManager extends DefaultFileSystemManager
+class SynchronizedFileObject extends DecoratedFileObject
+class URLStreamHandlerProxy extends URLStreamHandler
+class VFSClassLoader extends SecureClassLoader
+class VirtualFileName extends AbstractFileName
+class VirtualFileProvider extends AbstractVfsContainer
+class VirtualFileSystem extends AbstractFileSystem
+class InvertIncludeFileSelector implements FileSelector
+enum NameScope
+abstract class AbstractFileOperation implements FileOperation
+abstract class AbstractFileOperationProvider implements FileOperationProvider
+class DefaultFileOperations implements FileOperations
+interface FileOperation
+interface FileOperationProvider
+interface FileOperations
+interface VcsAdd extends FileOperation
+interface VcsCheckout extends FileOperation
+interface VcsCommit extends FileOperation
+interface VcsCommitListener
+interface VcsDelete extends FileOperation
+interface VcsLog extends FileOperation
+class VcsLogEntry
+interface VcsLogEntryHandler
+interface VcsModifyListener
+interface VcsRevert extends FileOperation
+enum VcsStatus
+interface VcsUpdate extends FileOperation
+interface VcsUpdateListener
+class PatternFileSelector implements FileSelector
+abstract class AbstractFileName implements FileName
+abstract class AbstractFileNameParser implements FileNameParser
+abstract class AbstractFileObject<AFS extends AbstractFileSystem> implements FileObject
+abstract class AbstractFileProvider extends AbstractVfsContainer implements FileProvider
+abstract class AbstractFileSystem extends AbstractVfsComponent implements FileSystem
+abstract class AbstractLayeredFileProvider extends AbstractFileProvider
+abstract class AbstractOriginatingFileProvider extends AbstractFileProvider
+abstract class AbstractRandomAccessContent implements RandomAccessContent
+abstract class AbstractRandomAccessStreamContent extends AbstractRandomAccessContent
+abstract class AbstractVfsComponent implements VfsComponent
+abstract class AbstractVfsContainer extends AbstractVfsComponent
+class Bzip2FileObject extends CompressedFileFileObject
+class Bzip2FileProvider extends CompressedFileFileProvider
+class Bzip2FileSystem extends CompressedFileFileSystem
+abstract class CompositeFileProvider extends AbstractFileProvider
+abstract class CompressedFileFileObject<FS extends CompressedFileFileSystem> extends AbstractFileObject
+abstract class CompressedFileFileProvider extends AbstractLayeredFileProvider
+abstract class CompressedFileFileSystem extends AbstractFileSystem
+ class DefaultFileContent implements FileContent
+
+ class DefaultURLConnection extends URLConnection
+class DefaultURLStreamHandler extends URLStreamHandler
+class DelegateFileObject<AFS extends AbstractFileSystem> extends AbstractFileObject implements FileListener
+class FileContentThreadData
+interface FileNameParser
+interface FileProvider
+interface FileReplicator
+class FileSystemKey implements Comparable
+interface FtpClient
+ class FtpClientFactory
+class FTPClientWrapper implements FtpClient
+class FtpFileNameParser extends HostFileNameParser
+class FtpFileObject extends AbstractFileObject
+class FtpFileProvider extends AbstractOriginatingFileProvider
+class FtpFileSystem extends AbstractFileSystem
+class FtpFileSystemConfigBuilder extends FileSystemConfigBuilder
+enum FtpFileType
+class FtpRandomAccessContent extends AbstractRandomAccessStreamContent
+ class FtpsClientFactory
+class FtpsClientWrapper extends FTPClientWrapper
+enum FtpsDataChannelProtectionLevel
+class FtpsFileProvider extends FtpFileProvider
+class FtpsFileSystem extends FtpFileSystem
+ class FtpsFileSystemConfigBuilder extends FtpFileSystemConfigBuilder
+enum FtpsMode
+class GenericFileName extends AbstractFileName
+class GzipFileObject extends CompressedFileFileObject
+class GzipFileProvider extends CompressedFileFileProvider
+class GzipFileSystem extends CompressedFileFileSystem
+enum HdfsFileAttributes
+class HdfsFileContentInfoFactory implements FileContentInfoFactory
+class HdfsFileObject extends AbstractFileObject
+class HdfsFileProvider extends AbstractOriginatingFileProvider
+class HdfsFileSystem extends AbstractFileSystem
+ class HdfsFileSystemConfigBuilder extends FileSystemConfigBuilder
+class HdfsRandomAccessContent extends AbstractRandomAccessContent
+class HostFileNameParser extends AbstractFileNameParser
+ class HttpClientFactory
+class HttpFileContentInfoFactory implements FileContentInfoFactory
+class HttpFileNameParser extends URLFileNameParser
+class HttpFileObject<FS extends HttpFileSystem> extends AbstractFileObject
+class HttpFileProvider extends AbstractOriginatingFileProvider
+class HttpFileSystem extends AbstractFileSystem
+class HttpFileSystemConfigBuilder extends FileSystemConfigBuilder
+class HttpRandomAccessContent extends AbstractRandomAccessStreamContent
+class HttpsFileNameParser extends URLFileNameParser
+class HttpsFileProvider extends HttpFileProvider
+class JarFileObject extends ZipFileObject
+class JarFileProvider extends ZipFileProvider
+class JarFileSystem extends ZipFileSystem
+class JarURLConnectionImpl extends JarURLConnection
+class LayeredFileName extends AbstractFileName
+class LayeredFileNameParser extends AbstractFileNameParser
+class DefaultLocalFileProvider extends AbstractOriginatingFileProvider implements LocalFileProvider
+class GenericFileNameParser extends LocalFileNameParser
+class LocalFile extends AbstractFileObject
+class LocalFileName extends AbstractFileName
+abstract class LocalFileNameParser extends AbstractFileNameParser
+class LocalFileRandomAccessContent extends AbstractRandomAccessContent
+class LocalFileSystem extends AbstractFileSystem
+class WindowsFileName extends LocalFileName
+class WindowsFileNameParser extends LocalFileNameParser
+interface LocalFileProvider extends FileProvider
+class RamFileData implements Serializable
+class RamFileObject extends AbstractFileObject
+class RamFileOutputStream extends OutputStream
+class RamFileProvider extends AbstractOriginatingFileProvider
+class RamFileRandomAccessContent implements RandomAccessContent
+class RamFileSystem extends AbstractFileSystem implements Serializable
+ class RamFileSystemConfigBuilder extends FileSystemConfigBuilder
+class ResourceFileProvider extends AbstractFileProvider
+ class ResourceFileSystemConfigBuilder extends FileSystemConfigBuilder
+class IdentityInfo
+interface IdentityRepositoryFactory
+ class SftpClientFactory
+class SftpFileNameParser extends URLFileNameParser
+class SftpFileObject extends AbstractFileObject
+class SftpFileProvider extends AbstractOriginatingFileProvider
+class SftpFileSystem extends AbstractFileSystem
+ class SftpFileSystemConfigBuilder extends FileSystemConfigBuilder
+class SftpRandomAccessContent extends AbstractRandomAccessStreamContent
+class SftpStreamProxy implements Proxy
+class TrustEveryoneUserInfo implements UserInfo
+class TarFileObject extends AbstractFileObject
+class TarFileProvider extends AbstractLayeredFileProvider
+class TarFileSystem extends AbstractFileSystem
+class Tbz2FileProvider extends CompositeFileProvider
+class TgzFileProvider extends CompositeFileProvider
+class TemporaryFileProvider extends AbstractFileProvider implements Comparable
+interface TemporaryFileStore
+ class UriParser
+class UrlFileName extends URLFileName
+class UrlFileNameParser extends AbstractFileNameParser
+class UrlFileObject extends AbstractFileObject
+class UrlFileProvider extends AbstractFileProvider
+class UrlFileSystem extends AbstractFileSystem
+class URLFileName extends GenericFileName
+class URLFileNameParser extends HostFileNameParser
+interface VfsComponent
+interface VfsComponentContext
+ class ExceptionConverter
+class WebdavFileContentInfoFactory implements FileContentInfoFactory
+class WebdavFileNameParser extends HttpFileNameParser
+class WebdavFileObject extends HttpFileObject
+class WebdavFileProvider extends HttpFileProvider
+class WebdavFileSystem extends HttpFileSystem
+ class WebdavFileSystemConfigBuilder extends HttpFileSystemConfigBuilder
+ class WebdavMethodRetryHandler implements HttpMethodRetryHandler
+class ZipFileObject extends AbstractFileObject
+class ZipFileProvider extends AbstractLayeredFileProvider
+class ZipFileSystem extends AbstractFileSystem
+interface RandomAccessContent extends DataOutput, DataInput
+ class Selectors
+abstract class AbstractSyncTask extends VfsTask
+class CopyTask extends AbstractSyncTask
+class DeleteTask extends VfsTask
+class MkdirTask extends VfsTask
+class MoveTask extends CopyTask
+class ShowFileTask extends VfsTask
+class SyncTask extends CopyTask
+class VfsTask extends Task
+class UserAuthenticationData
+interface UserAuthenticator
+class CombinedResources extends ResourceBundle
+interface Cryptor
+ class CryptorFactory
+class DefaultCryptor implements Cryptor
+class DelegatingFileSystemOptionsBuilder
+ class EncryptUtil
+ class FileObjectUtils
+ class Messages
+class MonitorInputStream extends BufferedInputStream
+class MonitorOutputStream extends BufferedOutputStream
+class MonitorRandomAccessContent implements RandomAccessContent
+ class Os
+ class OsFamily
+class PosixPermissions
+enum RandomAccessMode
+ class UserAuthenticatorUtils
+class WeakRefFileListener implements FileListener
+ class VFS
+ class VfsLog
