@@ -1,0 +1,763 @@
+@startuml
+
+class RemoteProcessException extends RuntimeException
+abstract class AbstractReplicatedMap implements Map, Serializable, RpcCallback, ChannelListener, MembershipListener, Heartbeat
+class LazyReplicatedMap extends AbstractReplicatedMap
+class ReplicatedMap extends AbstractReplicatedMap
+interface ReplicatedMapEntry extends Serializable
+interface Streamable
+abstract class AbstractRxTask implements Runnable
+abstract class AbstractSender implements DataSender
+class BioReceiver extends ReceiverBase implements Runnable
+class BioReplicationTask extends AbstractRxTask
+class BioSender extends AbstractSender
+class MultipointBioSender extends AbstractSender implements MultiPointSender
+class PooledMultiSender extends PooledSender
+class FastQueue
+class LinkObject
+class SingleRemoveSynchronizedAddLock
+class Constants
+interface DataSender
+interface MultiPointSender extends DataSender
+class NioReceiver extends ReceiverBase implements Runnable
+class NioReplicationTask extends AbstractRxTask
+class NioSender extends AbstractSender
+class ParallelNioSender extends AbstractSender implements MultiPointSender
+class PooledParallelSender extends PooledSender
+abstract class PooledSender extends AbstractSender implements MultiPointSender
+abstract class ReceiverBase implements ChannelReceiver, ListenCallback, RxTaskPool.TaskCreator
+class ReplicationTransmitter implements ChannelSender
+class RxTaskPool
+class SenderState
+ class UniqueId implements Serializable
+class Arrays
+class ExecutorFactory
+class Logs
+class StringManager
+class TcclThreadFactory implements ThreadFactory
+class UUIDGenerator
+interface User extends Principal
+interface UserDatabase
+abstract class AbstractGroup implements Group
+abstract class AbstractRole implements Role
+abstract class AbstractUser implements User
+ class Constants
+class MemoryGroup extends AbstractGroup
+class MemoryRole extends AbstractRole
+class MemoryUser extends AbstractUser
+class MemoryUserDatabase implements UserDatabase
+class MemoryUserDatabaseFactory implements ObjectFactory
+ class  Base64
+class CharsetMapper
+class ConcurrentDateFormat
+ class ContextName
+class Conversions
+ class CustomObjectInputStream extends ObjectInputStream
+class DateTool
+class DOMWriter
+ class Enumerator implements Enumeration
+ class Extension
+ class ExtensionValidator
+ class InstanceSupport
+class Introspection
+class IOTools
+abstract class LifecycleBase implements Lifecycle
+abstract class LifecycleMBeanBase extends LifecycleBase implements MBeanRegistration
+ class LifecycleSupport
+class ManifestResource
+class MIME2Java
+ class ParameterMap implements Map, Serializable
+ class RequestUtil
+ class ResourceSet extends HashSet
+class SchemaResolver implements EntityResolver
+class ServerInfo
+class SessionConfig
+abstract class SessionIdGeneratorBase extends LifecycleBase implements SessionIdGenerator
+class StandardSessionIdGenerator extends SessionIdGeneratorBase
+class Strftime
+ class StringParser
+class TomcatCSS
+class URLEncoder implements Cloneable
+class XMLWriter
+interface Valve
+class AccessLogValve extends ValveBase implements AccessLog
+class CometConnectionManagerValve extends ValveBase implements HttpSessionListener, LifecycleListener
+ class Constants
+class CrawlerSessionManagerValve extends ValveBase implements HttpSessionBindingListener
+class ErrorReportValve extends ValveBase
+class ExtendedAccessLogValve extends AccessLogValve
+ class JDBCAccessLogValve extends ValveBase implements AccessLog
+class PersistentValve extends ValveBase
+ class RemoteAddrValve extends RequestFilterValve
+ class RemoteHostValve extends RequestFilterValve
+class RemoteIpValve extends ValveBase
+abstract class RequestFilterValve extends ValveBase
+class SemaphoreValve extends ValveBase
+class SSLValve extends ValveBase
+class StuckThreadDetectionValve extends ValveBase
+abstract class ValveBase extends LifecycleMBeanBase implements Contained, Valve
+class Constants
+abstract class MessageInbound extends StreamInbound
+abstract class StreamInbound implements UpgradeInbound
+abstract class WebSocketServlet extends HttpServlet
+class WsFrame
+class WsHttpServletRequestWrapper implements HttpServletRequest
+class WsInputStream extends InputStream
+class WsOutbound
+interface Wrapper extends Container
+abstract class AbstractProcessor implements ActionHook, Processor
+abstract class AbstractProtocol implements ProtocolHandler, MBeanRegistration
+enum ActionCode
+interface ActionHook
+interface Adapter
+abstract class AbstractAjpProcessor extends AbstractProcessor
+abstract class AbstractAjpProtocol extends AbstractProtocol
+class AjpAprProcessor extends AbstractAjpProcessor
+class AjpAprProtocol extends AbstractAjpProtocol
+class AjpMessage
+class AjpNioProcessor extends AbstractAjpProcessor
+class AjpNioProtocol extends AbstractAjpProtocol
+class AjpProcessor extends AbstractAjpProcessor
+class AjpProtocol extends AbstractAjpProtocol
+ class Constants
+interface AsyncContextCallback
+class AsyncStateMachine
+ class Constants
+class ContainerThreadMarker
+enum ErrorState
+abstract class AbstractHttp11JsseProtocol extends AbstractHttp11Protocol
+abstract class AbstractHttp11Processor extends AbstractProcessor
+abstract class AbstractHttp11Protocol extends AbstractProtocol
+abstract class AbstractInputBuffer implements InputBuffer
+abstract class AbstractOutputBuffer implements OutputBuffer
+ class Constants
+class BufferedInputFilter implements InputFilter
+class ChunkedInputFilter implements InputFilter
+class ChunkedOutputFilter implements OutputFilter
+class FlushableGZIPOutputStream extends GZIPOutputStream
+class GzipOutputFilter implements OutputFilter
+class IdentityInputFilter implements InputFilter
+class IdentityOutputFilter implements OutputFilter
+class SavedRequestInputFilter implements InputFilter
+class VoidInputFilter implements InputFilter
+class VoidOutputFilter implements OutputFilter
+class HeadersTooLargeException extends IllegalStateException
+class Http11AprProcessor extends AbstractHttp11Processor
+class Http11AprProtocol extends AbstractHttp11Protocol
+class Http11NioProcessor extends AbstractHttp11Processor
+class Http11NioProtocol extends AbstractHttp11JsseProtocol
+class Http11Processor extends AbstractHttp11Processor
+class Http11Protocol extends AbstractHttp11JsseProtocol
+interface InputFilter extends InputBuffer
+class InternalAprInputBuffer extends AbstractInputBuffer
+class InternalAprOutputBuffer extends AbstractOutputBuffer
+class InternalInputBuffer extends AbstractInputBuffer
+class InternalNioInputBuffer extends AbstractInputBuffer
+class InternalNioOutputBuffer extends AbstractOutputBuffer
+class InternalOutputBuffer extends AbstractOutputBuffer implements ByteChunk.ByteOutputChannel
+interface OutputFilter extends OutputBuffer
+abstract class AbstractProcessor implements Processor, WebConnection
+abstract class AbstractServletInputStream extends ServletInputStream
+abstract class AbstractServletOutputStream extends ServletOutputStream
+class AprProcessor extends AbstractProcessor
+class AprServletInputStream extends AbstractServletInputStream
+class AprServletOutputStream extends AbstractServletOutputStream
+class BioProcessor extends AbstractProcessor
+class BioServletInputStream extends AbstractServletInputStream
+class BioServletOutputStream extends AbstractServletOutputStream
+class Constants
+class NioProcessor extends AbstractProcessor
+class NioServletInputStream extends AbstractServletInputStream
+class NioServletOutputStream extends AbstractServletOutputStream
+interface HttpUpgradeHandler
+interface ReadListener extends java.util.EventListener
+interface WebConnection
+interface WriteListener extends java.util.EventListener
+class UpgradeAprProcessor extends UpgradeProcessor
+class UpgradeBioProcessor extends UpgradeProcessor
+interface UpgradeInbound
+class UpgradeNioProcessor extends UpgradeProcessor
+class UpgradeOutbound extends OutputStream
+abstract class UpgradeProcessor implements Processor
+interface InputBuffer
+interface OutputBuffer
+interface Processor
+interface ProtocolHandler
+ class Request
+class RequestGroupInfo
+class RequestInfo
+ class Response
+class ExpressionFactoryImpl extends ExpressionFactory
+abstract class ELArithmetic
+class ELSupport
+ class EvaluationContext extends ELContext
+ class ExpressionBuilder implements NodeVisitor
+class FunctionMapperFactory extends FunctionMapper
+class FunctionMapperImpl extends FunctionMapper implements Externalizable
+class VariableMapperFactory extends VariableMapper
+class VariableMapperImpl extends VariableMapper implements Externalizable
+ class MethodExpressionImpl extends MethodExpression implements Externalizable
+class MethodExpressionLiteral extends MethodExpression implements Externalizable
+class ArithmeticNode extends SimpleNode
+ class AstAnd extends BooleanNode
+ class AstBracketSuffix extends SimpleNode
+ class AstChoice extends SimpleNode
+ class AstCompositeExpression extends SimpleNode
+ class AstDeferredExpression extends SimpleNode
+ class AstDiv extends ArithmeticNode
+ class AstDotSuffix extends SimpleNode
+ class AstDynamicExpression extends SimpleNode
+ class AstEmpty extends SimpleNode
+ class AstEqual extends BooleanNode
+ class AstFalse extends BooleanNode
+ class AstFloatingPoint extends SimpleNode
+ class AstFunction extends SimpleNode
+ class AstGreaterThan extends BooleanNode
+ class AstGreaterThanEqual extends BooleanNode
+ class AstIdentifier extends SimpleNode
+ class AstInteger extends SimpleNode
+ class AstLessThan extends BooleanNode
+ class AstLessThanEqual extends BooleanNode
+ class AstLiteralExpression extends SimpleNode
+ class AstMethodParameters extends SimpleNode
+ class AstMinus extends ArithmeticNode
+ class AstMod extends ArithmeticNode
+ class AstMult extends ArithmeticNode
+ class AstNegative extends SimpleNode
+ class AstNot extends SimpleNode
+ class AstNotEqual extends BooleanNode
+ class AstNull extends SimpleNode
+ class AstOr extends BooleanNode
+ class AstPlus extends ArithmeticNode
+ class AstString extends SimpleNode
+ class AstTrue extends BooleanNode
+ class AstValue extends SimpleNode
+class BooleanNode extends SimpleNode
+class ELParser implements ELParserTreeConstants, ELParserConstants
+interface ELParserConstants
+class ELParserTokenManager implements ELParserConstants
+interface ELParserTreeConstants
+class JJTELParserState
+interface Node
+interface NodeVisitor
+class ParseException extends Exception
+class SimpleCharStream
+abstract class SimpleNode extends ELSupport implements Node
+class Token implements java.io.Serializable
+class TokenMgrError extends Error
+ class ConcurrentCache
+ class MessageFactory
+class ReflectionUtil
+class Validation
+ class ValueExpressionImpl extends ValueExpression implements Externalizable
+ class ValueExpressionLiteral extends ValueExpression implements Externalizable
+class AntCompiler extends Compiler
+class AttributeParser
+class BeanRepository
+class Collector
+abstract class Compiler
+class DefaultErrorHandler implements ErrorHandler
+class Dumper
+class ELFunctionMapper
+interface ELInterpreter
+class ELInterpreterFactory
+abstract class ELNode
+class ELParser
+class ErrorDispatcher
+interface ErrorHandler
+class Generator
+class ImplicitTagLibraryInfo extends TagLibraryInfo
+interface JarResource
+class JarScannerFactory
+class JarURLResource implements JarResource
+class JasperTagInfo extends TagInfo
+class JavacErrorDetail
+class JDTCompiler extends org.apache.jasper.compiler.Compiler
+class JspConfig
+class JspDocumentParser extends DefaultHandler2 implements TagConstants
+class JspReader
+ class JspRuntimeContext
+class JspUtil
+class Localizer
+
+abstract class Node implements TagConstants
+class PageDataImpl extends PageData implements TagConstants
+class PageInfo
+class Parser implements TagConstants
+class ParserController implements TagConstants
+class ScriptingVariabler
+class ServletWriter
+class SmapGenerator
+class SmapStratum
+class SmapUtil
+interface TagConstants
+class TagFileProcessor
+class TagLibraryInfoImpl extends TagLibraryInfo implements TagConstants
+interface TagPlugin
+interface TagPluginContext
+class TagPluginManager
+class TextOptimizer
+class TldLocation
+class TldLocationsCache
+class Validator
+class WebXml
+class Constants
+class ELContextImpl extends ELContext
+ class ELContextWrapper extends ELContext
+ class ELResolverImpl extends ELResolver
+ class ExpressionEvaluatorImpl extends ExpressionEvaluator
+ class ExpressionImpl extends Expression
+ class FunctionMapperImpl extends javax.el.FunctionMapper
+class JasperELResolver extends CompositeELResolver
+class JspELException extends ELException
+ class JspMethodExpression extends MethodExpression implements Externalizable
+class JspMethodNotFoundException extends MethodNotFoundException
+ class JspPropertyNotFoundException extends PropertyNotFoundException
+class JspPropertyNotWritableException extends PropertyNotWritableException
+ class JspValueExpression extends ValueExpression implements Externalizable
+ class VariableResolverImpl implements VariableResolver
+ class EmbeddedServletOptions implements Options
+class JasperException extends javax.servlet.ServletException
+class JspC extends Task implements Options
+class JspCompilationContext
+interface Options
+class BodyContentImpl extends BodyContent
+class ExceptionUtils
+abstract class HttpJspBase extends HttpServlet implements HttpJspPage
+class InstanceManagerFactory
+class JspApplicationContextImpl implements JspApplicationContext
+class JspContextWrapper extends PageContext implements VariableResolver
+class JspFactoryImpl extends JspFactory
+abstract class JspFragmentHelper extends JspFragment
+class JspRuntimeLibrary
+interface JspSourceDependent
+class JspWriterImpl extends JspWriter
+class PageContextImpl extends PageContext
+class PerThreadTagHandlerPool extends TagHandlerPool
+ class ProtectedFunctionMapper extends javax.el.FunctionMapper implements FunctionMapper
+class ServletResponseWrapperInclude extends HttpServletResponseWrapper
+class TagHandlerPool
+ class SecurityClassLoad
+ class SecurityUtil
+class JasperLoader extends URLClassLoader
+class JspCServletContext implements ServletContext
+class JspServlet extends HttpServlet implements PeriodicEventListener
+class JspServletWrapper
+class Catch implements TagPlugin
+ class Choose implements TagPlugin
+ class ForEach implements TagPlugin
+class ForTokens implements TagPlugin
+ class If implements TagPlugin
+class Import implements TagPlugin
+ class Otherwise implements TagPlugin
+ class Out implements TagPlugin
+class Param implements TagPlugin
+class Redirect implements TagPlugin
+class Remove implements TagPlugin
+class Set implements TagPlugin
+class Url implements TagPlugin
+ class When implements TagPlugin
+class Util
+ class Enumerator implements Enumeration
+class FastRemovalDequeue
+class UniqueAttributesImpl extends AttributesImpl
+class ASCIIReader extends Reader
+class EncodingMap
+class ParserUtils
+class SymbolTable
+class TreeNode
+class UCSReader extends Reader
+class UTF8Reader extends Reader
+class XMLChar
+class XMLEncodingDetector
+class XMLString
+class XMLStringBuffer extends XMLString
+class AsyncFileHandler extends FileHandler
+class ClassLoaderLogManager extends LogManager
+class DateFormatCache
+class FileHandler extends Handler
+class JdkLoggerFormatter extends Formatter
+class DirectJDKLog implements Log
+interface Log
+class LogConfigurationException extends RuntimeException
+abstract class LogFactory
+class OneLineFormatter extends Formatter
+class VerbatimFormatter extends Formatter
+ class Constants
+class ContextAccessController
+class ContextBindings
+class EjbRef extends Reference
+class BeanFactory implements ObjectFactory
+ class Constants
+class DataSourceLinkFactory extends ResourceLinkFactory
+class EjbFactory implements ObjectFactory
+class MailSessionFactory implements ObjectFactory
+class OpenEjbFactory implements ObjectFactory
+class ResourceEnvFactory implements ObjectFactory
+class ResourceFactory implements ObjectFactory
+class ResourceLinkFactory implements ObjectFactory
+class SendMailFactory implements ObjectFactory
+class TransactionFactory implements ObjectFactory
+class ServiceProxy implements InvocationHandler
+class ServiceRefFactory implements ObjectFactory
+class HandlerRef extends Reference
+class javaURLContextFactory implements ObjectFactory, InitialContextFactory
+ class JndiPermission extends BasicPermission
+class NameParserImpl implements NameParser
+class NamingContext implements Context
+class NamingContextBindingsEnumeration implements NamingEnumeration
+class NamingContextEnumeration implements NamingEnumeration
+class NamingEntry
+class ResourceEnvRef extends Reference
+class ResourceLinkRef extends Reference
+class ResourceRef extends Reference
+abstract class BaseDirContext implements DirContext
+class CacheEntry
+class ClasspathURLStreamHandler extends URLStreamHandler
+class ConcurrentDateFormat
+ class Constants
+class DirContextURLConnection extends URLConnection
+class DirContextURLStreamHandler extends URLStreamHandler
+class DirContextURLStreamHandlerFactory implements URLStreamHandlerFactory
+class EmptyDirContext implements DirContext
+class FileDirContext extends BaseDirContext
+class ImmutableNameNotFoundException extends NameNotFoundException
+class Handler extends DirContextURLStreamHandler
+class JrePlatform
+class ProxyDirContext implements DirContext
+class RecyclableNamingEnumeration implements NamingEnumeration
+class Resource
+class ResourceAttributes implements Attributes
+class ResourceCache
+class VirtualDirContext extends FileDirContext
+class WARDirContext extends BaseDirContext
+class SelectorContext implements Context
+class ServiceRef extends Reference
+class StringManager
+class TransactionRef extends Reference
+class CheckEol extends Task
+class Txt2Html extends Task
+interface InstanceManager
+interface InstrumentableClassLoader
+interface JarScanner
+interface JarScannerCallback
+class Address
+interface BIOCallback
+class Buffer
+class Directory
+class Error extends Exception
+class File
+class FileInfo
+class Global
+ class Library
+class LibraryNotFoundError extends UnsatisfiedLinkError
+class Local
+class Lock
+class Mmap
+class Multicast
+class OS
+interface PasswordCallback
+class Poll
+class Pool
+interface PoolCallback
+class Proc
+class Procattr
+interface ProcErrorCallback
+class Registry
+class Shm
+class Sockaddr
+class Socket
+ class SSL
+ class SSLContext
+class SSLSocket
+class Status
+class Stdlib
+class Thread
+class Time
+class User
+interface PeriodicEventListener
+class AnnotationElementValue extends ElementValue
+class AnnotationEntry
+class Annotations
+class ArrayElementValue extends ElementValue
+class ClassElementValue extends ElementValue
+class ClassFormatException extends RuntimeException
+ class ClassParser
+abstract class Constant
+ class ConstantClass extends Constant
+ class ConstantDouble extends Constant
+ class ConstantFloat extends Constant
+ class ConstantInteger extends Constant
+ class ConstantLong extends Constant
+class ConstantPool
+ class ConstantUtf8 extends Constant
+abstract class ElementValue
+class ElementValuePair
+class EnumElementValue extends ElementValue
+class JavaClass
+class SimpleElementValue extends ElementValue
+
+ class Const
+ class Ascii
+class B2CConverter
+ class ByteChunk implements Cloneable, Serializable
+ class C2BConverter
+ class CharChunk implements Cloneable, Serializable, CharSequence
+ class Constants
+ class HexUtils
+ class MessageBytes implements Cloneable, Serializable
+class StringCache
+ class UDecoder
+ class UEncoder
+ class UriUtil
+class Utf8Decoder extends CharsetDecoder
+class Utf8Encoder extends CharsetEncoder
+class Base64 extends BaseNCodec
+abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder
+class StringUtils
+interface BinaryDecoder extends Decoder
+interface BinaryEncoder extends Encoder
+interface Decoder
+class DecoderException extends Exception
+interface Encoder
+class EncoderException extends Exception
+ class ConcurrentCache
+class ManagedConcurrentWeakHashMap extends AbstractMap implements ConcurrentMap
+class Jre7Compat extends JreCompat
+class Jre8Compat extends Jre7Compat
+class Jre9Compat extends Jre8Compat
+class JreCompat
+class JreVendor
+class Constants
+class DigesterFactory
+ class InputSourceUtil
+class LocalResolver implements EntityResolver2
+class XmlErrorHandler implements ErrorHandler
+ class XmlIdentifiers
+class Diagnostics
+abstract class AbstractObjectCreationFactory implements ObjectCreationFactory
+class ArrayStack extends ArrayList
+class CallMethodRule extends Rule
+class CallParamRule extends Rule
+class Digester extends DefaultHandler2
+class FactoryCreateRule extends Rule
+class GenericParser
+class NodeCreateRule extends Rule
+class ObjectCreateRule extends Rule
+interface ObjectCreationFactory
+class ObjectParamRule extends Rule
+class ParserFeatureSetterFactory
+class PathCallParamRule extends Rule
+abstract class Rule
+interface Rules
+class RulesBase implements Rules
+interface RuleSet
+abstract class RuleSetBase implements RuleSet
+class SetNextRule extends Rule
+class SetPropertiesRule extends Rule
+class SetPropertyRule extends Rule
+class SetRootRule extends Rule
+class SetTopRule extends Rule
+class WithDefaultsRulesWrapper implements Rules
+class XercesParser
+class DomUtil
+class ExceptionUtils
+class ConfigFileLoader
+ class Matcher
+class ContentType
+ class Cookies
+ class CookieSupport
+ class FastHttpDateFormat
+class ByteArrayOutputStream extends OutputStream
+class DeferredFileOutputStream extends ThresholdingOutputStream
+class DiskFileItem implements FileItem
+class DiskFileItemFactory implements FileItemFactory
+
+interface FileItem extends FileItemHeadersSupport
+interface FileItemFactory
+interface FileItemHeaders
+interface FileItemHeadersSupport
+interface FileItemIterator
+interface FileItemStream extends FileItemHeadersSupport
+class FileUpload extends FileUploadBase
+abstract class FileUploadBase
+class FileUploadException extends Exception
+class FileUtils
+class InvalidFileNameException extends RuntimeException
+class IOUtils
+class MultipartStream
+
+class ParameterParser
+interface ProgressListener
+interface RequestContext
+
+class ServletFileUpload extends FileUpload
+class ServletRequestContext implements UploadContext
+abstract class ThresholdingOutputStream extends OutputStream
+interface UploadContext extends RequestContext
+interface Closeable
+class FileItemHeadersImpl implements FileItemHeaders, Serializable
+abstract class LimitedInputStream extends FilterInputStream implements Closeable
+ class MimeUtility
+
+
+
+
+ class Streams
+class HttpMessages
+ class Mapper
+class MappingData
+class WrapperMappingInfo
+class MimeHeaders
+ class Parameters
+class HttpParser
+class MediaType
+class MediaTypeCache
+class RequestUtil
+class ResponseUtil
+class ServerCookie implements Serializable
+ class IntrospectionUtils
+class CaptureLog
+class SystemLogHandler extends PrintStream
+class UserDataHelper
+class AttributeInfo extends FeatureInfo
+class BaseAttributeFilter implements NotificationFilter
+class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBeanNotificationBroadcaster
+class BaseNotificationBroadcaster implements NotificationBroadcaster
+class ConstructorInfo extends OperationInfo
+class FeatureInfo implements Serializable
+class FixedNotificationFilter implements NotificationFilter
+class ManagedBean implements java.io.Serializable
+class MbeansDescriptorsDigesterSource extends ModelerSource
+class MbeansDescriptorsDOMSource extends ModelerSource
+class MbeansDescriptorsIntrospectionSource extends ModelerSource
+class MbeansDescriptorsSerSource extends ModelerSource
+class MbeansSource extends ModelerSource implements MbeansSourceMBean
+interface MbeansSourceMBean
+abstract class ModelerSource
+class NotificationInfo extends FeatureInfo
+class OperationInfo extends FeatureInfo
+class ParameterInfo extends FeatureInfo
+class Registry implements RegistryMBean, MBeanRegistration
+interface RegistryMBean
+class Util
+class MutableInteger
+abstract class AbstractEndpoint
+class AprEndpoint extends AbstractEndpoint
+class Constants
+class DefaultServerSocketFactory implements ServerSocketFactory
+class JIoEndpoint extends AbstractEndpoint
+class JSSEImplementation extends SSLImplementation
+ class JSSEKeyManager extends X509ExtendedKeyManager
+class JSSESocketFactory implements ServerSocketFactory, SSLUtil
+class JSSESupport implements SSLSupport, SSLSessionManager
+class NioX509KeyManager extends X509ExtendedKeyManager
+class NioBlockingSelector
+class NioChannel implements ByteChannel
+class NioEndpoint extends AbstractEndpoint
+class NioSelectorPool
+class SecureNioChannel extends NioChannel
+enum SendfileKeepAliveState
+enum SendfileState
+interface ServerSocketFactory
+class SocketProperties
+enum SocketStatus
+class SocketWrapper
+abstract class SSLImplementation
+interface SSLSessionManager
+interface SSLSupport
+interface SSLUtil
+ class URL implements Serializable
+class StringManager
+ class Constants
+class FileUrlJar implements Jar
+interface Jar
+class JarFactory
+class NonClosingJarInputStream extends JarInputStream
+class StandardJarScanner implements JarScanner
+class UrlJar implements Jar
+class ConcurrentMessageDigest
+ class MD5Encoder
+interface PermissionCheck
+class PrivilegedGetTccl implements PrivilegedAction
+class PrivilegedSetTccl implements PrivilegedAction
+ class Constants
+class LimitLatch
+interface ResizableExecutor extends Executor
+class StopPooledThreadException extends RuntimeException
+class TaskQueue extends LinkedBlockingQueue
+class TaskThread extends Thread
+class TaskThreadFactory implements ThreadFactory
+class ThreadPoolExecutor extends java.util.concurrent.ThreadPoolExecutor
+class AsyncChannelGroupUtil
+interface AsyncChannelWrapper
+class AsyncChannelWrapperNonSecure implements AsyncChannelWrapper
+class AsyncChannelWrapperSecure implements AsyncChannelWrapper
+interface BackgroundProcess
+class BackgroundProcessManager
+class CaseInsensitiveKeyMap extends AbstractMap
+class Constants
+class DecoderEntry
+class FutureToSendHandler implements Future, SendHandler
+class MessageHandlerResult
+enum MessageHandlerResultType
+class MessagePart
+class PerMessageDeflate implements Transformation
+class Constants
+
+abstract class PojoEndpointBase extends Endpoint
+class PojoEndpointClient extends PojoEndpointBase
+class PojoEndpointServer extends PojoEndpointBase
+abstract class PojoMessageHandlerBase implements WrappedMessageHandler
+abstract class PojoMessageHandlerPartialBase extends PojoMessageHandlerBase implements MessageHandler.Partial
+class PojoMessageHandlerPartialBinary extends PojoMessageHandlerPartialBase
+class PojoMessageHandlerPartialText extends PojoMessageHandlerPartialBase
+abstract class PojoMessageHandlerWholeBase extends PojoMessageHandlerBase implements MessageHandler.Whole
+class PojoMessageHandlerWholeBinary extends PojoMessageHandlerWholeBase
+class PojoMessageHandlerWholePong extends PojoMessageHandlerWholeBase
+class PojoMessageHandlerWholeText extends PojoMessageHandlerWholeBase
+class PojoMethodMapping
+class PojoPathParam
+class ReadBufferOverflowException extends IOException
+class SendHandlerToCompletionHandler implements CompletionHandler
+class Constants
+class DefaultServerEndpointConfigurator extends ServerEndpointConfig.Configurator
+
+class UpgradeUtil
+class UriTemplate
+class WsContextListener implements ServletContextListener
+class WsFilter implements Filter
+class WsFrameServer extends WsFrameBase
+class WsHandshakeRequest implements HandshakeRequest
+class WsHttpUpgradeHandler implements HttpUpgradeHandler
+class WsMappingResult
+class WsPerSessionServerEndpointConfig implements ServerEndpointConfig
+class WsRemoteEndpointImplServer extends WsRemoteEndpointImplBase
+class WsSci implements ServletContainerInitializer
+class WsServerContainer extends WsWebSocketContainer implements ServerContainer
+class WsSessionListener implements HttpSessionListener
+class WsWriteTimeout implements BackgroundProcess
+interface Transformation
+class TransformationFactory
+enum TransformationResult
+class Util
+interface WrappedMessageHandler
+class WsContainerProvider extends ContainerProvider
+class WsExtension implements Extension
+class WsExtensionParameter implements Parameter
+abstract class WsFrameBase
+class WsFrameClient extends WsFrameBase
+class WsHandshakeResponse implements HandshakeResponse
+class WsIOException extends IOException
+class WsPongMessage implements PongMessage
+class WsRemoteEndpointAsync extends WsRemoteEndpointBase implements RemoteEndpoint.Async
+abstract class WsRemoteEndpointBase implements RemoteEndpoint
+class WsRemoteEndpointBasic extends WsRemoteEndpointBase implements RemoteEndpoint.Basic
+abstract class WsRemoteEndpointImplBase implements RemoteEndpoint
+class WsRemoteEndpointImplClient extends WsRemoteEndpointImplBase
+class WsSession implements Session
+class WsWebSocketContainer implements WebSocketContainer, BackgroundProcess
+
+
+
+@enduml
