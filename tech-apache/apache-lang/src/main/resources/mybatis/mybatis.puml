@@ -1,0 +1,372 @@
+@startuml
+
+annotation Arg
+annotation AutomapConstructor
+annotation CacheNamespace
+annotation CacheNamespaceRef
+annotation Case
+annotation ConstructorArgs
+annotation Delete
+annotation DeleteProvider
+annotation Flush
+annotation Insert
+annotation InsertProvider
+annotation Lang
+annotation Many
+annotation MapKey
+annotation Mapper
+annotation One
+annotation Options
+
+annotation Param
+annotation Property
+annotation Result
+annotation ResultMap
+annotation Results
+annotation ResultType
+annotation Select
+annotation SelectKey
+annotation SelectProvider
+annotation TypeDiscriminator
+annotation Update
+annotation UpdateProvider
+class BindingException extends PersistenceException
+class MapperMethod
+class MapperProxy implements InvocationHandler, Serializable
+class MapperProxyFactory
+class MapperRegistry
+
+class MapperAnnotationBuilder
+class MethodResolver
+
+class ProviderSqlSource implements SqlSource
+abstract class BaseBuilder
+class BuilderException extends PersistenceException
+class CacheRefResolver
+class IncompleteElementException extends BuilderException
+interface InitializingObject
+class MapperBuilderAssistant extends BaseBuilder
+
+class ParameterExpression extends HashMap
+class ResultMapResolver
+class SqlSourceBuilder extends BaseBuilder
+class StaticSqlSource implements SqlSource
+
+class XMLConfigBuilder extends BaseBuilder
+class XMLIncludeTransformer
+class XMLMapperBuilder extends BaseBuilder
+class XMLMapperEntityResolver implements EntityResolver
+class XMLStatementBuilder extends BaseBuilder
+interface Cache
+class CacheException extends PersistenceException
+class CacheKey implements Cloneable, Serializable
+class BlockingCache implements Cache
+class FifoCache implements Cache
+class LoggingCache implements Cache
+class LruCache implements Cache
+
+class ScheduledCache implements Cache
+class SerializedCache implements Cache
+class SoftCache implements Cache
+class SynchronizedCache implements Cache
+class TransactionalCache implements Cache
+class WeakCache implements Cache
+
+class PerpetualCache implements Cache
+ class NullCacheKey extends CacheKey
+
+class TransactionalCacheManager
+interface Cursor extends Closeable, Iterable
+class DefaultCursor implements Cursor
+
+
+class DataSourceException extends PersistenceException
+interface DataSourceFactory
+class JndiDataSourceFactory implements DataSourceFactory
+
+
+
+class PooledConnection implements InvocationHandler
+class PooledDataSource implements DataSource
+class PooledDataSourceFactory extends UnpooledDataSourceFactory
+class PoolState
+
+class UnpooledDataSource implements DataSource
+class UnpooledDataSourceFactory implements DataSourceFactory
+class ExceptionFactory
+class IbatisException extends RuntimeException
+
+class PersistenceException extends IbatisException
+class TooManyResultsException extends PersistenceException
+abstract class BaseExecutor implements Executor
+class BatchExecutor extends BaseExecutor
+class BatchExecutorException extends ExecutorException
+class BatchResult
+class CachingExecutor implements Executor
+class ErrorContext
+enum ExecutionPlaceholder
+interface Executor
+class ExecutorException extends PersistenceException
+class Jdbc3KeyGenerator implements KeyGenerator
+interface KeyGenerator
+class NoKeyGenerator implements KeyGenerator
+
+class SelectKeyGenerator implements KeyGenerator
+abstract class AbstractEnhancedDeserializationProxy
+abstract class AbstractSerialStateHolder implements Externalizable
+class CglibProxyFactory implements ProxyFactory
+class CglibSerialStateHolder extends AbstractSerialStateHolder
+
+class CglibProxyFactory extends org.apache.ibatis.executor.loader.cglib.CglibProxyFactory
+class JavassistProxyFactory implements org.apache.ibatis.executor.loader.ProxyFactory
+class JavassistSerialStateHolder extends AbstractSerialStateHolder
+
+ class JavassistProxyFactory extends org.apache.ibatis.executor.loader.javassist.JavassistProxyFactory
+
+interface ProxyFactory
+class ResultLoader
+class ResultLoaderMap
+interface WriteReplaceInterface
+
+
+interface ParameterHandler
+class DefaultMapResultHandler implements ResultHandler
+class DefaultResultContext implements ResultContext
+class DefaultResultHandler implements ResultHandler
+
+class ResultMapException extends PersistenceException
+class ResultExtractor
+class DefaultResultSetHandler implements ResultSetHandler
+
+class PrimitiveTypes
+interface ResultSetHandler
+class ResultSetWrapper
+class ReuseExecutor extends BaseExecutor
+class SimpleExecutor extends BaseExecutor
+abstract class BaseStatementHandler implements StatementHandler
+class CallableStatementHandler extends BaseStatementHandler
+
+class PreparedStatementHandler extends BaseStatementHandler
+class RoutingStatementHandler implements StatementHandler
+class SimpleStatementHandler extends BaseStatementHandler
+interface StatementHandler
+class StatementUtil
+class ClassLoaderWrapper
+class DefaultVFS extends VFS
+class ExternalResources
+class JBoss6VFS extends VFS
+
+class ResolverUtil
+class Resources
+abstract class VFS
+abstract class AbstractSQL
+enum Null
+
+class RuntimeSqlException extends RuntimeException
+class ScriptRunner
+class SelectBuilder
+class SQL extends AbstractSQL
+class SqlBuilder
+class SqlRunner
+annotation UsesJava7
+annotation UsesJava8
+class JakartaCommonsLoggingImpl implements org.apache.ibatis.logging.Log
+
+abstract class BaseJdbcLogger
+ class ConnectionLogger extends BaseJdbcLogger implements InvocationHandler
+
+ class PreparedStatementLogger extends BaseJdbcLogger implements InvocationHandler
+ class ResultSetLogger extends BaseJdbcLogger implements InvocationHandler
+ class StatementLogger extends BaseJdbcLogger implements InvocationHandler
+class Jdk14LoggingImpl implements Log
+
+interface Log
+class Log4jImpl implements Log
+
+class Log4j2AbstractLoggerImpl implements Log
+class Log4j2Impl implements Log
+class Log4j2LoggerImpl implements Log
+
+class LogException extends PersistenceException
+ class LogFactory
+class NoLoggingImpl implements Log
+
+
+
+class Slf4jImpl implements Log
+class Slf4jLocationAwareLoggerImpl implements Log
+class Slf4jLoggerImpl implements Log
+
+class StdOutImpl implements Log
+class BoundSql
+class CacheBuilder
+interface DatabaseIdProvider
+class DefaultDatabaseIdProvider extends VendorDatabaseIdProvider
+class Discriminator
+ class Environment
+enum FetchType
+ class MappedStatement
+
+class ParameterMap
+class ParameterMapping
+enum ParameterMode
+enum ResultFlag
+class ResultMap
+class ResultMapping
+enum ResultSetType
+enum SqlCommandType
+interface SqlSource
+enum StatementType
+class VendorDatabaseIdProvider implements DatabaseIdProvider
+
+class GenericTokenParser
+
+class ParsingException extends PersistenceException
+class PropertyParser
+interface TokenHandler
+class XNode
+class XPathParser
+interface Interceptor
+class InterceptorChain
+annotation Intercepts
+class Invocation
+
+class Plugin implements InvocationHandler
+class PluginException extends PersistenceException
+annotation Signature
+class ArrayUtil
+class DefaultReflectorFactory implements ReflectorFactory
+class ExceptionUtil
+class DefaultObjectFactory implements ObjectFactory, Serializable
+interface ObjectFactory
+
+class GetFieldInvoker implements Invoker
+interface Invoker
+class MethodInvoker implements Invoker
+
+class SetFieldInvoker implements Invoker
+class Jdk
+class MetaClass
+class MetaObject
+
+class ParamNameResolver
+class ParamNameUtil
+
+ class PropertyCopier
+ class PropertyNamer
+class PropertyTokenizer implements Iterator
+class ReflectionException extends PersistenceException
+class Reflector
+interface ReflectorFactory
+ class SystemMetaObject
+class TypeParameterResolver
+abstract class BaseWrapper implements ObjectWrapper
+class BeanWrapper extends BaseWrapper
+class CollectionWrapper implements ObjectWrapper
+class DefaultObjectWrapperFactory implements ObjectWrapperFactory
+class MapWrapper extends BaseWrapper
+interface ObjectWrapper
+interface ObjectWrapperFactory
+
+class DefaultParameterHandler implements ParameterHandler
+
+class RawLanguageDriver extends XMLLanguageDriver
+class RawSqlSource implements SqlSource
+interface LanguageDriver
+class LanguageDriverRegistry
+
+class ScriptingException extends PersistenceException
+class ChooseSqlNode implements SqlNode
+class DynamicContext
+class DynamicSqlSource implements SqlSource
+class ExpressionEvaluator
+class ForEachSqlNode implements SqlNode
+class IfSqlNode implements SqlNode
+class MixedSqlNode implements SqlNode
+ class OgnlCache
+class OgnlClassResolver implements ClassResolver
+
+class SetSqlNode extends TrimSqlNode
+interface SqlNode
+class StaticTextSqlNode implements SqlNode
+class TextSqlNode implements SqlNode
+class TrimSqlNode implements SqlNode
+class VarDeclSqlNode implements SqlNode
+class WhereSqlNode extends TrimSqlNode
+class XMLLanguageDriver implements LanguageDriver
+class XMLScriptBuilder extends BaseBuilder
+enum AutoMappingBehavior
+enum AutoMappingUnknownColumnBehavior
+class Configuration
+class DefaultSqlSession implements SqlSession
+class DefaultSqlSessionFactory implements SqlSessionFactory
+
+enum ExecutorType
+enum LocalCacheScope
+
+interface ResultContext
+interface ResultHandler
+class RowBounds
+interface SqlSession extends Closeable
+class SqlSessionException extends PersistenceException
+interface SqlSessionFactory
+class SqlSessionFactoryBuilder
+class SqlSessionManager implements SqlSessionFactory, SqlSession
+enum TransactionIsolationLevel
+class JdbcTransaction implements Transaction
+class JdbcTransactionFactory implements TransactionFactory
+
+class ManagedTransaction implements Transaction
+class ManagedTransactionFactory implements TransactionFactory
+
+
+interface Transaction
+class TransactionException extends PersistenceException
+interface TransactionFactory
+annotation Alias
+class ArrayTypeHandler extends BaseTypeHandler
+abstract class BaseTypeHandler extends TypeReference implements TypeHandler
+class BigDecimalTypeHandler extends BaseTypeHandler
+class BigIntegerTypeHandler extends BaseTypeHandler
+class BlobByteObjectArrayTypeHandler extends BaseTypeHandler
+class BlobInputStreamTypeHandler extends BaseTypeHandler
+class BlobTypeHandler extends BaseTypeHandler
+class BooleanTypeHandler extends BaseTypeHandler
+class ByteArrayTypeHandler extends BaseTypeHandler
+class ByteArrayUtils
+class ByteObjectArrayTypeHandler extends BaseTypeHandler
+class ByteTypeHandler extends BaseTypeHandler
+class CharacterTypeHandler extends BaseTypeHandler
+class ClobReaderTypeHandler extends BaseTypeHandler
+class ClobTypeHandler extends BaseTypeHandler
+class DateOnlyTypeHandler extends BaseTypeHandler
+class DateTypeHandler extends BaseTypeHandler
+class DoubleTypeHandler extends BaseTypeHandler
+class EnumOrdinalTypeHandler extends BaseTypeHandler
+class EnumTypeHandler extends BaseTypeHandler
+class FloatTypeHandler extends BaseTypeHandler
+class IntegerTypeHandler extends BaseTypeHandler
+enum JdbcType
+class LongTypeHandler extends BaseTypeHandler
+annotation MappedJdbcTypes
+annotation MappedTypes
+class NClobTypeHandler extends BaseTypeHandler
+class NStringTypeHandler extends BaseTypeHandler
+class ObjectTypeHandler extends BaseTypeHandler
+
+class ShortTypeHandler extends BaseTypeHandler
+class SimpleTypeRegistry
+class SqlDateTypeHandler extends BaseTypeHandler
+class SqlTimestampTypeHandler extends BaseTypeHandler
+class SqlTimeTypeHandler extends BaseTypeHandler
+class StringTypeHandler extends BaseTypeHandler
+class TimeOnlyTypeHandler extends BaseTypeHandler
+class TypeAliasRegistry
+class TypeException extends PersistenceException
+interface TypeHandler
+ class TypeHandlerRegistry
+abstract class TypeReference
+class UnknownTypeHandler extends BaseTypeHandler
+
+
+@enduml
