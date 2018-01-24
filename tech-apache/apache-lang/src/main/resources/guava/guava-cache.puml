@@ -1,0 +1,27 @@
+@startuml
+
+abstract class AbstractCache<K, V> implements Cache
+abstract class AbstractLoadingCache<K, V> extends AbstractCache implements LoadingCache
+interface Cache<K, V>
+ class CacheBuilder<K, V>
+ class CacheBuilderSpec
+abstract class CacheLoader<K, V>
+ class CacheStats
+abstract class ForwardingCache<K, V> extends ForwardingObject implements Cache
+abstract class ForwardingLoadingCache<K, V> extends ForwardingCache implements LoadingCache
+interface LoadingCache<K, V> extends Cache, Function
+class LocalCache<K, V> extends AbstractMap implements ConcurrentMap
+interface LongAddable
+
+
+
+interface ReferenceEntry<K, V>
+enum RemovalCause
+interface RemovalListener<K, V>
+ class RemovalListeners
+ class RemovalNotification<K, V> extends SimpleImmutableEntry
+abstract class Striped64 extends Number
+interface Weigher<K, V>
+
+
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+
+
+abstract class AbstractIterator implements Iterator
+ class Ascii
+enum CaseFormat
+abstract class CharMatcher implements Predicate
+ class Charsets
+abstract class CommonMatcher
+abstract class CommonPattern
+abstract class Converter implements Function
+ class Defaults
+ class Enums
+abstract class Equivalence implements BiPredicate
+abstract class ExtraObjectsMethodsForWeb
+abstract class FinalizablePhantomReference extends PhantomReference implements FinalizableReference
+interface FinalizableReference
+class FinalizableReferenceQueue implements Closeable
+abstract class FinalizableSoftReference extends SoftReference implements FinalizableReference
+abstract class FinalizableWeakReference extends WeakReference implements FinalizableReference
+interface Function<F, T> extends java.util.function.Function
+
+ class Functions
+class Finalizer implements Runnable
+
+class Joiner
+ class MoreObjects
+ class Objects extends ExtraObjectsMethodsForWeb
+abstract class Optional implements Serializable
+
+
+interface PatternCompiler
+
+ class Preconditions
+interface Predicate extends java.util.function.Predicate
+ class Predicates
+
+
+ class Splitter
+enum StandardSystemProperty
+ class Stopwatch
+ class Strings
+interface Supplier extends java.util.function.Supplier
+ class Suppliers
+ class Throwables
+abstract class Ticker
+ class Utf8
+ class Verify
+class VerifyException extends RuntimeException
+
+
+@enduml

@@ -1,0 +1,49 @@
+abstract class AbstractBaseGraph implements BaseGraph
+abstract class AbstractDirectedNetworkConnections implements NetworkConnections
+abstract class AbstractGraph extends AbstractBaseGraph implements Graph
+abstract class AbstractGraphBuilder
+abstract class AbstractNetwork implements Network
+abstract class AbstractUndirectedNetworkConnections implements NetworkConnections
+abstract class AbstractValueGraph extends AbstractBaseGraph implements ValueGraph
+interface BaseGraph extends SuccessorsFunction, PredecessorsFunction
+
+
+
+class ConfigurableNetwork extends AbstractNetwork
+class ConfigurableValueGraph extends AbstractValueGraph
+
+
+
+
+ class ElementOrder
+abstract class EndpointPair implements Iterable
+abstract class EndpointPairIterator extends AbstractIterator
+abstract class ForwardingGraph extends AbstractGraph
+abstract class ForwardingNetwork extends AbstractNetwork
+abstract class ForwardingValueGraph extends AbstractValueGraph
+interface Graph extends BaseGraph
+ class GraphBuilder extends AbstractGraphBuilder
+interface GraphConnections
+
+ class Graphs
+class ImmutableGraph extends ForwardingGraph
+ class ImmutableNetwork extends ConfigurableNetwork
+ class ImmutableValueGraph extends ConfigurableValueGraph
+class MapIteratorCache
+class MapRetrievalCache extends MapIteratorCache
+abstract class MultiEdgesConnecting extends AbstractSet
+interface MutableGraph extends Graph
+interface MutableNetwork extends Network
+interface MutableValueGraph extends ValueGraph
+interface Network extends SuccessorsFunction, PredecessorsFunction
+ class NetworkBuilder extends AbstractGraphBuilder
+interface NetworkConnections
+
+interface PredecessorsFunction
+interface SuccessorsFunction
+abstract class Traverser
+
+
+
+interface ValueGraph extends BaseGraph
+ class ValueGraphBuilder extends AbstractGraphBuilder

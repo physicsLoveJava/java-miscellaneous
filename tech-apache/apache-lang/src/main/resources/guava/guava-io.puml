@@ -1,0 +1,36 @@
+@startuml
+class AppendableWriter extends Writer
+abstract class BaseEncoding
+interface ByteArrayDataInput extends DataInput
+interface ByteArrayDataOutput extends DataOutput
+interface ByteProcessor
+abstract class ByteSink
+abstract class ByteSource
+ class ByteStreams
+
+abstract class CharSink
+abstract class CharSource
+ class CharStreams
+ class Closeables
+ class Closer implements Closeable
+ class CountingInputStream extends FilterInputStream
+ class CountingOutputStream extends FilterOutputStream
+ class FileBackedOutputStream extends OutputStream
+ class Files
+enum FileWriteMode
+ class Flushables
+ class InsecureRecursiveDeleteException extends FileSystemException
+abstract class LineBuffer
+interface LineProcessor
+ class LineReader
+ class LittleEndianDataInputStream extends FilterInputStream implements DataInput
+ class LittleEndianDataOutputStream extends FilterOutputStream implements DataOutput
+ class MoreFiles
+
+class MultiReader extends Reader
+
+ class PatternFilenameFilter implements FilenameFilter
+
+enum RecursiveDeleteOption
+ class Resources
+@enduml

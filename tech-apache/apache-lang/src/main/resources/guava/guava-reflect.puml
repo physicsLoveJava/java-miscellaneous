@@ -1,0 +1,18 @@
+@startuml
+abstract class AbstractInvocationHandler implements InvocationHandler
+ class ClassPath
+class Element extends AccessibleObject implements Member
+ class ImmutableTypeToInstanceMap extends ForwardingMap implements TypeToInstanceMap
+abstract class Invokable extends Element implements GenericDeclaration
+ class MutableTypeToInstanceMap extends ForwardingMap implements TypeToInstanceMap
+
+ class Parameter implements AnnotatedElement
+ class Reflection
+abstract class TypeCapture
+abstract class TypeParameter extends TypeCapture
+ class TypeResolver
+
+interface TypeToInstanceMap extends Map
+abstract class TypeToken extends TypeCapture implements Serializable
+abstract class TypeVisitor
+@enduml

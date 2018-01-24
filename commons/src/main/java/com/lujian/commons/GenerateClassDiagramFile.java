@@ -43,7 +43,7 @@ public class GenerateClassDiagramFile {
 
     }
 
-    private static void createClassDiagram(String sourceDir, String destFileName) {
+    public static void createClassDiagram(String sourceDir, String destFileName) {
         if(sourceDir == null || destFileName == null) {
             throw new IllegalArgumentException();
         }
@@ -115,6 +115,7 @@ public class GenerateClassDiagramFile {
             str = str.replaceAll("public ", "")
                     .replaceAll("final", "")
                     .replaceAll("<(\\S)*>", "")
+                    .replaceAll("<(\\w|,|\\s)*>", "")
                     .replaceAll(" \\{", "")
                     .replaceAll("@interface", "annotation")
                     .replaceAll("\\{", "");

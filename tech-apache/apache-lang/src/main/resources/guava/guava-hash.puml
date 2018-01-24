@@ -1,0 +1,33 @@
+@startuml
+abstract class AbstractByteHasher extends AbstractHasher
+abstract class AbstractCompositeHashFunction extends AbstractHashFunction
+abstract class AbstractHasher implements Hasher
+abstract class AbstractHashFunction implements HashFunction
+abstract class AbstractNonStreamingHashFunction extends AbstractHashFunction
+abstract class AbstractStreamingHasher extends AbstractHasher
+ class BloomFilter implements Predicate, Serializable
+
+
+
+
+interface Funnel extends Serializable
+ class Funnels
+abstract class HashCode
+interface Hasher extends PrimitiveSink
+interface HashFunction
+ class Hashing
+ class HashingInputStream extends FilterInputStream
+ class HashingOutputStream extends FilterOutputStream
+
+interface LongAddable
+
+
+
+
+
+
+
+interface PrimitiveSink
+
+abstract class Striped64 extends Number
+@enduml

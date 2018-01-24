@@ -1,0 +1,13 @@
+@startuml
+annotation AllowConcurrentEvents
+class AsyncEventBus extends EventBus
+class DeadEvent
+abstract class Dispatcher
+class EventBus
+
+annotation Subscribe
+class Subscriber
+class SubscriberExceptionContext
+interface SubscriberExceptionHandler
+
+@enduml

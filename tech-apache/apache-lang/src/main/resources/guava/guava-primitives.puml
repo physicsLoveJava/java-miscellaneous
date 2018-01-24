@@ -1,0 +1,22 @@
+@startuml
+ class Booleans
+ class Bytes
+ class Chars
+ class Doubles
+ class Floats
+ class ImmutableDoubleArray implements Serializable
+ class ImmutableIntArray implements Serializable
+ class ImmutableLongArray implements Serializable
+ class Ints
+ class Longs
+
+
+ class Primitives
+ class Shorts
+ class SignedBytes
+ class UnsignedBytes
+ class UnsignedInteger extends Number implements Comparable
+ class UnsignedInts
+ class UnsignedLong extends Number implements Comparable, Serializable
+ class UnsignedLongs
+@enduml

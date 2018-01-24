@@ -1,0 +1,22 @@
+abstract class AbstractCache<K, V> implements Cache<K, V>
+abstract class AbstractLoadingCache<K, V> extends AbstractCache<K, V> implements LoadingCache<K, V>
+interface Cache<K, V>
+ class CacheBuilder<K, V>
+ class CacheBuilderSpec
+abstract class CacheLoader<K, V>
+ class CacheStats
+abstract class ForwardingCache<K, V> extends ForwardingObject implements Cache<K, V>
+abstract class ForwardingLoadingCache<K, V> extends ForwardingCache<K, V> implements LoadingCache<K, V>
+interface LoadingCache<K, V> extends Cache<K, V>, Function<K, V>
+class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V>
+interface LongAddable
+
+
+
+interface ReferenceEntry<K, V>
+enum RemovalCause
+interface RemovalListener<K, V>
+ class RemovalListeners
+ class RemovalNotification<K, V> extends SimpleImmutableEntry<K, V>
+abstract class Striped64 extends Number
+interface Weigher<K, V>
