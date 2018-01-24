@@ -38,8 +38,11 @@ public class GenerateClassDiagramFile {
 //        createClassDiagram("E:\\frameworks\\java\\apache-commons\\commons-attributes-2.2-src\\commons-attributes-2.2\\api\\src\\java\\org\\apache\\commons\\attributes",
 //                "commons/src/main/resources/attributes.txt");
 
-        createClassDiagram("E:\\frameworks\\java\\apache-commons\\apache-tomcat-7.0.82-src\\apache-tomcat-7.0.82-src\\java",
-                "commons/src/main/resources/tomcat.txt");
+//        createClassDiagram("E:\\frameworks\\java\\apache-commons\\apache-tomcat-7.0.82-src\\apache-tomcat-7.0.82-src\\java",
+//                "commons/src/main/resources/tomcat.txt");
+
+        createClassDiagram("E:\\frameworks\\java\\apache-project\\apache-curator-4.0.0-source-release\\apache-curator-4.0.0\\curator-framework\\src\\main",
+                "commons/src/main/resources/curator.txt");
 
     }
 
