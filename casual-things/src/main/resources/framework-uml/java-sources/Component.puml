@@ -1,0 +1,50 @@
+@startuml
+
+package "Load Balancer" {
+    ["HAProxy | Nginx"]
+}
+
+package "Application Layer" {
+    ["app1"]
+    ["app2"]
+    ["app3"]
+    ["app4"]
+}
+
+package "Session Storage(Using Redis)" {
+    package "Redis Server1" {
+        ["Redis Master"]
+        ["Redis Sentinel1"]
+    }
+    package "Redis Server2" {
+        ["Redis Slave1"]
+        ["Redis Sentinel2"]
+    }
+    package "Redis Server3" {
+        ["Redis Slave2"]
+        ["Redis Sentinel3"]
+    }
+}
+
+["HAProxy | Nginx"] --> ["app1"]
+["HAProxy | Nginx"] --> ["app2"]
+["HAProxy | Nginx"] --> ["app3"]
+["HAProxy | Nginx"] --> ["app4"]
+
+["app1"] --> ["Redis Master"]
+["app2"] --> ["Redis Master"]
+["app3"] --> ["Redis Master"]
+["app4"] --> ["Redis Master"]
+
+["Redis Master"] --> ["Redis Slave1"]
+["Redis Master"] --> ["Redis Slave2"]
+
+["Redis Master"] --> ["Redis Sentinel1"]
+["Redis Slave1"] --> ["Redis Sentinel2"]
+["Redis Slave2"] --> ["Redis Sentinel3"]
+
+["Redis Sentinel1"] --> ["Redis Sentinel2"]
+["Redis Sentinel2"] --> ["Redis Sentinel3"]
+["Redis Sentinel3"] --> ["Redis Sentinel1"]
+
+@enduml
