@@ -1,10 +1,20 @@
 package com.lujian.apache.pool;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PersonPoolTest {
 
     PersonPool pool = new PersonPool(new PersonObjectFactory());
+
+    GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+
+    @Before
+    public void setup() {
+        config.setMaxTotal(10);
+        pool.setConfig(config);
+    }
 
     @Test
     public void test() {

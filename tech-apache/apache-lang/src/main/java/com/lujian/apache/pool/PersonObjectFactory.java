@@ -13,6 +13,11 @@ public class PersonObjectFactory implements PooledObjectFactory<Person> {
     }
 
     private Person createPerson() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new Person(System.currentTimeMillis() + "", (int) System.currentTimeMillis());
     }
 
