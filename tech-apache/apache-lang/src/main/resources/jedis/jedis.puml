@@ -1,0 +1,116 @@
+@startuml
+
+class BinaryClient extends Connection
+class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKeyBinaryCommands, AdvancedBinaryJedisCommands, BinaryScriptingCommands, Closeable
+class BinaryJedisCluster implements BinaryJedisClusterCommands, MultiKeyBinaryJedisClusterCommands, JedisClusterBinaryScriptingCommands, Closeable
+abstract class BinaryJedisPubSub
+class BinaryShardedJedis extends Sharded implements BinaryJedisCommands
+enum BitOP
+class BitPosParams
+abstract class Builder
+ class BuilderFactory
+class Client extends BinaryClient implements Commands
+enum ClusterReset
+interface AdvancedBinaryJedisCommands
+interface AdvancedJedisCommands
+interface BasicCommands
+interface BasicRedisPipeline
+interface BinaryJedisClusterCommands
+interface BinaryJedisCommands
+interface BinaryRedisPipeline
+interface BinaryScriptingCommands
+interface BinaryScriptingCommandsPipeline
+interface ClusterCommands
+interface ClusterPipeline
+interface Commands
+interface JedisClusterBinaryScriptingCommands
+interface JedisClusterCommands
+interface JedisClusterScriptingCommands
+interface JedisCommands
+interface ModuleCommands
+interface MultiKeyBinaryCommands
+interface MultiKeyBinaryJedisClusterCommands
+interface MultiKeyBinaryRedisPipeline
+interface MultiKeyCommands
+interface MultiKeyCommandsPipeline
+interface MultiKeyJedisClusterCommands
+interface ProtocolCommand
+interface RedisPipeline
+interface ScriptingCommands
+interface ScriptingCommandsPipeline
+interface SentinelCommands
+class Connection implements Closeable
+class DebugParams
+class InvalidURIException extends JedisException
+class JedisAskDataException extends JedisRedirectionException
+class JedisBusyException extends JedisDataException
+class JedisClusterCrossSlotException extends JedisClusterException
+class JedisClusterException extends JedisDataException
+class JedisClusterMaxRedirectionsException extends JedisDataException
+class JedisConnectionException extends JedisException
+class JedisDataException extends JedisException
+class JedisException extends RuntimeException
+class JedisExhaustedPoolException extends JedisException
+class JedisMovedDataException extends JedisRedirectionException
+class JedisNoReachableClusterNodeException extends JedisConnectionException
+class JedisNoScriptException extends JedisDataException
+class JedisRedirectionException extends JedisDataException
+class GeoCoordinate
+class GeoRadiusResponse
+enum GeoUnit
+class HostAndPort implements Serializable
+class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommands, AdvancedJedisCommands, ScriptingCommands, BasicCommands, ClusterCommands, SentinelCommands, ModuleCommands
+class JedisCluster extends BinaryJedisCluster implements JedisClusterCommands, MultiKeyJedisClusterCommands, JedisClusterScriptingCommands
+abstract class JedisClusterCommand
+abstract class JedisClusterConnectionHandler implements Closeable
+class JedisClusterInfoCache
+class JedisFactory implements PooledObjectFactory
+abstract class JedisMonitor
+class JedisPool extends JedisPoolAbstract
+class JedisPoolAbstract extends Pool
+class JedisPoolConfig extends GenericObjectPoolConfig
+abstract class JedisPubSub
+class JedisSentinelPool extends JedisPoolAbstract
+class JedisShardInfo extends ShardInfo
+class JedisSlotBasedConnectionHandler extends JedisClusterConnectionHandler
+enum ListPosition
+class Module
+abstract class MultiKeyPipelineBase extends PipelineBase implements MultiKeyBinaryRedisPipeline, MultiKeyCommandsPipeline, ClusterPipeline, BinaryScriptingCommandsPipeline, ScriptingCommandsPipeline, BasicRedisPipeline
+class GeoRadiusParam extends Params
+abstract class Params
+class SetParams extends Params
+class ZAddParams extends Params
+class ZIncrByParams extends Params
+class Pipeline extends MultiKeyPipelineBase implements Closeable
+abstract class PipelineBase extends Queable implements BinaryRedisPipeline, RedisPipeline
+ class Protocol
+class Queable
+class Response
+class ScanParams
+class ScanResult
+class ShardedJedis extends BinaryShardedJedis implements JedisCommands, Closeable
+class ShardedJedisPipeline extends PipelineBase
+class ShardedJedisPool extends Pool
+class SortingParams
+class Transaction extends MultiKeyPipelineBase implements Closeable
+class Tuple implements Comparable
+class ZParams
+ class ByteArrayComparator
+interface Hashing
+class IOUtils
+class JedisByteHashMap implements Map, Cloneable, Serializable
+ class JedisClusterCRC16
+ class JedisClusterHashTagUtil
+ class JedisURIHelper
+ class KeyMergeUtil
+class MurmurHash implements Hashing
+abstract class Pool implements Closeable
+class RedisInputStream extends FilterInputStream
+ class RedisOutputStream extends FilterOutputStream
+ class SafeEncoder
+class Sharded
+abstract class ShardInfo
+class Slowlog
+
+
+@enduml
