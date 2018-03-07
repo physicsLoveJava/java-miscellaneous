@@ -26,6 +26,7 @@
         <module>tech-java-source</module>
         <module>distributed</module>
         <module>tech-functional-programming</module>
+        <module>temp-todo-list</module>
     </modules>
 
     <properties>
