@@ -19,3 +19,7 @@
 6. 字节码增强 （字节码 + ASM + Javasist + Aop + Cglib + JDKProxy)
 7. OpenTracing 检测系统
 8. Dubbo
+
+## 额外部分
+java 基础
+设计模式
