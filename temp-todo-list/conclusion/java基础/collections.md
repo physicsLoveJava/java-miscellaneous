@@ -103,5 +103,24 @@ Queue相对于Collection定义的接口方法的不同
  
  queue不提供equals和hashCode，因为集合元素的顺序性。
  
+ ### Deque
+ 双端队列，提供在队列开始与结束部分的添加和删除操作，提供有容量与无容量限制的功能。
+ 提供与Queue一直的接口，只不过将操作进行了队列开始与队列结束的区分。
+ 特殊方法：
+ boolean removeFirstOccurrence(Object o);
+ boolean removeLastOccurrence(Object o);
+ 
+ ### SortedSet
+ 提供全序排列，同时满足顺序与等价一致性
+ 
+ ### NavigableSet
+ 提供更加全面的值比较（<, <=, >, >=）
+ 同时对于Sorted提供的subSet, headSet, tailSet进行了边界是否包含的补充方法
+ 
+ ### RandomAccess
+ 标记接口，判断list是否可以随机访问，用以区分线性表，提供泛化算法的计算性能
+ 
+ ### Enumeration
+ 
  
  
