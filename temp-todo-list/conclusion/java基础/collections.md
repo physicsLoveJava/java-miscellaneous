@@ -128,6 +128,20 @@ Queue相对于Collection定义的接口方法的不同
  ### AbstractQueue
  ### AbstractSequentialList
  
+ ### Vector
+ growable array of objects (size is grow and shrink by the add and remove methods)
+ vector的iterator采取fail-fast策略，也就是说只要是并发修改，会立刻报错，而Enumeration的实现并不会。
+ 这并不能保证程序上的问题，只是提供一种检测程序bug的方法。
+ 
+ vector方法是采取同步的，而如果不需要线程安全的实现，可以使用ArrayList
+ 
+ 1. capacityIncrement,每次vector扩张的大小，如果capacityIncrement小于等于0，则每次长度翻倍
+ 2. System.arraycopy(arr, index, arr, index + 1, len - index);
+ 
+ ### ArrayList
+ resizable array of objects
+ 相当于无锁版的Vector
+ 1. 没有capacityIncrement, 每次扩张增加双倍的空间
  
  
  
