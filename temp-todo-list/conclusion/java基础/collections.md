@@ -122,5 +122,12 @@ Queue相对于Collection定义的接口方法的不同
  
  ### Enumeration
  
+ ### AbstractCollection
+ ### AbstractList
+ ### AbstractSet
+ ### AbstractQueue
+ ### AbstractSequentialList
+ 
+ 
  
  
