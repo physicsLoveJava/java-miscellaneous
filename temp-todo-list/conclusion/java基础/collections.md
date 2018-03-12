@@ -135,13 +135,29 @@ Queue相对于Collection定义的接口方法的不同
  
  vector方法是采取同步的，而如果不需要线程安全的实现，可以使用ArrayList
  
- 1. capacityIncrement,每次vector扩张的大小，如果capacityIncrement小于等于0，则每次长度翻倍
+ 1. capacityIncrement,每次vector扩张的大小，如果capacityIncrement小于等于0，则每次长度增加一倍
  2. System.arraycopy(arr, index, arr, index + 1, len - index);
  
  ### ArrayList
  resizable array of objects
  相当于无锁版的Vector
  1. 没有capacityIncrement, 每次扩张增加双倍的空间
+ 
+ ### Stack
+ 
+ ### ArrayDeque
+ 
+ ### PriorityQueue
+ 
+ ### HashMap
+ 1. 遍历需要访问所有的桶
+ 
+ ### LinkedHashMap
+ 1. 遍历只需要访问有数据的桶
+ 
+ ### TreeMap
+ ### EnumMap
+ ### WeakHashMap
  
  
  
