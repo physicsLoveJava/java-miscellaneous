@@ -1,0 +1,46 @@
+@startuml
+
+ interface Castle {
+  String getDescription();
+}
+ interface King {
+  String getDescription();
+}
+ interface Army {
+  String getDescription();
+}
+
+ class ElfCastle implements Castle {
+}
+ class ElfKing implements King {
+}
+ class ElfArmy implements Army {
+}
+ class OrcCastle implements Castle {
+}
+ class OrcKing implements King {
+}
+ class OrcArmy implements Army {
+}
+
+ interface KingdomFactory {
+  Castle createCastle();
+  King createKing();
+  Army createArmy();
+}
+
+ class ElfKingdomFactory implements KingdomFactory {
+}
+
+ class OrcKingdomFactory implements KingdomFactory {
+}
+
+ElfKingdomFactory ---.> ElfKing
+ElfKingdomFactory ---.> ElfArmy
+ElfKingdomFactory ---.> ElfCastle
+
+OrcKingdomFactory ---.> OrcKing
+OrcKingdomFactory ---.> OrcArmy
+OrcKingdomFactory ---.> OrcCastle
+
+@enduml
