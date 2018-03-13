@@ -1,0 +1,20 @@
+@startuml
+
+abstract class Builder {
+    void buildA();
+    void buildB();
+    void buildC();
+}
+
+class Director {
+    build();
+}
+
+class Product
+
+class ConcreteBuilder extends Builder
+
+Builder ---* Director
+ConcreteBuilder "create" --.> Product
+
+@enduml
