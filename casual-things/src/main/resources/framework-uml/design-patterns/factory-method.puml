@@ -1,0 +1,19 @@
+@startuml
+
+interface Blacksmith {
+  Weapon manufactureWeapon(WeaponType weaponType);
+}
+
+class ElfBlacksmith implements Blacksmith {
+}
+
+class OrcBlacksmith implements Blacksmith {
+}
+
+class Weapon
+
+class ElfWeapon extends Weapon
+
+class OrcWeapon extends Weapon
+
+@enduml
