@@ -1,0 +1,17 @@
+@startuml
+
+class Client
+
+interface BankServiceFacade
+
+interface PaymentService
+interface AccountService
+interface TransferService
+
+
+Client --.> BankServiceFacade
+BankServiceFacade --.> PaymentService
+BankServiceFacade --.> AccountService
+BankServiceFacade --.> TransferService
+
+@enduml
