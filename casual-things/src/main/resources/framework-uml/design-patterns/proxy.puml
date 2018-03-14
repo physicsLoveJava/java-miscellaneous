@@ -1,0 +1,12 @@
+@startuml
+
+interface Subject
+interface ConcreteService
+interface ProxyService
+
+ProxyService --|> Subject
+ConcreteService --|> Subject
+
+ProxyService "delegate" --.> ConcreteService
+
+@enduml
