@@ -1,0 +1,14 @@
+@startuml
+
+note top of Component: define the whole functionality
+
+interface Component
+class Leaf
+class Composite
+
+Component <|--- Leaf
+Component <|--- Composite
+
+Composite "1" *--- "0..*" Component
+
+@enduml
