@@ -1,0 +1,10 @@
+@startuml
+
+interface Service
+abstract class AbstractService
+class ConcreteService
+
+Service <|-- AbstractService
+AbstractService <|-- ConcreteService
+
+@enduml

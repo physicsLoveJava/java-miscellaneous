@@ -1,0 +1,17 @@
+@startuml
+
+interface Target
+interface Adaptee
+
+class Adapter
+
+Target <|-r- Adapter
+Adaptee <|-r- Adapter
+Target <|-- ConcreteTarget
+Adaptee <|-- ConcreteAdaptee
+
+
+Adapter "use" --> Adaptee
+Adapter "use" --> Target
+
+@enduml
