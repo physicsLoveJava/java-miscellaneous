@@ -1,0 +1,14 @@
+@startuml
+
+abstract class Abstraction
+abstract class Implementor
+class ConcreteImplementor1
+class ConcreteImplementor2
+abstract class RefinedAbstraction
+
+Abstraction *-r- Implementor
+Implementor <|-- ConcreteImplementor1
+Implementor <|-- ConcreteImplementor2
+RefinedAbstraction -u-|> Abstraction
+
+@enduml
