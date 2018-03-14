@@ -1,0 +1,21 @@
+@startuml
+
+class Product
+class Decorator
+class ConcreteDecorator1
+class ConcreteDecorator2
+
+class Product1
+class Product2
+
+Product <|-- Product1
+Product <|-- Product2
+Product <|-- Decorator
+
+Decorator *-- Product
+
+Decorator <|-- ConcreteDecorator1
+Decorator <|-- ConcreteDecorator2
+
+
+@enduml
