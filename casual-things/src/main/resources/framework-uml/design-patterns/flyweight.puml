@@ -1,0 +1,14 @@
+@startuml
+
+
+interface FlyweightFactory
+interface Flyweight
+class ConcreteFlyweight
+class UnsharedFlyweight
+
+FlyweightFactory --.> Flyweight
+Flyweight <|-- ConcreteFlyweight
+Flyweight <|-- UnsharedFlyweight
+
+
+@enduml
