@@ -1,0 +1,16 @@
+@startuml
+
+abstract class Template {
+    action();
+    step1();
+    step2();
+    step3();
+}
+
+class ConcreteClass1
+class ConcreteClass2
+
+Template <|-- ConcreteClass1
+Template <|-- ConcreteClass2
+
+@enduml
