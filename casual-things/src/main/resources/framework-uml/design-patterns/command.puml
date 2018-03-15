@@ -1,0 +1,27 @@
+@startuml
+
+interface Command
+
+class ConcreteCommand1
+class ConcreteCommand2
+class ConcreteCommand3
+
+Command <|-- ConcreteCommand1
+Command <|-- ConcreteCommand2
+Command <|-- ConcreteCommand3
+
+class Invoker
+
+Invoker *--> Command
+
+class Client
+
+class Receiver
+
+Receiver "Receiver" --.> Command
+
+class Target
+
+Command "process" --.> Target
+
+@enduml
