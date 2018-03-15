@@ -1,0 +1,17 @@
+@startuml
+
+class client
+
+interface Handler
+class ConcreteHandler1
+class ConcreteHandler2
+
+Handler <|-- ConcreteHandler1
+Handler <|-- ConcreteHandler2
+
+ConcreteHandler1 *--> Handler
+ConcreteHandler2 *--> Handler
+
+client --.> Handler
+
+@enduml
