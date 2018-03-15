@@ -1,0 +1,12 @@
+@startuml
+
+class Product
+
+interface Iterator
+class ConcreteIterator
+
+Product *--> Iterator
+Iterator <|-- ConcreteIterator
+
+
+@enduml
