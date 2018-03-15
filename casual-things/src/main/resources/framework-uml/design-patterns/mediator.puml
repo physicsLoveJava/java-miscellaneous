@@ -1,0 +1,19 @@
+@startuml
+
+interface Mediator
+abstract class AbstractMediator
+class Part1
+class Part2
+class Part3
+class Part4
+class Part5
+
+Mediator <|-- AbstractMediator
+
+Mediator --.> Part1
+Mediator --.> Part2
+Mediator --.> Part3
+Mediator --.> Part4
+Mediator --.> Part5
+
+@enduml
