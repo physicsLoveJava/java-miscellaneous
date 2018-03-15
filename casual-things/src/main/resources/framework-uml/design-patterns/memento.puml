@@ -1,0 +1,10 @@
+@startuml
+
+class Originator
+class Memento
+class CareTaker
+
+Originator "restore" --.> Memento
+Memento --* "manage" CareTaker
+
+@enduml
