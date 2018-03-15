@@ -1,0 +1,22 @@
+@startuml
+
+
+class Client
+
+interface Strategy
+
+class ConcreteStrategy1
+class ConcreteStrategy2
+class ConcreteStrategy3
+
+Strategy <|-- ConcreteStrategy1
+Strategy <|-- ConcreteStrategy2
+Strategy <|-- ConcreteStrategy3
+
+Client *-- Strategy
+
+
+
+
+
+@enduml
