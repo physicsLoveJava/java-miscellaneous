@@ -1,0 +1,17 @@
+@startuml
+
+class Client
+
+interface State
+
+class ConcreteState1
+class ConcreteState2
+class ConcreteState3
+
+State <|-- ConcreteState1
+State <|-- ConcreteState2
+State <|-- ConcreteState3
+
+Client *-- State
+
+@enduml
