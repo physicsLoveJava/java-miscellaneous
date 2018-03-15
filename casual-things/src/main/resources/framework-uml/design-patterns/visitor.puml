@@ -1,0 +1,21 @@
+@startuml
+
+interface Structure
+class ConcreteStructure1
+class ConcreteStructure2
+
+Structure <|-- ConcreteStructure1
+Structure <|-- ConcreteStructure2
+
+Abstract class Visitor
+
+class ConcreteVisitor1
+class ConcreteVisitor2
+
+Visitor <|-- ConcreteVisitor1
+Visitor <|-- ConcreteVisitor2
+
+Visitor "visit" --.> Structure
+Structure "accept" --.> Visitor
+
+@enduml
