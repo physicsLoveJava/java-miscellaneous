@@ -27,6 +27,7 @@
         <module>distributed</module>
         <module>tech-functional-programming</module>
         <module>temp-todo-list</module>
+        <module>tech-interview</module>
     </modules>
 
     <properties>
