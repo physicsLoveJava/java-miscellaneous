@@ -111,7 +111,7 @@ ref --thread
 ③ sleep()方法声明抛出InterruptedException，而yield()方法没有声明任何异常；
 ④ sleep()方法比yield()方法（跟操作系统CPU调度相关）具有更好的可移植性。
 
-## 21. 辨析同步与异步，阻塞与非阻塞？
+## 21. 辨析同步与异步，阻塞与非阻塞？都有哪些IO模型？
 //TODO
 
 ## 22. 什么是线程池（thread pool）？
