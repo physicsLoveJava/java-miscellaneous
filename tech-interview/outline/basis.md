@@ -280,3 +280,19 @@ Hibernate的Session提供了一级缓存的功能，默认总是有效的，当�
 SessionFactory级别的二级缓存是全局性的，所有的Session可以共享这个二级缓存。不过二级缓存默认是关闭的，需要显示开启并指定需要使用哪种二级缓存实现类（可以使用第三方提供的实现）。一旦开启了二级缓存并设置了需要使用二级缓存的实体类，SessionFactory就会缓存访问过的该实体类的每个对象，除非缓存的数据超出了指定的缓存空间。
 一级缓存和二级缓存都是对整个实体进行缓存，不会缓存普通属性，如果希望对普通属性进行缓存，可以使用查询缓存。查询缓存是将HQL或SQL语句以及它们的查询结果作为键值对进行缓存，对于同样的查询可以直接从缓存中获取数据。查询缓存默认也是关闭的，需要显示开启。
 
+## 43. Spring MVC的工作原理是怎样的？
+Spring MVC的工作原理如下图所示：
+① 客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。
+② DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。
+③在这个地方Spring会通过HandlerAdapter对该处理器进行封装。
+④ HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。
+⑤ Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。
+⑥ ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。
+⑦ 当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。
+⑧ 客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。
+
+## 44. Spring bean 加载过程？
+//TODO
+
+## 45. Spring 中包含的设计模式有些？都是如何实现的？
+//TODO
