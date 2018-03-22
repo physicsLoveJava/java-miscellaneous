@@ -101,5 +101,13 @@ GC是垃圾收集的意思，内存处理是编程人员容易出现问题的地
 - 保持异常的原子性
 - 不要在catch中忽略掉捕获到的异常
 
-## 19
---import new 53
+## 19. TreeSet 与 TreeMap在使用过程中需要注意什么？
+1. 比较对象必须是Comparable, 否则会报ClassCastException, 或者提供一个比较器
+
+## 20. 线程的sleep()方法和yield()方法有什么区别？
+//TODO 线程状态
+① sleep()方法给其他线程运行机会时不考虑线程的优先级，因此会给低优先级的线程以运行的机会；yield()方法只会给相同优先级或更高优先级的线程以运行的机会；
+② 线程执行sleep()方法后转入阻塞（blocked）状态，而执行yield()方法后转入就绪（ready）状态；
+③ sleep()方法声明抛出InterruptedException，而yield()方法没有声明任何异常；
+④ sleep()方法比yield()方法（跟操作系统CPU调度相关）具有更好的可移植性。
+
