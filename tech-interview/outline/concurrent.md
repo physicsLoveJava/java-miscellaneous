@@ -44,6 +44,47 @@ thread#resume 该方法配合suspend使用，这就是意味着该方法被废�
 只需要关注任务的执行，以及任务执行的方式。同时，由于创建和销毁线程都是比较耗费时间的操作，线程池通过
 复用线程来达到提高服务程序效率的目的。
 
+1. 无界线程池，newCachedThreadPool
+2. 有界线程池，newFixedSizeThreadPool
+3. 单线程，newSingleThreadExecutor
+4. 定时线程池，newScheduledThreadPool
+
+## 7.线程池中的任务彼此间有关联吗？
+线程池中的任务遵循内存一致性的原则（happens-before）,发生在之前的任务，对后面的任务来说是可见的。
+
+## 8.线程池中的shutdown, shutdownNow, awaitTermination有什么区别？
+shutdown方法执行后，新的任务不会被接受进行执行，同时线程池会在之前的提交的任务执行完后关闭。
+shutdownNow方法执行后，会尝试去关闭所有进行中的任务，取消所有等待中的任务，然后将这些等待的任务返回。
+同时，由于没有办法很好的进行任务的关闭，通常是通过中断，对执行的任务济宁取消，如果任务本身无法对中断进行响应，
+则该任务无法停止。
+awaitTermination方法执行后会进行阻塞，直到满足下面的一个条件：
+1. shutdown后，所有的任务都执行完毕 --> 返回true
+2. timeout --> 返回false
+3. 当前线程中断 --> throw InterruptedException
+
+## 9.自定义线程池有哪些注意点？
+1. coreSize, maximumPoolSize
+2. ThreadFactory, 可以根据自定义条件创建线程
+3. keep-alive times
+4. Queuing, 在超过当前允许的线程数时，可以将任务进行排队等待操作
+    排队的方式：
+    1. 直接交付，hands-off, SynchronousQueue(增长速度不能超过处理速度，多出的任务会被拒绝)
+    2. 无界队列，LinkedBlockingQueue(适合迅速增长的情况)
+    3. 有限队列，ArrayBlockingQueue(适合控制资源使用的场景，但是很难预测其大小)
+    （1. 长队列+小型池 低吞吐量）（2. 短队列+大型池 大量的线程调度，降低性能）
+5. 拒绝任务策略，（执行shutdown, 或者有限容量的队列）
+    1. 中止策略，直接抛出RejectedExecutionException
+    2. 调用者执行策略，执行线程执行任务
+    3. 丢弃策略， 直接丢弃
+    4. 丢弃最旧的
+6. 钩子方法
+   1. beforeExecute
+   2. afterExecute
+
+
+
+
+
 
 
 
