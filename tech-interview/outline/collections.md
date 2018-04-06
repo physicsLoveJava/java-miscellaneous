@@ -12,3 +12,4 @@ hashCode要满足三个条件：
   * 两个对象hash到相同的桶中，由于Map.Entry缓存了hash的值，则依然会取不到值
 2. 对于HashSet而言，如果两个等价的对象，添加进set中，会导致不满足set的契约，只包含不重复的元素
 
+## 2. IdentityHashMap的原理是什么，有什么应用场景？
