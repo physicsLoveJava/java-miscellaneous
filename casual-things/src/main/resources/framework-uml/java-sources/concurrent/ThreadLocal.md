@@ -1,0 +1,10 @@
+
+## ThreadLocal
+提供了基于线程私有的变量副本，需要注意的是虽然ThreadLocal中变量的是弱引用，这意味着如果
+该线程如果会销毁，那么该线程副本也会被gc回收，但是如果该引用还被其他对象引用，gc并不会回收。
+
+在每个线程对象中，都有两个ThreadLocalMap，一个是本线程的，另一个是继承过来的，
+ThreadLocalMap是ThreadLocal的内部类，本质上的实现是一个hashMap，其中key为ThreadLocal实例，value是该ThreadLocal实例保存的值
+当ThreadLocal进行保存值的时候，先获取线程内的ThreadLocalMap,然后通过ThreadLocal对象获取其内部的值，
+同样的删除值的话，会根据hash值检索，将ThreadLocal(Entry)设置成null，然后将该值从hash表中清除
+
