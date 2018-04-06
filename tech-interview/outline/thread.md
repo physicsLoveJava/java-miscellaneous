@@ -17,6 +17,10 @@
 
 ## 2. Thread中线程隔离（Thread-local）是如何实现的？
 通过Thread内部维护一个ThreadLocalMap维护ThreadLocal与其值的哈希表，将不同线程的下的变量副本，保存在每个线程的内部。
+由于Map.Entry使用的WeakReference,同时这个WeakReference维护的引用是ThreadLocal，只有当前的ThreadLocal不会引用，或者Thread被销毁，
+等到下次GC，相关的ThreadLocal副本都会被回收。
+使用WeakReference而不是强引用的主要原因是，当一个类引用WeakReference时，可以进行ThreadLocal的复制和重新设置，而不用显式地从
+ThreadLocalMap中删除，因为WeakReference在没有其他对象引用它的时候，它会自动的在gc时被回收。
 
 ## 3. Thread中异常处理的实现原理是什么？为什么这么做？
 
