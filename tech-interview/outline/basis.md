@@ -375,4 +375,6 @@ com.lujian.casual.jol.Packing$A object internals:
 Instance size: 80 bytes
 Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
 
+如果类中有继承关系，则优先使用父类的字段
+
 
