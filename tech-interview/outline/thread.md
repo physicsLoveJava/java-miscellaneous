@@ -23,7 +23,9 @@
 ThreadLocalMap中删除，因为WeakReference在没有其他对象引用它的时候，它会自动的在gc时被回收。
 
 ## 3. Thread中异常处理的实现原理是什么？为什么这么做？
-
+通过设置uncaughtExceptionHandler，对runnable抛出的uncheckedException进行处理，
+JVM通过调用dispatchUncaughtException, 或者ThreadGroup.uncaughtException进行方法的回调
+原则是线程异常应该由自己处理
 
 ## 4. java内置锁的实现原理是什么？
 
