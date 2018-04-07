@@ -23,6 +23,9 @@ public class Alignment {
         out.println(ClassLayout.parseClass(A.class).toPrintable());
     }
 
+    /**
+     * -XX:-UseCompressedOops
+     */
     public static class A {
         long f;
     }

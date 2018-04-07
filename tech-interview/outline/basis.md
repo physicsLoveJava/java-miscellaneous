@@ -310,4 +310,69 @@ Spring MVC的工作原理如下图所示：
 1. 对象自身运行时的数据，（hashCode, gc 分代年龄，锁状态标志，线程持有的锁，偏向线程id，偏向时间戳）（32bits or 64bits）(mark word)
 2. 对象类型指针，虚拟机通过这个指针来确定这个对象是那个类的实例
 
+## 48. 在一个只有long字段的类中，对象内存空间占用如何表示？
+（开启指针压缩的话） 12bytes(header) + 4bytes(padding) + 8bytes(long) 优先符合8个字节的原则
+（未开启指针压缩的话） 16bytes(header) + 8bytes(long) 优先符合8个字节的原则
+
+同时如果类中有多个字段，在进行填充时，应该首先满足第一个的填充，然后8>4>2>1的顺序进行安排，最后按照整体8字节进行填充
+举例：
+```java
+public static class A {
+    boolean bo1, bo2;
+    byte b1, b2;
+    char c1, c2;
+    double d1, d2;
+    float f1, f2;
+    int i1, i2;
+    long l1, l2;
+    short s1, s2;
+}
+```
+开启指针压缩的情况：
+com.lujian.casual.jol.Packing$A object internals:
+ OFFSET  SIZE      TYPE DESCRIPTION                               VALUE
+      0    12           (object header)                           N/A
+     12     4     float A.f1                                      N/A
+     16     8    double A.d1                                      N/A
+     24     8    double A.d2                                      N/A
+     32     8      long A.l1                                      N/A
+     40     8      long A.l2                                      N/A
+     48     4     float A.f2                                      N/A
+     52     4       int A.i1                                      N/A
+     56     4       int A.i2                                      N/A
+     60     2      char A.c1                                      N/A
+     62     2      char A.c2                                      N/A
+     64     2     short A.s1                                      N/A
+     66     2     short A.s2                                      N/A
+     68     1   boolean A.bo1                                     N/A
+     69     1   boolean A.bo2                                     N/A
+     70     1      byte A.b1                                      N/A
+     71     1      byte A.b2                                      N/A
+Instance size: 72 bytes
+Space losses: 0 bytes internal + 0 bytes external = 0 bytes total
+
+未开启指针压缩的情况：
+com.lujian.casual.jol.Packing$A object internals:
+ OFFSET  SIZE      TYPE DESCRIPTION                               VALUE
+      0    16           (object header)                           N/A
+     16     8    double A.d1                                      N/A
+     24     8    double A.d2                                      N/A
+     32     8      long A.l1                                      N/A
+     40     8      long A.l2                                      N/A
+     48     4     float A.f1                                      N/A
+     52     4     float A.f2                                      N/A
+     56     4       int A.i1                                      N/A
+     60     4       int A.i2                                      N/A
+     64     2      char A.c1                                      N/A
+     66     2      char A.c2                                      N/A
+     68     2     short A.s1                                      N/A
+     70     2     short A.s2                                      N/A
+     72     1   boolean A.bo1                                     N/A
+     73     1   boolean A.bo2                                     N/A
+     74     1      byte A.b1                                      N/A
+     75     1      byte A.b2                                      N/A
+     76     4           (loss due to the next object alignment)
+Instance size: 80 bytes
+Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
+
 
