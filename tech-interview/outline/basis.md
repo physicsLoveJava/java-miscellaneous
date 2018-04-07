@@ -375,6 +375,9 @@ com.lujian.casual.jol.Packing$A object internals:
 Instance size: 80 bytes
 Space losses: 0 bytes internal + 4 bytes external = 4 bytes total
 
-如果类中有继承关系，则优先使用父类的字段
+如果类中有继承关系，则优先使用父类的字段,可能会导致对于子类而言，这样的对象布局不是最优的，对于每个类而言都是8个字节对齐的，
+这对于继承它的类也是如此，可能会导致大量的小填充。
+
+
 
 
