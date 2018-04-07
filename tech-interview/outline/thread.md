@@ -28,6 +28,9 @@ JVM通过调用dispatchUncaughtException, 或者ThreadGroup.uncaughtException进
 原则是线程异常应该由自己处理
 
 ## 4. java内置锁的实现原理是什么？
+java synchronized关键字是通过两个指令（monitorenter, monitorexit)实现的，
+Monitor(管程)保证同一个时刻，只有一个进程在管程内活动，即管程内定义的操作在同一时刻被一个进程调用，
+同时为了能够保证进程以设计的顺序执行，还需要设置condition变量，让进入管程而无法继续执行的进程阻塞自己。
 
 ## 5. javaReentrantLock实现原理和采用的技术方式是什么？
 
