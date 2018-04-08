@@ -394,5 +394,49 @@ LockSupport.park
 2. 其他线程中断阻塞线程
 3. 幽灵唤醒
 
+### ConditionObject
+提供条件变量的支持
+
+#### await
+```c 
+//能响应中断的等待
+public final void await() throws InterruptedException {
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    //添加至等待队列中
+    Node node = addConditionWaiter();
+    //在释放锁后记录下状态
+    int savedState = fullyRelease(node);
+    int interruptMode = 0;
+    while (!isOnSyncQueue(node)) {
+        LockSupport.park(this);
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+    }
+    if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null) // clean up if cancelled
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+}
+```
+当前线程加入等待队列中，同时释放锁，在结束后，会获得锁（记录下锁的状态）
+
+#### signal
+线程通知等待队列上的线程唤醒，
+这和await最后部分是连接在一起的，唤醒的对象会进入同步队列中，等待锁的获得,
+同时将对应的线程阻塞去除
+
+
+```c 
+public final void signal() {
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    Node first = firstWaiter;
+    if (first != null)
+        doSignal(first);
+}
+```
 
 
