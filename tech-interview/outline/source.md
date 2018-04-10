@@ -5,3 +5,5 @@
 4. 正则 http://www.jb51.net/tools/zhengze.html
 5. 线程池 http://www.importnew.com/19011.html
 6. nio http://ifeve.com/overview/
+7. byte buddy https://notes.diguage.com/byte-buddy-tutorial/
+8. JDK, cglib, javassit, asm
