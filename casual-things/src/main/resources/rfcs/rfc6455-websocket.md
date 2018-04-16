@@ -137,5 +137,7 @@ its response.
 
 ### Conformance Requirements
 
+#### WebSocket URIs
+
 
 
