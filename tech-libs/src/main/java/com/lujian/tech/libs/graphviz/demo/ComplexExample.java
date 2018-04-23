@@ -1,20 +1,18 @@
 package com.lujian.tech.libs.graphviz.demo;
 
 import guru.nidi.graphviz.attribute.Color;
+import guru.nidi.graphviz.attribute.Label;
 import guru.nidi.graphviz.attribute.Shape;
 import guru.nidi.graphviz.attribute.Style;
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
 import guru.nidi.graphviz.model.Graph;
-import guru.nidi.graphviz.model.Label;
 import guru.nidi.graphviz.model.Node;
 
 import java.io.File;
 import java.io.IOException;
 
-import static guru.nidi.graphviz.model.Factory.graph;
-import static guru.nidi.graphviz.model.Factory.node;
-import static guru.nidi.graphviz.model.Factory.to;
+import static guru.nidi.graphviz.model.Factory.*;
 
 public class ComplexExample {
 
