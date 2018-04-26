@@ -43,3 +43,5 @@ Monitor(管程)保证同一个时刻，只有一个进程在管程内活动，�
 ## 9. WeakHashMap的应用场景有哪些？
 
 ## 10. guava cache的实现原理是什么？
+
+## 11. java unsafe中getXXXVolatile是如何实现的？
