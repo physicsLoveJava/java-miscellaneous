@@ -40,10 +40,13 @@ public class Client {
                 }
                 stream.close();
                 byte[] bytes = bis.toByteArray();
+                Thread.sleep(1000);
                 realData.setData(new String(bytes));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
