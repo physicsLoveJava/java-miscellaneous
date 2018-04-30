@@ -123,5 +123,43 @@ JNDI的SPI拓展使用ThreadContextClassLoader,加载具体细节的代码
 3. 运行时进行编译
 4. 编译后的性能有很大的提升
 
+### jvm参数
+gc:
+-verbose:gc
+-XX:+PrintGC
+-XX:+PrintGCDetails
+-XX:+PrintGCTimeStamps
+-Xloggc:log/xx.log
+-XX:+PrintHeapAtGC
+
+trace:
+-XX:+TracingClassLoading
+-XX:+PrintClassHistogram
+
+heap结构
+young
+eden s0 s1 tenured
+
+-Xmx 最大堆
+-Xms 最小堆
+-Xmn 新生代
+-XX:NewRatio 新生代和老年代的比 ：4 --> 新生代：老年代 = 1 ： 4
+-XX:SurvivorRatio 两个survivor和eden区的比例： 8 --> 2 * survivor : eden = 2 : 8
+
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:+HeapDumpPath
+
+-XX:MaxPermSize
+-XX:PermSize
+-Xss 栈大小
+
+
+
+
+
+
+
+
+
 
 
