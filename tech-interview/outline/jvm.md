@@ -84,3 +84,28 @@
 工作过程： 如果一个类加载器收到类加载请求，他不会自己加载，而是把这个请求委派给父加载器进行完成。
 
 JNDI的SPI拓展使用ThreadContextClassLoader,加载具体细节的代码
+
+### jvm启动流程
+1. java xxx.class
+2. 装载配置jvm.cfg
+3. 根据配置寻找jvm.dll
+4. 初始化jvm,获取JNIEnv接口
+5. 找到main方法并运行
+
+### jvm基本结构
+见jvm-structure.jpg
+
+1. Class文件
+2. 类加载器子系统
+3. 内存空间
+    1. 方法区
+    2. heap
+    3. stack
+    4. native stack
+4. 垃圾收集器
+5. pc寄存器
+6. 执行引擎
+7. 本地方法接口
+8. 本地方法库
+
+
