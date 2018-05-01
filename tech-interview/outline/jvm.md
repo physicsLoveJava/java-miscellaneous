@@ -157,6 +157,25 @@ eden s0 s1 tenured
 -XX:PermSize
 -Xss 栈大小
 
+### 系统情况监控
+linux:
+uptime
+top
+vmstat
+pidstat (apt-get install sysstat)
+
+window:
+perfmon
+pslist
+
+### 内存分析
+1. 对象浅堆
+和对象内容无关，只是对象的结构
+
+2. 对象深堆
+对象垃圾回收后释放的内存大小
+
+
 
 
 
