@@ -8,6 +8,7 @@ public class EchoChannelHandler extends SimpleChannelHandler {
     public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
         System.out.println("messageReceived");
         System.out.println("ctx = [" + ctx + "], e = [" + e + "]");
+        ctx.getChannel().write("hi bro");
         super.messageReceived(ctx, e);
     }
 

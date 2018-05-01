@@ -4,6 +4,7 @@ import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.Channels;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.codec.string.StringDecoder;
+import org.jboss.netty.handler.codec.string.StringEncoder;
 
 import java.net.InetSocketAddress;
 
@@ -14,6 +15,7 @@ public class NettyServer {
         boot.setFactory(new NioServerSocketChannelFactory());
         boot.setPipeline(Channels.pipeline(
                 new StringDecoder(),
+                new StringEncoder(),
                 new EchoChannelHandler()));
         boot.bind(new InetSocketAddress(8000));
     }
