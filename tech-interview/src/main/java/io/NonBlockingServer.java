@@ -20,8 +20,7 @@ public class NonBlockingServer {
                     continue;
                 }
                 ByteBuffer buffer = ByteBuffer.allocate(1024);
-                int read;
-                while ((read = socketChannel.read(buffer)) != -1) {
+                while (socketChannel.read(buffer) != -1) {
                     buffer.flip();
                     System.out.println(new String(buffer.array()));
                     buffer.clear();

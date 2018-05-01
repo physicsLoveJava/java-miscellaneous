@@ -10,6 +10,8 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MultiplexingServer {
 
@@ -27,19 +29,28 @@ public class MultiplexingServer {
                 if(n == 0) {
                     continue;
                 }
+                ExecutorService service = Executors.newFixedThreadPool(100);
                 Iterator<SelectionKey> it = selector.selectedKeys().iterator();
-                ByteBuffer buffer = ByteBuffer.allocate(1024);
                 while (it.hasNext()) {
                     SelectionKey key = it.next();
                     if (key.isAcceptable()) {
                         ServerSocketChannel channel = (ServerSocketChannel) key.channel();
-                        SocketChannel sc = channel.accept();
-                        int read;
-                        while ((read = sc.read(buffer)) != -1) {
-                            buffer.flip();
-                            System.out.println(new String(buffer.array()));
-                            buffer.clear();
-                        }
+                        final SocketChannel sc = channel.accept();
+                        service.submit(new Runnable() {
+                            @Override
+                            public void run() {
+                                ByteBuffer buffer = ByteBuffer.allocate(1024);
+                                try {
+                                    while (sc.read(buffer) != -1) {
+                                        buffer.flip();
+                                        System.out.println(new String(buffer.array()));
+                                        buffer.clear();
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                     it.remove();
                 }
