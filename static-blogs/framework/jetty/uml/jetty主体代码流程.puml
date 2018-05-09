@@ -1,0 +1,46 @@
+@startuml
+
+JavaMain --> Server
+
+group Server Initialization
+Server --> ThreadPool : CreateOrSetThreadPool
+Server --> Server : setServer
+
+group ServerConnector Initialization
+Server --> ServerConnector : CreateConnector
+ServerConnector --> ServerConnector : setExecutor
+ServerConnector --> ServerConnector : setScheduler
+ServerConnector --> ServerConnector : setByteBufferPool
+ServerConnector --> ServerConnector : addBeans
+ServerConnector --> ServerConnector : addConnectionFactories
+ServerConnector --> ServerConnector : computeAndSetAcceptors(Math.max(1, Math.min(4,cores/8)))
+ServerConnector --> ServerConnector : newSelectionManager
+
+group SelectorManager Initialization
+SelectorManager --> SelectorManager : setExecutorAndScheduler
+SelectorManager --> SelectorManager : newManagerSelectorArray
+end
+
+end
+
+ServerConnector --> ServerConnector : setPort
+Server --> ServerConnector : setConnectors
+
+end
+
+group Server Start
+Server --> Server : setStartingEvent
+Server --> AbstractLifeCycle : start
+AbstractLifeCycle --> AbstractLifeCycle : setStartingEvent
+AbstractLifeCycle --> AbstractLifeCycle : doStart
+Server --> Server : ShutdownThreadRegister
+Server --> Server : ShutdownMonitorRegister
+Server --> Server : ShutdownMonitorStart
+Server --> Server : SuperDoStart
+Server --> Server : LoopConnectorsStart
+Server --> Server : SetAcceptor
+AbstractLifeCycle --> AbstractLifeCycle : setStartedEvent
+Server --> Server : setStartedEvent
+end
+
+@enduml
