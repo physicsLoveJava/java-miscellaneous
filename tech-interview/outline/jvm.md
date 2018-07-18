@@ -175,6 +175,157 @@ pslist
 2. 对象深堆
 对象垃圾回收后释放的内存大小
 
+### java反射原理实现
+
+*getDeclaredMethod*
+```cfml
+public Method getDeclaredMethod(String name, Class<?>... parameterTypes)
+    throws NoSuchMethodException, SecurityException {
+    checkMemberAccess(Member.DECLARED, Reflection.getCallerClass(), true);
+    Method method = searchMethods(privateGetDeclaredMethods(false), name, parameterTypes);
+    if (method == null) {
+        throw new NoSuchMethodException(getName() + "." + name + argumentTypesToString(parameterTypes));
+    }
+    return method;
+}
+```
+
+privateGetDeclaredMethods方法从缓存或JVM中获取该Class中申明的方法列表，
+searchMethods方法将从返回的方法列表里找到一个匹配名称和参数的方法对象,通过ReflectionFactory.copyMethod复制方法
+
+```cfml
+Method copy() {
+    // This routine enables sharing of MethodAccessor objects
+    // among Method objects which refer to the same underlying
+    // method in the VM. (All of this contortion is only necessary
+    // because of the "accessibility" bit in AccessibleObject,
+    // which implicitly requires that new java.lang.reflect
+    // objects be fabricated for each reflective call on Class
+    // objects.)
+    if (this.root != null)
+        throw new IllegalArgumentException("Can not copy a non-root Method");
+
+    Method res = new Method(clazz, name, parameterTypes, returnType,
+                            exceptionTypes, modifiers, slot, signature,
+                            annotations, parameterAnnotations, annotationDefault);
+    res.root = this;
+    // Might as well eagerly propagate this if already present
+    res.methodAccessor = methodAccessor;
+    return res;
+}
+```
+
+所次每次调用getDeclaredMethod方法返回的Method对象其实都是一个新的对象，且新对象的root属性都指向原来的Method对象，如果需要频繁调用，最好把Method对象缓存起来
+
+```c 
+ // reflection data that might get invalidated when JVM TI RedefineClasses() is called
+private static class ReflectionData<T> {
+    volatile Field[] declaredFields;
+    volatile Field[] publicFields;
+    volatile Method[] declaredMethods;
+    volatile Method[] publicMethods;
+    volatile Constructor<T>[] declaredConstructors;
+    volatile Constructor<T>[] publicConstructors;
+    // Intermediate results for getFields and getMethods
+    volatile Field[] declaredPublicFields;
+    volatile Method[] declaredPublicMethods;
+    volatile Class<?>[] interfaces;
+
+    // Value of classRedefinedCount when we created this ReflectionData instance
+    final int redefinedCount;
+
+    ReflectionData(int redefinedCount) {
+        this.redefinedCount = redefinedCount;
+    }
+}
+
+private volatile transient SoftReference<ReflectionData<T>> reflectionData;
+```
+
+缓存反射对象的数据结构：reflectionData,是一个软引用类型的对象，
+在内存不够的情况会被回收，这个时候反射就会重新创建该对象
+
+*Method.invoke*
+```c 
+public Object invoke(Object obj, Object... args)
+        throws IllegalAccessException, IllegalArgumentException,
+           InvocationTargetException
+{
+    if (!override) {
+        if (!Reflection.quickCheckMemberAccess(clazz, modifiers)) {
+            Class<?> caller = Reflection.getCallerClass();
+            checkAccess(caller, clazz, obj, modifiers);
+        }
+    }
+    MethodAccessor ma = methodAccessor;             // read volatile
+    if (ma == null) {
+        ma = acquireMethodAccessor();
+    }
+    return ma.invoke(obj, args);
+}
+
+public MethodAccessor newMethodAccessor(Method var1) {
+    checkInitted();
+    if (noInflation && !ReflectUtil.isVMAnonymousClass(var1.getDeclaringClass())) {
+        return (new MethodAccessorGenerator()).generateMethod(var1.getDeclaringClass(), var1.getName(), var1.getParameterTypes(), var1.getReturnType(), var1.getExceptionTypes(), var1.getModifiers());
+    } else {
+        NativeMethodAccessorImpl var2 = new NativeMethodAccessorImpl(var1);
+        DelegatingMethodAccessorImpl var3 = new DelegatingMethodAccessorImpl(var2);
+        var2.setParent(var3);
+        return var3;
+    }
+}
+
+public Object invoke(Object var1, Object[] var2) throws IllegalArgumentException, InvocationTargetException {
+    if (++this.numInvocations > ReflectionFactory.inflationThreshold() && !ReflectUtil.isVMAnonymousClass(this.method.getDeclaringClass())) {
+        MethodAccessorImpl var3 = (MethodAccessorImpl)(new MethodAccessorGenerator()).generateMethod(this.method.getDeclaringClass(), this.method.getName(), this.method.getParameterTypes(), this.method.getReturnType(), this.method.getExceptionTypes(), this.method.getModifiers());
+        this.parent.setDelegate(var3);
+    }
+
+    return invoke0(this.method, var1, var2);
+}
+
+//MethodAccessGenerator --> generateMethod
+return (MagicAccessorImpl)AccessController.doPrivileged(new PrivilegedAction<MagicAccessorImpl>() {
+        public MagicAccessorImpl run() {
+            try {
+                return (MagicAccessorImpl)ClassDefiner.defineClass(var13, var17, 0, var17.length, var1.getClassLoader()).newInstance();
+            } catch (IllegalAccessException | InstantiationException var2) {
+                throw new InternalError(var2);
+            }
+        }
+    });
+    
+    
+/** <P> We define generated code into a new class loader which
+      delegates to the defining loader of the target class. It is
+      necessary for the VM to be able to resolve references to the
+      target class from the generated bytecodes, which could not occur
+      if the generated code was loaded into the bootstrap class
+      loader. </P>
+
+      <P> There are two primary reasons for creating a new loader
+      instead of defining these bytecodes directly into the defining
+      loader of the target class: first, it avoids any possible
+      security risk of having these bytecodes in the same loader.
+      Second, it allows the generated bytecodes to be unloaded earlier
+      than would otherwise be possible, decreasing run-time
+      footprint. </P>
+    */    
+static Class<?> defineClass(String var0, byte[] var1, int var2, int var3, final ClassLoader var4) {
+    ClassLoader var5 = (ClassLoader)AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+        public ClassLoader run() {
+            return new DelegatingClassLoader(var4);
+        }
+    });
+    return unsafe.defineClass(var0, var1, var2, var3, var5, (ProtectionDomain)null);
+}
+```
+
+这里每次都生成新的类加载器，是为了性能考虑，在某些情况下可以卸载这些生成的类，
+因为类的卸载是只有在类加载器可以被回收的情况下才会被回收的，
+如果用了原来的类加载器，那可能导致这些新创建的类一直无法被卸载，
+从其设计来看本身就不希望这些类一直存在内存里的，在需要的时候有就行了。
 
 
 
