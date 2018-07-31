@@ -46,12 +46,13 @@ synchronized 与 lock 的区别
 CAS 乐观锁
 ABA 问题
 乐观锁的业务场景及实现方式
+
 核心篇
 数据存储
 MySQL 索引使用的注意事项
 说说反模式设计
-说说分库与分表设计
-分库与分表带来的分布式困境与应对之策
+说说分库与分表设计  https://www.cnblogs.com/wade-luffy/p/6096578.html
+分库与分表带来的分布式困境与应对之策 
 说说 SQL 优化之道
 MySQL 遇到的死锁问题
 存储引擎的 InnoDB 与 MyISAM
