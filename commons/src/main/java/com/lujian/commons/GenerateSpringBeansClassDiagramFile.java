@@ -12,8 +12,10 @@ public class GenerateSpringBeansClassDiagramFile {
 //        createClassDiagram("E:\\frameworks\\java\\conductor",
 //                "commons/src/main/resources/conductor.txt");
 
-        createClassDiagram("E:\\codes\\source code from github\\spring-framework\\spring-beans\\src\\main\\java\\org\\springframework\\beans",
-                "commons/src/main/resources/spring-beans.txt");
+//        createClassDiagram("E:\\codes\\source code from github\\spring-framework\\spring-beans\\src\\main\\java\\org\\springframework\\beans",
+//                "commons/src/main/resources/spring-beans.txt");
+        createClassDiagram("E:\\codes\\source code from github\\spring-framework\\spring-aop\\src\\main\\java\\org\\springframework\\aop",
+                "commons/src/main/resources/spring-aop.txt");
 
     }
 
